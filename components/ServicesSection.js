@@ -1,60 +1,69 @@
+import Link from 'next/link';
+
 export default function ServicesSection() {
+  const services = [
+    ['👥', 'AI Strategy and Readiness Consulting', 'Scalable participant pools across 30+ countries.'],
+    ['🤖', 'Custom AI Chatbot Development', 'Structured oversight of complex, multi-workstream programmes.'],
+    ['📊', 'AI-Enhanced Data Insights', 'Reliable movement of equipment and assets across borders.'],
+    ['🔐', 'AI Cybersecurity & Threat Detection', 'Temporary import/export documentation and support.'],
+    ['⚖️', 'Compliance-Focused AI Advisory', 'Testing labs and operational sites deployed with precision.'],
+    ['💳', 'Smart Payment Integration Solutions', 'Skilled personnel and compliant workforce solutions.'],
+    ['🎁', 'Reward & Loyalty Solutions and Platform Development', 'Full-cycle research support from recruitment to insights.'],
+    ['📣', 'AI in Marketing, Content & Branding', 'Secure multi-currency rewards and reimbursements.'],
+  ];
+
   return (
-    <section className="w-full py-20 bg-[#0b1c20] text-white rounded-none shadow-md">
-      <div className="px-4 md:px-10 text-center">
-        <h2 className="text-4xl lg:text-4xl font-heading  leading-snug tracking-wide mb-10">
-          Services
-        </h2>
+  <section className="bg-[#0D1B3E] px-4 py-20 text-white md:px-6">
+   <div className="mx-auto max-w-7xl rounded-2xl p-4 md:p-12">
+      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        
+        {/* LEFT SIDE */}
+        <div>
+          <p className="finxt-label mb-5">What We Deliver</p>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-12 items-start">
-          {/* Left Column */}
-          <div className="space-y-6 text-left">
-            {[
-              { title: 'AI Strategy', desc: 'Tailored consulting to assess AI capabilities and develop strategic roadmap.' },
-              { title: 'Custom AI', desc: 'Development of personalized AI chatbots and virtual assistants for engagement.' },
-              { title: 'AI-Enhanced Analytics', desc: 'Solutions that leverage AI algorithms to analyze data, extract insights, and support decision-making.' }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-[#0f2a2f] p-4 rounded-md shadow-md hover:shadow-lg transition"
-              >
-                <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                <p className="text-[1.125rem] leading-[1.8] tracking-wide text-white max-w-3xl mx-auto">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-2xl font-black leading-tight tracking-tight md:text-4xl">
+            Eight integrated services. One trusted partner.
+          </h2>
 
-          {/* Center Image */}
-          <div className="flex justify-center items-center">
-            <img
-              src="/images/Robot.webp"
-              alt="Robot"
-              className="w-full max-w-xs rounded-xl shadow-2xl"
-            />
-          </div>
+          <div className="mt-5 h-1 w-14 rounded-full bg-[#C9A84C]" />
 
-          {/* Right Column */}
-          <div className="space-y-6 text-left">
-            {[
-              { title: 'Advanced AI', desc: 'Implementation of AI technologies to enhance cybersecurity and detect threats.' },
-              { title: 'Smart Payment', desc: 'Comprehensive payment integration services that streamline transactions and enhance customer experience.' },
-              { title: 'Reward Solutions', desc: 'Development of innovative reward and loyalty programs powered by AI.' }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-[#0f2a2f] p-4 rounded-md shadow-md hover:shadow-lg transition"
-              >
-                <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                <p className="text-[1.125rem] leading-[1.8] tracking-wide text-white max-w-3xl mx-auto">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+          <p className="mt-8 space-y-5 text-sm leading-7 text-white/70 md:text-base">
+            Every service is available standalone or as part of a fully managed
+            end-to-end solution.
+          </p>
         </div>
+
+        {/* RIGHT GRID */}
+        {/* RIGHT GRID */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map(([icon, title]) => (
+              <div
+                key={title}
+                className="mb-2 text-base font-semibold text-center"
+              >
+                <div className="mb-5 text-4xl text-[#C9A84C]">
+                  {icon}
+                </div>
+
+                <h3 className="text-sm font-bold leading-6 text-white">
+                  {title}
+                </h3>
+              </div>
+            ))}
+          </div>
+       
       </div>
-    </section>
-  );
+
+      {/* BUTTON */}
+      <div className="mt-10 text-center">
+        <Link
+          href="/services"
+          className="w-fit rounded-lg bg-[#C9A84C] px-6 py-4 text-sm font-bold text-[#050912] transition hover:bg-[#E6C768] sm:px-8"
+        >
+          View All Services →
+        </Link>
+      </div>
+    </div>
+  </section>
+);
 }

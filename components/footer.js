@@ -1,82 +1,120 @@
-import {
-    faFacebook,
-    faInstagram,
-    faLinkedin,
-    faYoutube,
-    faTiktok,
-    faTwitter,
-  } from '@fortawesome/free-brands-svg-icons';
-  import {
-    faPhone,
-    faEnvelope,
-    faMapMarkerAlt,
-  } from '@fortawesome/free-solid-svg-icons';
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  
-  export default function Footer() {
-    return (
-      <footer className="bg-[#062d36] text-white px-6 pt-10 pb-8 mt-16">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-4">
+import Link from 'next/link';
+import { FaFacebookF, FaInstagram, FaXTwitter } from 'react-icons/fa6';
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#050912] px-6 py-8 text-white">
+      <div className="mx-auto max-w-7xl">
+        {/* TOP */}
+        <div className="flex flex-col gap-8 border-b border-[#1E2D50] pb-6 lg:flex-row lg:items-center lg:justify-between">
           
-          {/* Logo */}
-          <img src="/images/logo.webp" alt="FinXT Logo" className="w-24 md:w-28" />
-  
-          {/* Contact Info */}
-          <div className="text-sm md:text-base space-y-1">
-            <p className="flex items-center justify-center gap-2">
-              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-[#d4af37]" /> FinXT London, United Kingdom
-            </p>
-            <p className="flex items-center justify-center gap-2 text-sm md:text-base">
-                <FontAwesomeIcon icon={faPhone} className="text-[#d4af37]" />
-                <a
-                    href="tel:07837851544"
-                    className="text-white hover:text-[#d4af37] underline underline-offset-4 decoration-1 transition duration-200"
-                >
-                    Call Us
-                </a>
-            </p>
-            <p className="flex items-center justify-center gap-2 text-sm md:text-base">
-                <FontAwesomeIcon icon={faEnvelope} className="text-[#d4af37]" />
-                <a
-                    href="mailto:info@finxt.uk"
-                    aria-label="Send us an email"
-                    className="text-white hover:text-[#d4af37] underline underline-offset-4 decoration-1 transition duration-200"
-                >
-                    Send us an email
-                </a>
+          {/* LEFT */}
+          <div className="max-w-md">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4C430] text-sm font-extrabold text-black">
+                FX
+              </div>
+
+              <div className="flex items-end gap-1">
+                <span className="text-3xl font-extrabold tracking-tight text-white">
+                  Fin<span className="text-[#F4C430]">XT</span>
+                </span>
+
+                <span className="mb-1 text-xs font-light tracking-[0.2em] text-[#B8BDC7]">
+                  UK
+                </span>
+              </div>
+            </Link>
+
+            <p className="mt-4 text-sm leading-7 text-[#A9B6D3]">
+              Powering global programs with precision, speed and scale.
+              Trusted by world-class enterprises across the UK, Europe, and beyond.
             </p>
 
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-md border border-[#C9A84C]/40 px-3 py-1 text-xs font-bold text-[#F4C430]">
+                🇬🇧 London HQ
+              </span>
 
+              <span className="rounded-md border border-[#C9A84C]/40 px-3 py-1 text-xs font-bold text-[#F4C430]">
+                🇪🇺 European Network
+              </span>
+            </div>
           </div>
-  
-          {/* Social Icons */}
-          <div className="flex justify-center gap-6 text-xl mt-4">
-            <a href="#" aria-label="Facebook"><FontAwesomeIcon icon={faFacebook}  className="text-[#d4af37]"/></a>
-            <a href="#" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram}  className="text-[#d4af37]"/></a>
-            <a href="#" aria-label="TikTok"><FontAwesomeIcon icon={faTwitter}  className="text-[#d4af37]"/></a>
-            <a href="#" aria-label="YouTube"><FontAwesomeIcon icon={faYoutube}  className="text-[#d4af37]"/></a>
-            <a href="#" aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} className="text-[#d4af37]"/></a>
-          </div>
-          {/* Horizontal line */}
-          <div
-            className="w-full h-[2px] my-6"
-            style={{
-                backgroundImage:
-                'repeating-linear-gradient(to right, #d4af37 0, #d4af37 5px, transparent 5px, transparent 10px)',
-                backgroundRepeat: 'repeat-x',
-                backgroundSize: '10px 2px',
-            }}
-            ></div>
 
+          {/* RIGHT */}
+          <div className="flex flex-col gap-5 lg:items-end">
+            <div className="space-y-3 text-sm text-[#A9B6D3]">
+              <a
+                href="mailto:info@finxt.uk"
+                className="flex items-center gap-2 hover:text-white"
+              >
+                ✉ info@finxt.uk
+              </a>
 
-            {/* Footer Bottom (e.g., Social Icons or Copyright) */}
-  
-          {/* Copyright */}
-          <div className="text-xs text-gray-400 pt-4">
-            © {new Date().getFullYear()} FinXT. All rights reserved.
+              <a
+                href="tel:+447837851544"
+                className="flex items-center gap-2 hover:text-white"
+              >
+                ☎ +44 7837 851 544
+              </a>
+
+              <div className="flex items-center gap-2">
+                📍 London, United Kingdom
+              </div>
+            </div>
+
+            {/* SOCIAL ICONS */}
+            <div className="flex gap-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black"
+              >
+                <FaFacebookF size={16} />
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black"
+              >
+                <FaInstagram size={16} />
+              </a>
+
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black"
+              >
+                <FaXTwitter size={16} />
+              </a>
+            </div>
           </div>
         </div>
-      </footer>
-    );
-  }
-  
+
+        {/* BOTTOM */}
+        <div className="flex flex-col gap-4 pt-5 text-xs text-[#6B7FA3] lg:flex-row lg:items-center lg:justify-between">
+          <p>© {new Date().getFullYear()} FinXT UK Ltd. All rights reserved.</p>
+
+          <div className="flex flex-wrap gap-5">
+            <Link href="/privacy-policy" className="hover:text-white">
+              Privacy Policy
+            </Link>
+
+            <Link href="/terms-and-conditions" className="hover:text-white">
+              Terms & Conditions
+            </Link>
+
+            <Link href="/cookie-policy" className="hover:text-white">
+              Cookie Policy
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

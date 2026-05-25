@@ -1,0 +1,24 @@
+Live Studies Application Page
+=============================
+
+Page URL after deployment:
+/live-studies-application
+
+What was added:
+- A questionnaire-style page matching the provided TechResearchStudies sample layout.
+- Netlify form setup using the form name: live-studies-application
+- Redirect after submission to: /Thankyou
+
+How the client gets the answers in Excel:
+1. Deploy the site to Netlify.
+2. Submit one test application from the live website.
+3. In Netlify, open the site dashboard.
+4. Go to Forms.
+5. Open live-studies-application.
+6. Use Export CSV.
+7. Open the CSV in Microsoft Excel or Google Sheets.
+
+Important:
+- Netlify Forms only collects submissions after the site is deployed on Netlify.
+- Localhost submissions will not appear in Netlify.
+- CSV is the correct export format for Excel.
