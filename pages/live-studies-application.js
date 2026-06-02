@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const fieldClass =
-  'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-[15px] text-[#0A0F1E] placeholder:text-gray-500 outline-none transition focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20';
+  'w-full rounded-2xl border border-[#D9E0EE] bg-white px-4 py-3 text-[15px] text-[#0A0F1E] placeholder:text-gray-500 outline-none transition focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20';
 
 const labelClass =
   'mb-1 block text-[15px] font-semibold text-[#0A0F1E]';
@@ -59,7 +59,7 @@ function RadioGroup({ label, help, name, options, required = false }) {
         {options.map((option) => (
           <label
             key={option}
-            className="flex items-center gap-3  border border-gray-300 bg-white px-4 py-3 text-[15px] text-[#0A0F1E] cursor-pointer hover:border-[#C9A84C] rounded-md transition"
+            className="flex items-center gap-3 rounded-2xl border border-[#DCE3F0] bg-[#FAFBFF] px-4 py-3 text-[15px] text-[#0A0F1E] cursor-pointer transition hover:border-[#C9A84C] hover:bg-white"
           >
             <input
               type="radio"
@@ -88,76 +88,154 @@ function Checkbox({ name, value, children, required = false }) {
 
 export default function LiveStudiesApplicationPage() {
   const router = useRouter();
-  const { country, lang = 'en' } = router.query;
+  const { country = 'leeds', lang = 'en' } = router.query;
 
   const [ethnicity, setEthnicity] = useState('');
 
   const isSpanish = lang === 'es';
   const isPolish = lang === 'pl';
+  const language =
+    country === 'spain' || country === 'mexico'
+      ? 'Spanish'
+      : country === 'poland'
+      ? 'Polish'
+      : 'English';
 
   const studyTerms = isSpanish
   ? [
-      'Confirmo que NO he tenido recientemente una lesión en el cuello...',
-      'Si uso gafas graduadas, las llevaré al estudio.',
-      'Estoy dispuesto(a) a mostrar todo mi rostro.',
-      'Entiendo que si uso un accesorio especial para la cabeza, por ejemplo un hijab, puedo usarlo durante el estudio.',
-      'Confirmo que no soy menor de 16 años.',
-      'Entiendo que completar este formulario no garantiza elegibilidad.',
-      'Confirmo que mi nombre y edad coinciden exactamente con mi identificación oficial.',
-      'Entiendo que solo los participantes reservados serán admitidos.',
-      'He leído y acepto la Política de Privacidad y los Términos y Condiciones de FinXT UK.',
-    ]
-  : isPolish
+      
+'Confirmo que no he sufrido recientemente una lesión en el cuello y que no padezco ninguna condición, incluida artritis o rigidez cervical, que pueda causarme molestias al girar o mover la cabeza.',
+
+'Si normalmente utilizo gafas graduadas, las llevaré conmigo a la sesión del estudio.',
+
+'Me siento cómodo/a participando en actividades que puedan requerir que mi rostro sea completamente visible.',
+
+'Entiendo que los cubrimientos de cabeza por motivos religiosos o culturales, como un hiyab, pueden utilizarse durante el estudio.',
+
+'Confirmo que tengo al menos 15 años de edad.',
+
+'Entiendo que enviar esta solicitud no garantiza mi selección o participación en el estudio.',
+
+'Entiendo que mi elegibilidad será evaluada de acuerdo con los requisitos del estudio y que solo los candidatos que cumplan dichos requisitos podrán pasar a la siguiente fase del proceso.',
+
+'Reconozco que este cuestionario de selección se utiliza para determinar mi idoneidad para participar en el estudio.',
+
+'Confirmo que los datos personales proporcionados, incluidos mi nombre y edad, coinciden con la información que figura en mi documento oficial de identidad vigente.',
+
+'Entiendo que la información inexacta o que no coincida con mi documentación puede dar lugar a la denegación de mi participación.',
+
+'Entiendo que la asistencia está limitada a los participantes que hayan recibido una confirmación de reserva.',
+
+'Reconozco que las plazas para el estudio son limitadas y que completar este formulario no garantiza una plaza.',
+
+'He leído y acepto la Política de Privacidad y los Términos y Condiciones de FinXT UK.'
+]
+: isPolish
   ? [
-      'Potwierdzam, że NIE miałem/am ostatnio urazu szyi...',
-      'Jeśli noszę okulary korekcyjne, zabiorę je na badanie.',
-      'Wyrażam zgodę na pokazanie całej twarzy.',
-      'Rozumiem, że mogę nosić specjalne nakrycie głowy, np. hidżab.',
-      'Potwierdzam, że mam ukończone 16 lat.',
-      'Rozumiem, że wypełnienie formularza nie gwarantuje kwalifikacji.',
-      'Potwierdzam zgodność danych z dokumentem tożsamości.',
-      'Rozumiem, że tylko zapisani uczestnicy zostaną wpuszczeni.',
-      'Przeczytałem/am i akceptuję Politykę Prywatności oraz Regulamin FinXT UK.',
-    ]
+     
+'Potwierdzam, że nie doznałem/am ostatnio urazu szyi oraz nie cierpię na żadne schorzenia, w tym artretyzm lub sztywność karku, które mogłyby powodować dyskomfort podczas obracania lub poruszania głową.',
+
+'Jeśli na co dzień noszę okulary korekcyjne, zabiorę je ze sobą na sesję badawczą.',
+
+'Czuję się komfortowo, uczestnicząc w działaniach, które mogą wymagać pełnej widoczności mojej twarzy.',
+
+'Rozumiem, że podczas badania można nosić nakrycia głowy wynikające z przekonań religijnych lub kulturowych, takie jak hidżab.',
+
+'Potwierdzam, że mam ukończone co najmniej 15 lat.',
+
+'Rozumiem, że przesłanie zgłoszenia nie gwarantuje mojego zakwalifikowania ani udziału w badaniu.',
+
+'Rozumiem, że moja kwalifikacja zostanie oceniona na podstawie wymagań badania i tylko osoby spełniające kryteria będą mogły przejść do kolejnego etapu procesu.',
+
+'Przyjmuję do wiadomości, że niniejszy kwestionariusz przesiewowy służy do oceny mojej przydatności do udziału w badaniu.',
+
+'Potwierdzam, że podane przeze mnie dane osobowe, w tym imię, nazwisko oraz wiek, są zgodne z informacjami widniejącymi na ważnym dokumencie tożsamości wydanym przez odpowiedni organ.',
+
+'Rozumiem, że podanie nieprawidłowych lub niezgodnych danych może skutkować odmową udziału w badaniu.',
+
+'Rozumiem, że udział jest ograniczony wyłącznie do uczestników posiadających potwierdzoną rezerwację.',
+
+'Przyjmuję do wiadomości, że liczba miejsc w badaniu jest ograniczona, a wypełnienie formularza nie gwarantuje miejsca.',
+
+'Przeczytałem/am i akceptuję Politykę Prywatności oraz Regulamin FinXT UK.'
+]
   : [
-      'I confirm that I have NOT recently had neck injury...',
-      'If I wear prescription glasses, I will bring them to the user testing.',
-      'I am willing to show my entire face.',
-      'I understand that if I have special headwear, e.g. a hijab, I may wear it during the study.',
-      'I confirm I am not under the age of 16.',
-      'I understand that completing this form does not guarantee eligibility.',
-      'I confirm that my name and age exactly match those on my valid photo ID.',
-      'I understand that only booked participants will be admitted.',
-      'I have read and agree to FinXT UK’s Privacy Policy and Terms & Conditions.',
-    ];
+  'I confirm that I have not recently experienced a neck injury and do not have any condition, including arthritis or neck stiffness, that may cause discomfort when turning or moving my head.',
+
+  'If I normally wear prescription glasses, I will bring them with me to the study session.',
+
+  'I am comfortable participating in activities that may require my full face to be visible.',
+
+  'I understand that religious or cultural head coverings, such as a hijab, may be worn during the study.',
+
+  'I confirm that I am at least 15 years of age.',
+
+  'I understand that submitting this application does not guarantee selection or participation in the study.',
+
+  'I understand that eligibility will be assessed based on the study requirements and that only qualifying applicants may proceed to the next stage of the process.',
+
+  'I acknowledge that this screening questionnaire is used to determine my suitability for participation in the study.',
+
+  'I confirm that the personal details provided, including my name and age, match the information shown on my valid government-issued identification.',
+
+  'I understand that inaccurate or mismatched information may result in my participation being declined.',
+
+  'I understand that attendance is limited to participants who have received a confirmed booking.',
+
+  'I acknowledge that study places are limited and that completing this form does not guarantee a place.',
+
+  'I have read and agree to FinXT UK’s Privacy Policy and Terms & Conditions.'
+];
     const healthTerms = isSpanish
   ? [
-      'Confirmo que no tengo ninguna condición respiratoria aguda o crónica.',
-      'No tengo síntomas gripales incluyendo fiebre, tos, dificultad para respirar, dolor de garganta o secreción nasal.',
-      'No he tenido contacto cercano con alguien positivo por COVID-19 en los últimos 14 días.',
-    ]
+      'Confirmo que no padezco ninguna afección respiratoria aguda o crónica.',
+
+      'Confirmo que no he experimentado síntomas similares a los de la gripe, incluyendo fiebre, tos, dificultad para respirar, dolor de garganta, secreción nasal o problemas respiratorios durante los últimos 14 días.',
+
+      'Confirmo que ningún miembro de mi hogar ha experimentado síntomas similares a los de la gripe, incluyendo fiebre, tos, dificultad para respirar, dolor de garganta, secreción nasal o problemas respiratorios durante los últimos 14 días.',
+
+      'Confirmo que no he realizado viajes internacionales durante los 14 días previos al estudio.',
+
+      'Confirmo que no he estado en contacto cercano con ninguna persona diagnosticada con una enfermedad respiratoria contagiosa o que esté siendo evaluada por una posible enfermedad respiratoria contagiosa durante los últimos 14 días.'
+]
+
   : isPolish
   ? [
-      'Potwierdzam, że nie mam żadnych ostrych ani przewlekłych chorób układu oddechowego.',
-      'Nie mam objawów grypopodobnych, takich jak gorączka, kaszel, duszność, ból gardła lub katar.',
-      'Nie miałem/am bliskiego kontaktu z osobą zakażoną COVID-19 w ciągu ostatnich 14 dni.',
-    ]
+      'Potwierdzam, że nie cierpię na żadne ostre ani przewlekłe schorzenia układu oddechowego.',
+
+      'Potwierdzam, że w ciągu ostatnich 14 dni nie występowały u mnie objawy grypopodobne, takie jak gorączka, kaszel, duszność, ból gardła, katar lub trudności w oddychaniu.',
+
+      'Potwierdzam, że żaden z członków mojego gospodarstwa domowego nie doświadczał w ciągu ostatnich 14 dni objawów grypopodobnych, takich jak gorączka, kaszel, duszność, ból gardła, katar lub trudności w oddychaniu.',
+
+      'Potwierdzam, że nie podróżowałem/am za granicę w ciągu 14 dni poprzedzających badanie.',
+
+      'Potwierdzam, że w ciągu ostatnich 14 dni nie miałem/am bliskiego kontaktu z osobą, u której zdiagnozowano zakaźną chorobę układu oddechowego lub która była poddawana ocenie pod kątem takiej choroby.'
+]
+
   : [
+    
       'I confirm that I do not have any acute or chronic respiratory conditions.',
-      'I do not have flu-like symptoms including fever, cough, shortness of breath, sore throat, or runny nose.',
-      'I have not had close contact with anyone confirmed positive for COVID-19 in the past 14 days.',
+
+      'I confirm that I have not experienced flu-like symptoms, including fever, cough, shortness of breath, sore throat, runny nose, or difficulty breathing within the past 14 days.',
+
+      'I confirm that no members of my household have experienced flu-like symptoms, including fever, cough, shortness of breath, sore throat, runny nose, or difficulty breathing within the past 14 days.',
+
+      'I confirm that I have not travelled internationally within the 14 days prior to the study.',
+
+      'I confirm that I have not been in close contact with anyone who has been diagnosed with, or is being evaluated for, a contagious respiratory illness within the past 14 days.'
+
     ];
 
 const gdprTerms = isSpanish
   ? [
-      'Al enviar este formulario, reconoces que tus datos personales serán procesados por FinXT UK Ltd con fines de reclutamiento para estudios de investigación.',
+      'Al enviar este formulario, usted acepta que FinXT UK Ltd procese su información personal con fines de selección, contratación y participación en estudios de investigación. Sus datos serán tratados de conformidad con la legislación aplicable en materia de protección de datos y con nuestra Política de Privacidad.',
     ]
   : isPolish
   ? [
-      'Przesyłając ten formularz, potwierdzasz, że Twoje dane osobowe będą przetwarzane przez FinXT UK Ltd w celu rekrutacji do badań.',
+      'Przesyłając ten formularz, wyrażam zgodę na przetwarzanie moich danych osobowych przez FinXT UK Ltd w celu rekrutacji uczestników do badań oraz organizacji ich udziału w projektach badawczych. Moje dane będą przetwarzane zgodnie z obowiązującymi przepisami dotyczącymi ochrony danych osobowych oraz Polityką Prywatności FinXT UK.',
     ]
   : [
-      'By submitting this form, you acknowledge that your personal data will be processed by FinXT UK Ltd for the purpose of research study recruitment.',
+      'By submitting this form, you consent to FinXT UK Ltd processing your personal information for research study recruitment and participation purposes. Your data will be handled in accordance with applicable data protection laws and our Privacy Policy.',
     ];
     const studyInfo = {
   leeds: {
@@ -246,9 +324,10 @@ const siblingPayment =
     : '£100';
   return (
     <Layout>
-      <section className="bg-[#0D1B3E] py-12 px-4">
-      <div className="max-w-4xl mx-auto rounded-2xl border border-white/10 bg-[#F4F6FB] p-7 shadow-2xl md:p-12">
-          <div className="border border-gray-300 p-6 md:p-10 mb-7">
+      <section className="relative overflow-hidden bg-[#050912] px-4 py-16">
+        
+      <div className="max-w-4xl mx-auto rounded-[32px] border border-[#C9A84C]/15 bg-white/95 backdrop-blur-sm p-7  md:p-12 shadow-sm">
+          <div className="border border-[#C9A84C]/20 bg-[#FAFBFF] p-6 md:p-10 mb-7">
             <p className="mb-3 flex items-center gap-2 text-lg font-bold text-[#0A0F1E]">
             
              <span>{selectedStudy.location}</span>
@@ -301,6 +380,8 @@ const siblingPayment =
             netlify-honeypot="bot-field"
             action="/Thankyou"
           >
+            <input type="hidden" name="country" value={country} />
+            <input type="hidden" name="language" value={language} />
             <input type="hidden" name="form-name" value="live-studies-application" />
             <p className="hidden">
               <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
@@ -619,7 +700,7 @@ const siblingPayment =
               {['Type 1', 'Type 2', 'Type 3', 'Type 4', 'Type 5', 'Type 6'].map((type) => (
                 <label
                   key={type}
-                  className="flex cursor-pointer items-center gap-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-[15px] text-[#0A0F1E] transition hover:border-[#C9A84C]"
+                  className="flex cursor-pointer items-center gap-3 rounded-2xl border border-[#DCE3F0] bg-[#FAFBFF] px-4 py-3 text-[15px] text-[#0A0F1E] transition hover:border-[#C9A84C] hover:bg-white"
                 >
                   <input
                     type="radio"
@@ -891,6 +972,11 @@ const siblingPayment =
               ? 'Jeśli chcesz, abyśmy kontaktowali się z Tobą w sprawie przyszłych badań w Twojej okolicy, zaznacz poniższe pole.'
               : 'If you would like us to contact you about future studies in your area, tick the box below.'}
           </p>
+          <input
+            type="hidden"
+            name="future_studies_opt_in"
+            value="No"
+          />
 
           <Checkbox name="future_studies_opt_in" value="Yes">
             {isSpanish
@@ -943,25 +1029,110 @@ const siblingPayment =
                 ))}
               </ul>
 
-              <Checkbox name="terms_confirmation" value="Confirmed" required>
-                {isSpanish
-                  ? 'Confirmo que he leído, entendido y acepto los términos del estudio, la declaración de salud y seguridad y el aviso de procesamiento de datos.'
-                  : isPolish
-                  ? 'Potwierdzam, że przeczytałem/am, zrozumiałem/am i akceptuję warunki badania, deklarację zdrowia i bezpieczeństwa oraz informacje o przetwarzaniu danych.'
-                  : 'I confirm that I have read, understood and agree to the study terms, health and safety declaration, and data processing notice.'}
-              </Checkbox>
+          <Checkbox name="terms_confirmation" value="Confirmed" required>
+            {isSpanish ? (
+              <>
+                Confirmo que he leído y acepto la{' '}
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Política de Privacidad
+                </a>{' '}
+                y los{' '}
+                <a
+                  href="/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Términos y Condiciones
+                </a>
+                .
+              </>
+            ) : isPolish ? (
+              <>
+                Potwierdzam, że zapoznałem/am się z{' '}
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Polityką Prywatności
+                </a>{' '}
+                oraz{' '}
+                <a
+                  href="/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Regulaminem
+                </a>
+                .
+              </>
+            ) : (
+              <>
+                I confirm that I have read and agree to the{' '}
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Privacy Policy
+                </a>{' '}
+                and{' '}
+                <a
+                  href="/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#C9A84C] underline"
+                >
+                  Terms & Conditions
+                </a>
+                .
+              </>
+            )}
+          </Checkbox>
             </div>
             <p className="mb-5 text-sm leading-6 text-gray-600">
               {isSpanish
-                ? 'Tu información solo será utilizada para el reclutamiento y evaluación de elegibilidad para estudios de investigación. Puedes solicitar la eliminación o retirada de tus datos contactando a info@finxt.uk.'
+                ? ( 
+                  <>
+                  Su información personal se utilizará únicamente para fines de reclutamiento y evaluación de elegibilidad para estudios de investigación. Puede solicitar la eliminación de sus datos o retirar su consentimiento en cualquier momento poniéndose en contacto con {''} 
+                  <a href="mailto:info@finxt.uk"
+                className="font-medium text-[#C9A84C] hover:underline">
+                  info@finxt.uk
+                </a>.
+                </>
+                )
                 : isPolish
-                ? 'Twoje dane będą wykorzystywane wyłącznie do rekrutacji i oceny kwalifikacji do badań. Możesz poprosić o usunięcie lub wycofanie swoich danych, kontaktując się z info@finxt.uk.'
-                : 'Your information will only be used for research study recruitment and eligibility screening. You can request deletion or withdrawal of your data by contacting info@finxt.uk.'}
+                ? ( 
+                  <>
+                  Twoje dane osobowe będą wykorzystywane wyłącznie do celów rekrutacji uczestników do badań oraz oceny kwalifikacji do udziału w badaniach. W każdej chwili możesz zażądać usunięcia swoich danych lub wycofać swoją zgodę, kontaktując się z nami pod adresem {''} 
+                  <a href="mailto:info@finxt.uk"
+                className="font-medium text-[#C9A84C] hover:underline">
+                  info@finxt.uk
+                </a>.
+                </>
+                )
+                : (
+                  <> Your personal information will only be used for research study recruitment and eligibility assessment purposes. You may request deletion of your data or withdraw your consent at any time by contacting {''} 
+                <a href="mailto:info@finxt.uk"
+                className="font-medium text-[#C9A84C] hover:underline">
+                  info@finxt.uk
+                </a>.
+                </>
+                )}
             </p>
 
             <button
               type="submit"
-              className="rounded-lg bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#0A0F1E] transition hover:bg-[#E8C96A]"
+              className="rounded-2xl bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#050912] shadow-[0_0_35px_rgba(201,168,76,0.25)] transition hover:-translate-y-1 hover:bg-[#E8C96A]"
             >
               {isSpanish
                 ? 'Enviar'

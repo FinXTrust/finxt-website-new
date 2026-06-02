@@ -2,10 +2,8 @@ import Layout from '../components/Layout';
 
 export default function ContactPage() {
   return (
-    <Layout showFooter={false}>
+    <Layout showFooter={true}>
       <section className="relative overflow-hidden bg-[#050912] px-6 py-20 text-white md:py-28">
-
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -13,87 +11,119 @@ export default function ContactPage() {
           }}
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/90 via-[#050912]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/90 via-[#050912]/70 to-[#050912]/40" />
 
-        {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl">
 
-          <div className="max-w-lg">
+        <div className="max-w-xl">
 
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#C9A84C]">
-              Contact Us
+          <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#C9A84C]">
+            Contact Us
+          </p>
+
+          <h1 className="finxt-heading max-w-4xl text-3xl leading-tight md:text-5xl">
+            Let’s Build the
+            <br />
+            Future Together
+          </h1>
+
+          <p className="mt-6 text-sm leading-7 text-white/80 md:text-base">
+            Have a challenge in mind or want to explore opportunities?
+            We’d love to hear from you.
+          </p>
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/thank-you"
+            className="mt-10 max-w-2xl rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl md:p-8"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>
+                Don't fill this out if you're human:
+                <input name="bot-field" />
+              </label>
             </p>
 
-            <h1 className="finxt-heading max-w-4xl text-3xl md:text-5xl leading-tight">
-              Let’s Build the
-              <br />
-              Future Together
-            </h1>
+            <h2 className="mb-6 text-2xl font-black text-white">
+              Contact us
+            </h2>
 
-            <p className="mt-6 text-sm leading-7 text-white/80 md:text-base">
-              Have a challenge in mind or want to explore opportunities?
-              We’d love to hear from you.
-            </p>
+            <div className="space-y-5">
+              <div>
+                <label className="mb-2 block text-sm font-bold text-white">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  maxLength={100}
+                  autoComplete="name"
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white px-4 py-3 text-[#0A0F1E] outline-none"
+                  placeholder="Enter your name"
+                />
+              </div>
 
-            {/* Contact Details */}
-            <div className="mt-10 space-y-5">
+              <div>
+                <label className="mb-2 block text-sm font-bold text-white">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  maxLength={255}
+                  autoComplete="email"
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white px-4 py-3 text-[#0A0F1E] outline-none"
+                  placeholder="Enter your email"
+                />
+              </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C]">
-                  ✉
-                </div>
+              <div>
+                <label className="mb-2 block text-sm font-bold text-white">
+                  Contact Number
+                </label>
+                <input
+                  type="tel"
+                  inputMode="tel"
+                  name="number"
+                  maxLength={25}
+                  pattern="[\+0-9\s\-\(\)]{7,25}"
+                  autoComplete="tel"
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white px-4 py-3 text-[#0A0F1E] outline-none"
+                  placeholder="Enter your phone number"
+                />
+              </div>
 
-                 <a
-                href="mailto:info@finxt.uk"
-                className="flex items-center gap-2 hover:text-white"
+              <div>
+                <label className="mb-2 block text-sm font-bold text-white">
+                  Tell us more about your request / query
+                </label>
+                <textarea
+                  name="message"
+                  rows="5"
+                  maxLength={3000}
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white px-4 py-3 text-[#0A0F1E] outline-none"
+                  placeholder="Tell us how we can help"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="rounded-lg bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#0A0F1E] transition hover:bg-[#E8C96A]"
               >
-                 info@finxt.uk
-              </a>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C]">
-                  ☎
-                </div>
-
-                <a
-                href="tel:+447837851544"
-                className="flex items-center gap-2 hover:text-white"
-              >
-                +44 7837 851 544
-              </a>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C]">
-                  📍
-                </div>
-
-                <p className="text-sm text-white/85 md:text-base">
-                  London, United Kingdom
-                </p>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C]">
-                  🌐
-                </div>
-
-                <a
-                href="https://finxt.uk/"
-                className="flex items-center gap-2 hover:text-white"
-              >
-                  www.finxt.uk
-                </a>
-              </div>
-
+                Submit
+              </button>
             </div>
-
+          </form>
           </div>
-
         </div>
-
       </section>
     </Layout>
   );

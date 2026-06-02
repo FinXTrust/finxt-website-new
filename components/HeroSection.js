@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FiBox, FiGlobe, FiTrendingUp, FiAward } from 'react-icons/fi';
 
 export default function HeroSection() {
   return (
@@ -45,32 +46,36 @@ export default function HeroSection() {
           </Link>
 
           <Link
-            href="mailto:we@finxt.uk"
+            href="/contact"
             className="w-fit rounded-lg border border-white/20 bg-white/5 px-6 py-4 text-sm font-bold text-white backdrop-blur-sm transition hover:border-[#C9A84C] hover:text-[#C9A84C] sm:px-8"
           >
             Schedule a Call
           </Link>
 
         </div>
-      <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
-        {[
-          ['8', 'Service Verticals'],
-          ['20+', 'Countries Reached'],
-          ['98%', 'Client Retention'],
-          ['5+', 'Years of Expertise'],
-        ].map(([number, label]) => (
-          <div key={label}>
-            <p className="text-3xl font-black text-[#C9A84C]">
-              {number}
-            </p>
+     {/* Stats 
+<div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
+  {[
+    [FiBox, '8', 'Service Verticals'],
+    [FiGlobe, '20+', 'Countries Reached'],
+    [FiTrendingUp, '98%', 'Client Retention'],
+    [FiAward, '5+', 'Years of Expertise'],
+  ].map(([Icon, number, label]) => (
+    <div key={label} className="flex items-start gap-3">
+      <Icon className="mt-1 text-2xl text-[#C9A84C]" />
 
-            <p className="mt-2 text-xs uppercase tracking-wide text-white/70">
-              {label}
-            </p>
-          </div>
-        ))}
+      <div>
+        <p className="text-3xl font-black text-[#C9A84C]">
+          {number}
+        </p>
+
+        <p className="mt-2 text-xs uppercase tracking-wide text-white/70">
+          {label}
+        </p>
       </div>
-
+    </div>
+  ))}
+</div>*/}
     </div>
   </div>
 </section>
