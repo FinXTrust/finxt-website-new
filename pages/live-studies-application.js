@@ -91,6 +91,7 @@ export default function LiveStudiesApplicationPage() {
   const { country = 'leeds', lang = 'en' } = router.query;
 
   const [ethnicity, setEthnicity] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isSpanish = lang === 'es';
   const isPolish = lang === 'pl';
@@ -322,6 +323,35 @@ const siblingPayment =
     : country === 'india'
     ? '₹5000'
     : '£100';
+
+    const GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbx6W3tweWJiCulDR-J46UXpMh0DT4veLxiBhfinUbIMqlUbRIDpSBTsGFZ5K8PoUI9Y/exec';
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    router.push('/thank-you');
+  } catch (error) {
+    alert('Something went wrong. Please try again.');
+    setIsSubmitting(false);
+  }
+};
   return (
     <Layout>
       <section className="relative overflow-hidden bg-[#050912] px-4 py-16">
@@ -372,20 +402,11 @@ const siblingPayment =
           </div>
 
           </div>
-          
-          <form
-            name="live-studies-application"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/Thankyou"
+          <form onSubmit={handleSubmit}
           >
             <input type="hidden" name="country" value={country} />
             <input type="hidden" name="language" value={language} />
-            <input type="hidden" name="form-name" value="live-studies-application" />
-            <p className="hidden">
-              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-            </p>
+            
 
             <h2 className="mb-4 text-2xl font-black tracking-tight text-[#0A0F1E] md:text-4xl">{isSpanish
               ? 'Cuéntanos acerca de ti.'
@@ -1131,10 +1152,16 @@ const siblingPayment =
             </p>
 
             <button
-              type="submit"
-              className="rounded-2xl bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#050912] shadow-[0_0_35px_rgba(201,168,76,0.25)] transition hover:-translate-y-1 hover:bg-[#E8C96A]"
+              type="submit" disabled={isSubmitting}
+              className="rounded-2xl bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#050912] shadow-[0_0_35px_rgba(201,168,76,0.25)] transition hover:-translate-y-1 hover:bg-[#E8C96A] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {isSpanish
+              {isSubmitting
+                ? isSpanish
+                  ? 'Enviando...'
+                  : isPolish
+                  ? 'Wysyłanie...'
+                  : 'Submitting...'
+                : isSpanish
                 ? 'Enviar'
                 : isPolish
                 ? 'Wyślij'
