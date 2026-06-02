@@ -55,7 +55,7 @@ export default function Services() {
     },
     {
       icon: '🎁',
-      title: 'Reward & Loyalty Solutions and Platform Development',
+      title: 'Reward,Loyalty Solutions and Platform Development',
       points: [
         'Boost customer loyalty and retention through sophisticated, personalized reward systems and platforms developed by FinXT.',
         'Our AI-driven platforms enhance customer engagement, track user preferences, and deliver meaningful incentives tailored precisely to your customer base.',
