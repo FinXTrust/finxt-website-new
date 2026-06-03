@@ -10,6 +10,7 @@ export default function HeroSection() {
     alt="hero-banner"
     loading="eager"
     fetchPriority="high"
+    decoding="async"
     className="absolute inset-0 h-full w-full object-cover object-center"
   />
   {/* Softer Overlay */}

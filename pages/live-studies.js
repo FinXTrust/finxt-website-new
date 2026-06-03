@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import Head from 'next/head';
 
 export default function LiveStudies() {
   const studies = [
@@ -43,24 +42,25 @@ export default function LiveStudies() {
   ];
 
   return (
-    <>
-     <Head>
-        <link rel="preload" as="image" href="/images/livestudies_banner.webp" />
-      </Head>
+
     <Layout>
     <section className="relative overflow-hidden bg-[#050912] px-4 py-20 text-white md:px-6 md:py-28">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/livestudies_banner.webp')",
-          backgroundPosition: 'right center',
-        }}
+      <img
+            src="/images/livestudies_banner.webp"
+            alt="livestudies_banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-[68%_center] md:object-center"
       />
 
-      {/* Dark overlay for text */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050912] via-[#050912]/80 to-[#050912]/20" />
-      {/* Desktop */}
+      {/* Softer Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
+
+      {/* Dark overlay for text 
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050912] via-[#050912]/80 to-[#050912]/20" />*/}
+      {/* Desktop Background */}
       <div
         className="absolute inset-0 hidden md:block bg-no-repeat"
         style={{
@@ -70,7 +70,7 @@ export default function LiveStudies() {
         }}
       />
 
-      {/* Mobile */}
+      {/* Mobile Background */}
       <div
         className="absolute inset-0 md:hidden bg-no-repeat"
         style={{
@@ -179,6 +179,5 @@ export default function LiveStudies() {
         </div>
       </section>
     </Layout>
-    </>
   );
 }

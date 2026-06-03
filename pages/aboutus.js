@@ -1,5 +1,4 @@
 import Layout from '../components/Layout';
-import Head from 'next/head';
 import { FiBox, FiUsers,FiGlobe, FiTrendingUp, FiAward } from 'react-icons/fi';
 export default function About() {
   const values = [
@@ -26,19 +25,18 @@ export default function About() {
   ];
 
   return (
-    <>
-     <Head>
-        <link rel="preload" as="image" href="/images/about_banner.webp" />
-      </Head>
+    
     <Layout>
       <section className="relative overflow-hidden bg-[#050912] px-4 md:px-6 py-20 text-white md:py-28">
 
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/images/about_banner.webp')",
-            }}
+          <img
+            src="/images/about_banner.webp"
+            alt="about_banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
 
           {/* Softer Overlay */}
@@ -252,6 +250,6 @@ export default function About() {
   </div>
 </section>
     </Layout>
-    </>
+    
   );
 }

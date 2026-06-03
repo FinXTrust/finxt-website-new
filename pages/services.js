@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Layout from '../components/Layout';
-import Head from 'next/head';
+
 
 export default function Services() {
   const [openCard, setOpenCard] = useState(null);
@@ -368,42 +368,41 @@ const ServiceVisual = ({ idx }) => {
   );
 };
   return (
-    <>
-     <Head>
-        <link rel="preload" as="image" href="/images/services_banner.webp" />
-      </Head>
+    
     <Layout>
       <section className="relative overflow-hidden bg-[#050912] px-4 py-20 text-white md:px-6 md:py-28">
       {/* Background Image */}
+      <img
+            src="/images/services_banner.webp"
+            alt="services_banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-[68%_center] md:object-center"
+        />
+       {/* Softer Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
+
+     {/*  <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/85 via-[#050912]/45 to-[#050912]/10" />*/}
+      {/* Desktop Background */}
       <div
-        className="absolute inset-0 bg-no-repeat"
+        className="absolute inset-0 hidden md:block bg-no-repeat"
         style={{
           backgroundImage: "url('/images/services_banner.webp')",
+          backgroundSize: '72% auto',
           backgroundPosition: 'right center',
         }}
       />
 
-      {/* Dark overlay for text */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050912] via-[#050912]/80 to-[#050912]/20" />
-      {/* Desktop Background */}
-<div
-  className="absolute inset-0 hidden md:block bg-no-repeat"
-  style={{
-    backgroundImage: "url('/images/services_banner.webp')",
-    backgroundSize: '72% auto',
-    backgroundPosition: 'right center',
-  }}
-/>
-
-{/* Mobile Background */}
-<div
-  className="absolute inset-0 md:hidden bg-no-repeat"
-  style={{
-    backgroundImage: "url('/images/services_banner.webp')",
-    backgroundSize: '185% auto',
-    backgroundPosition: '68% center',
-  }}
-/>
+      {/* Mobile Background */}
+      <div
+        className="absolute inset-0 md:hidden bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/services_banner.webp')",
+          backgroundSize: '185% auto',
+          backgroundPosition: '68% center',
+        }}
+      />
         <div className="relative z-10 mx-auto max-w-6xl">
           <p className="mb-5 text-sm font-semibold tracking-[0.25em] text-[#C9A84C] uppercase">
             Our Services
@@ -520,6 +519,6 @@ const ServiceVisual = ({ idx }) => {
   </div>
 </section>
     </Layout>
-    </>
+  
   );
 }

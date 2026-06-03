@@ -1,19 +1,17 @@
 import Layout from '../components/Layout';
-import Head from 'next/head';
 
 export default function ContactPage() {
   return (
-    <>
-     <Head>
-        <link rel="preload" as="image" href="/images/contact_banner.webp" />
-      </Head>
+    
     <Layout showFooter={true}>
       <section className="relative overflow-hidden bg-[#050912] px-6 py-20 text-white md:py-28">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/contact_banner.webp')",
-          }}
+        <img
+            src="/images/contact_banner.webp"
+            alt="contact_banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Softer Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
@@ -133,6 +131,5 @@ export default function ContactPage() {
         </div>
       </section>
     </Layout>
-    </>
   );
 }
