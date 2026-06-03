@@ -1,18 +1,17 @@
 import Link from 'next/link';
-import { FiBox, FiGlobe, FiTrendingUp, FiAward } from 'react-icons/fi';
 
 export default function HeroSection() {
   return (
    <section className="relative overflow-hidden bg-[#050912] px-4 md:px-6 py-20 text-white md:py-28">
 
   {/* Background Image */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage: "url('/images/hero-banner.webp')",
-    }}
+    <img
+    src="/images/hero-banner.webp"
+    alt="hero-banner"
+    loading="eager"
+    fetchPriority="high"
+    className="absolute inset-0 h-full w-full object-cover object-center"
   />
-
   {/* Softer Overlay */}
   <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
 
