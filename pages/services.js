@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Layout from '../components/Layout';
+import Head from 'next/head';
 
 export default function Services() {
   const [openCard, setOpenCard] = useState(null);
@@ -367,6 +368,10 @@ const ServiceVisual = ({ idx }) => {
   );
 };
   return (
+    <>
+     <Head>
+        <link rel="preload" as="image" href="/images/services_banner.webp" />
+      </Head>
     <Layout>
       <section className="relative overflow-hidden bg-[#050912] px-4 py-20 text-white md:px-6 md:py-28">
       {/* Background Image */}
@@ -515,5 +520,6 @@ const ServiceVisual = ({ idx }) => {
   </div>
 </section>
     </Layout>
+    </>
   );
 }

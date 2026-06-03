@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import Head from 'next/head';
 import { FiBox, FiUsers,FiGlobe, FiTrendingUp, FiAward } from 'react-icons/fi';
 export default function About() {
   const values = [
@@ -25,6 +26,10 @@ export default function About() {
   ];
 
   return (
+    <>
+     <Head>
+        <link rel="preload" as="image" href="/images/about_banner.webp" />
+      </Head>
     <Layout>
       <section className="relative overflow-hidden bg-[#050912] px-4 md:px-6 py-20 text-white md:py-28">
 
@@ -247,5 +252,6 @@ export default function About() {
   </div>
 </section>
     </Layout>
+    </>
   );
 }

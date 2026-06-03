@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function LiveStudies() {
   const studies = [
@@ -42,6 +43,10 @@ export default function LiveStudies() {
   ];
 
   return (
+    <>
+     <Head>
+        <link rel="preload" as="image" href="/images/livestudies_banner.webp" />
+      </Head>
     <Layout>
     <section className="relative overflow-hidden bg-[#050912] px-4 py-20 text-white md:px-6 md:py-28">
       {/* Background Image */}
@@ -174,5 +179,6 @@ export default function LiveStudies() {
         </div>
       </section>
     </Layout>
+    </>
   );
 }

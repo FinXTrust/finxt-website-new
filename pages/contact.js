@@ -1,7 +1,12 @@
 import Layout from '../components/Layout';
+import Head from 'next/head';
 
 export default function ContactPage() {
   return (
+    <>
+     <Head>
+        <link rel="preload" as="image" href="/images/contact_banner.webp" />
+      </Head>
     <Layout showFooter={true}>
       <section className="relative overflow-hidden bg-[#050912] px-6 py-20 text-white md:py-28">
         <div
@@ -128,5 +133,6 @@ export default function ContactPage() {
         </div>
       </section>
     </Layout>
+    </>
   );
 }
