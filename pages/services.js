@@ -373,7 +373,7 @@ const ServiceVisual = ({ idx }) => {
       <div
         className="absolute inset-0 bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/services_banner.png')",
+          backgroundImage: "url('/images/services_banner.webp')",
           backgroundPosition: 'right center',
         }}
       />
@@ -384,7 +384,7 @@ const ServiceVisual = ({ idx }) => {
 <div
   className="absolute inset-0 hidden md:block bg-no-repeat"
   style={{
-    backgroundImage: "url('/images/services_banner.png')",
+    backgroundImage: "url('/images/services_banner.webp')",
     backgroundSize: '72% auto',
     backgroundPosition: 'right center',
   }}
@@ -394,7 +394,7 @@ const ServiceVisual = ({ idx }) => {
 <div
   className="absolute inset-0 md:hidden bg-no-repeat"
   style={{
-    backgroundImage: "url('/images/services_banner.png')",
+    backgroundImage: "url('/images/services_banner.webp')",
     backgroundSize: '185% auto',
     backgroundPosition: '68% center',
   }}
@@ -419,8 +419,16 @@ const ServiceVisual = ({ idx }) => {
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.08),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(56,111,255,0.13),transparent_30%),linear-gradient(180deg,#071126_0%,#050912_100%)]" />
 
 <div className="relative z-10 mx-auto max-w-7xl space-y-20">
-  {serviceGroups.map((group, groupIdx) => (
-    <div key={group.heading}>
+      {serviceGroups.map((group, groupIdx) => (
+      <div
+        key={group.heading}
+        id={
+          group.heading === 'AI Services'
+            ? 'ai-services'
+            : 'project-management-services'
+        }
+        className="scroll-mt-28"
+      >
       <h2 className="mb-10 text-3xl font-black text-white">
         {group.heading}
         <div className="mt-5 h-1 w-14 rounded-full bg-[#C9A84C]" />

@@ -7,12 +7,14 @@ export default function ContactPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/contact_banner.png')",
+            backgroundImage: "url('/images/contact_banner.webp')",
           }}
         />
+        {/* Softer Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/90 via-[#050912]/70 to-[#050912]/40" />
 
+        {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl">
 
         <div className="max-w-xl">

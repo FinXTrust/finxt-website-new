@@ -48,7 +48,7 @@ export default function LiveStudies() {
       <div
         className="absolute inset-0 bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/livestudies_banner.png')",
+          backgroundImage: "url('/images/livestudies_banner.webp')",
           backgroundPosition: 'right center',
         }}
       />
@@ -59,7 +59,7 @@ export default function LiveStudies() {
       <div
         className="absolute inset-0 hidden md:block bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/livestudies_banner.png')",
+          backgroundImage: "url('/images/livestudies_banner.webp')",
           backgroundSize: '72% auto',
           backgroundPosition: 'right center',
         }}
@@ -69,7 +69,7 @@ export default function LiveStudies() {
       <div
         className="absolute inset-0 md:hidden bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/livestudies_banner.png')",
+          backgroundImage: "url('/images/livestudies_banner.webp')",
           backgroundSize: '185% auto',
           backgroundPosition: '68% center',
         }}

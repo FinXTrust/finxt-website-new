@@ -32,7 +32,7 @@ export default function About() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/images/about_banner.png')",
+              backgroundImage: "url('/images/about_banner.webp')",
             }}
           />
 
