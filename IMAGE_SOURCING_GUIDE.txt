@@ -1,0 +1,65 @@
+FinXT Website — Image Sourcing Quick Guide
+==========================================
+
+OPEN THE SPREADSHEET
+  IMAGE_INVENTORY.csv — open in Excel, Google Sheets, or Numbers.
+  Filter by Priority (1 = do first) and Status (Replace vs Review vs Keep).
+
+RECOMMENDED FOLDER STRUCTURE (inside public/images/)
+  heroes/          — 6 page hero backgrounds
+  services/        — 15 service card images
+  sectors/         — 5 sector images
+  case-studies/    — 4 case study images
+  flags/           — country flags (optional reorganise)
+  forms/           — functional images (Fitzpatrick scale)
+  brand/           — logo SVGs
+
+FREE STOCK SITES
+  Unsplash     https://unsplash.com
+  Pexels       https://pexels.com
+  Pixabay      https://pixabay.com
+
+PAID (consistent series / easier matching)
+  Shutterstock https://shutterstock.com
+  Adobe Stock  https://stock.adobe.com
+
+COMPRESS BEFORE UPLOAD
+  Squoosh      https://squoosh.app
+  Target: heroes < 200KB, cards < 80KB, format WebP
+
+STYLE CHECKLIST (every image)
+  [ ] Works on dark navy background (no white box edges)
+  [ ] Professional B2B — not cheesy stock smiles or neon sci-fi
+  [ ] Topic matches the slot exactly
+  [ ] Not already used elsewhere on the site (check Duplicates column)
+  [ ] Desaturated slightly + subtle navy/gold grade in Lightroom/Canva
+
+PRIORITY ORDER
+  1. Replace Tier 1 Case Studies hero (Mainpicture.jpg on hero)
+  2. Replace Tier 2 Programme Management service duplicates (hero-banner, livestudies_banner)
+  3. Replace Tier 3 all 5 sector images
+  4. Replace Tier 4 all 4 case study card images
+  5. Review Tier 1 page heroes and Tier 2 AI service cards
+
+HOW TO SWAP IMAGES IN CODE
+  Page heroes:     pages/[page].js (img src) + data/seo.js (OG image)
+  Services:        data/services.js (image field per service)
+  Sectors:         data/sectors.js
+  Case studies:    data/caseStudies.js
+  Home hero:       components/HeroSection.js
+
+HOMEPAGE MOSAIC (auto-updates)
+  data/services.js → homepageFeaturedServices pulls from service images.
+  components/WhatWeDeliverVisual.js uses the same — no separate files needed.
+
+INSPIRATION SITES
+  McKinsey.com, BCG.com, IQVIA.com, Kantar.com, Stripe.com
+
+REAL PHOTOS (best ROI)
+  Leeds office exterior/interior
+  Research session (with participant consent)
+  Team headshot or group photo
+  One real photo beats ten stock images for About + Contact heroes
+
+WHEN YOU HAVE NEW FILES
+  Tell the dev assistant the filenames — it can update all paths in one pass.

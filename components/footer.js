@@ -1,95 +1,100 @@
 import Link from 'next/link';
-import { FaFacebookF, FaInstagram, FaXTwitter } from 'react-icons/fa6';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import FinxtLogo from './FinxtLogo';
+import { openCookieSettings } from '../lib/cookieConsent';
+import { organization } from '../data/organization';
+
+const officeLabels = ['Leeds HQ', 'Spain', 'Poland', 'Americas network'];
+
+const SOCIAL_ICONS = {
+  linkedin: FaLinkedinIn,
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  twitter: FaXTwitter,
+};
+
+const socialIconBaseClass =
+  'flex h-10 w-10 items-center justify-center rounded-full border transition';
+const socialIconActiveClass =
+  'border-finxt-gold/30 text-finxt-gold hover:bg-finxt-gold hover:text-finxt-navy';
+const socialIconInactiveClass =
+  'cursor-default border-finxt-gold/20 text-finxt-gold/45';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[#C9A84C]/15 bg-[#050912] px-6 py-10 text-white">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/40 to-transparent" />
+    <footer className="finxt-section-rule-top relative bg-[#050912] px-6 py-12 text-white md:py-14">
 
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-10 border-b border-[#1E2D50] pb-8 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-12 border-b border-finxt-border pb-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16 xl:gap-24">
           <div className="max-w-md">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4C430] text-sm font-extrabold text-black">
-                FX
-              </div>
-
-              <div className="flex items-end gap-1">
-                <span className="text-3xl font-extrabold tracking-tight text-white">
-                  Fin<span className="text-[#F4C430]">XT</span>
-                </span>
-                <span className="mb-1 text-xs font-light tracking-[0.2em] text-[#B8BDC7]">
-                  UK
-                </span>
-              </div>
+            <Link href="/" className="inline-block transition-opacity hover:opacity-90" aria-label="FinXT home">
+              <FinxtLogo size="md" />
             </Link>
 
-            <p className="mt-4 text-sm leading-7 text-[#A9B6D3]">
-              Powering global programs with precision, speed and scale.
+            <p className="mt-4 text-sm leading-7 text-finxt-muted">
+              Powering global programmes with precision, speed and scale.
               Trusted by world-class enterprises across the UK, Europe, and beyond.
             </p>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-md border border-[#C9A84C]/40 px-3 py-1 text-xs font-bold text-[#F4C430]">
-                🇬🇧 London HQ
-              </span>
-
-              <span className="rounded-md border border-[#C9A84C]/40 px-3 py-1 text-xs font-bold text-[#F4C430]">
-                🇪🇺 European Network
-              </span>
-            </div>
-
             <div className="mt-6 flex gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black">
-                <FaFacebookF size={16} />
-              </a>
+              {organization.socialProfiles.map(({ platform, label, url }) => {
+                const Icon = SOCIAL_ICONS[platform];
 
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black">
-                <FaInstagram size={16} />
-              </a>
+                if (url) {
+                  return (
+                    <a
+                      key={platform}
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`FinXT on ${label}`}
+                      className={`${socialIconBaseClass} ${socialIconActiveClass}`}
+                    >
+                      <Icon size={16} aria-hidden="true" />
+                    </a>
+                  );
+                }
 
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C9A84C]/30 text-[#F4C430] transition hover:bg-[#F4C430] hover:text-black">
-                <FaXTwitter size={16} />
-              </a>
+                return (
+                  <span
+                    key={platform}
+                    aria-label={`FinXT on ${label} (coming soon)`}
+                    className={`${socialIconBaseClass} ${socialIconInactiveClass}`}
+                  >
+                    <Icon size={16} aria-hidden="true" />
+                  </span>
+                );
+              })}
             </div>
           </div>
 
-          <div className="grid gap-8 text-sm text-[#A9B6D3] sm:grid-cols-2 lg:min-w-[520px]">
-            <div className="space-y-3">
-              <p className="font-bold text-white">United Kingdom</p>
+          <div className="lg:min-w-[240px] lg:pt-0.5 lg:text-right">
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#6B7FA3] lg:text-right">
+              Locations
+            </p>
 
-              <a href="mailto:info@finxt.uk" className="flex items-center gap-2 hover:text-white">
-                ✉ info@finxt.uk
-              </a>
+            <ul className="mt-5 space-y-3.5 lg:ml-auto lg:w-fit">
+              {officeLabels.map((label) => (
+                <li key={label} className="text-sm text-white/85">
+                  {label}
+                </li>
+              ))}
+            </ul>
 
-              <a href="tel:+447837851544" className="flex items-center gap-2 hover:text-white">
-                ☎ +44 7837 851 544
-              </a>
-
-              <p>📍 London, United Kingdom</p>
-            </div>
-
-            <div className="space-y-3">
-              <p className="font-bold text-white">United States</p>
-
-              <div className="flex items-start gap-2">
-                <span>📍</span>
-                <div>
-                  <p>30 N Gould St</p>
-                  <p>Ste N</p>
-                  <p>Sheridan, WY 82801</p>
-                  <p>USA</p>
-                </div>
-              </div>
-
-              <a href="tel:+13072962921" className="flex items-center gap-2 hover:text-white">
-                ☎ +1 307 296 2921
-              </a>
-            </div>
+            <p className="mt-7 max-w-xs text-xs leading-relaxed text-[#6B7FA3] lg:ml-auto lg:text-right">
+              Full office details available on our{' '}
+              <Link
+                href="/contact"
+                className="font-semibold text-finxt-gold/70 underline-offset-3 transition duration-200 hover:text-finxt-gold hover:underline"
+              >
+                Contact page
+              </Link>
+              .
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 pt-5 text-xs text-[#6B7FA3] lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 pt-8 text-xs text-[#6B7FA3] lg:flex-row lg:items-center lg:justify-between">
           <p>© {new Date().getFullYear()} FinXT UK Ltd. All rights reserved.</p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-5">
@@ -97,11 +102,21 @@ export default function Footer() {
               Privacy Policy
             </Link>
 
+            <Link href="/cookie-policy" className="hover:text-white">
+              Cookie Policy
+            </Link>
+
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="text-left hover:text-white"
+            >
+              Cookie settings
+            </button>
+
             <Link href="/terms-and-conditions" className="hover:text-white">
               Terms & Conditions
             </Link>
-
-
           </div>
         </div>
       </div>

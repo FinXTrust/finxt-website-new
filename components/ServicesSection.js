@@ -1,114 +1,116 @@
 import Link from 'next/link';
+import ScrollReveal from './ScrollReveal';
+import RevealItem from './RevealItem';
+import { homepageFeaturedServices } from '../data/services';
 
-export default function ServicesSection() {
- const aiServices = [
-    'AI Strategy and Readiness Consulting',
-    'Custom AI Chatbot Development',
-    'AI-Enhanced Data Insights',
-    'AI Cybersecurity & Threat Detection',
-    'Compliance-Focused AI Advisory',
-    'Smart Payment Integration Solutions',
-    'Reward & Loyalty Solutions and Platform Development',
-    'AI in Marketing, Content & Branding',
-  ];
+const SERVICES_PAGE = '/services';
 
-  const projectManagementServices = [
-    'Crowdsourcing Solutions',
-    'Programme Management',
-    'Logistics & Secure Shipment',
-    'ATA Carnet Handling',
-    'Site Setup & Deployment',
-    'Staffing Solutions, Payroll & EOR',
-    'User Study & Research Support',
-  ];
+function mosaicTileBorders(index, total) {
+  const col = index % 3;
+  const row = Math.floor(index / 3);
 
+  return [
+    index < total - 1 ? 'max-md:border-b max-md:border-white/10' : '',
+    row === 0 ? 'md:border-b md:border-white/10' : '',
+    col < 2 ? 'md:border-r md:border-white/10' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+}
+
+function ServiceTile({ service, index }) {
   return (
-    <section className="relative overflow-hidden border-y border-[#C9A84C]/20 bg-[#050912] px-4 py-24 text-white md:px-6">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.08),transparent_30%),linear-gradient(180deg,#071126_0%,#050912_100%)]" />
-
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          
-          {/* LEFT SIDE */}
-          <div>
-            <p className="finxt-label mb-5 text-[#C9A84C]">
-              What We Deliver
-            </p>
-
-            <h2 className="text-2xl font-black leading-tight tracking-tight md:text-4xl">
-            Integrated services. One trusted partner.
-            </h2>
-
-            <div className="mt-5 h-1 w-14 rounded-full bg-[#C9A84C]" />
-
-            <p className="mt-8 text-sm leading-7 text-white/70 md:text-base">
-              Every service is available standalone or as part of a fully managed
-              end-to-end solution.
-            </p>
-          </div>
-
-          {/* RIGHT GRID */}
-        <div className="grid gap-6 md:grid-cols-2">
-            <ServiceCard
-              title="AI Services"
-              items={aiServices}
-              href="/services#ai-services"
-            />
-
-            <ServiceCard
-              title="Project Management Services"
-              items={projectManagementServices}
-              href="/services#project-management-services"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <div
+      className={`group relative aspect-[16/10] overflow-hidden bg-[#0a0f1e] md:aspect-square ${mosaicTileBorders(index, homepageFeaturedServices.length)}`}
+    >
+      <img
+        src={service.image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050912]/85 via-[#050912]/20 to-transparent transition group-hover:from-[#050912]/75" />
+      <p className="absolute bottom-0 left-0 right-0 p-4 text-sm font-semibold leading-snug text-white md:p-5 md:text-[0.9375rem]">
+        <span className="mr-2 text-finxt-gold" aria-hidden="true">
+          →
+        </span>
+        {service.title}
+      </p>
+    </div>
   );
 }
 
-function ServiceCard({ title, label, items ,href}) {
-  const visibleItems = items.slice(0, 3);
-  const remainingCount = items.length - visibleItems.length;
-
+export default function ServicesSection() {
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025))] p-8 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A84C]/45 hover:shadow-[0_25px_80px_rgba(201,168,76,0.12)]">
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent opacity-70" />
-      <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#C9A84C]/10 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
+    <section className="finxt-section finxt-home-chapter relative overflow-hidden px-4 pt-0 pb-14 md:px-6 md:pb-16">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="finxt-section-rule mb-10 md:mb-12" />
 
-      <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-white/45">
-        {label}
-      </p>
+        <ScrollReveal className="max-w-3xl">
+          <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
+            What We Deliver
+          </p>
 
-      <h3 className="mb-6 min-h-[72px] text-2xl font-black text-white">
-        {title}
-      </h3>
-      <div className="space-y-3">
-        {visibleItems.map((item) => (
           <div
-            key={item}
-            className="border-b border-white/10 pb-3 text-sm font-medium text-white/80"
+            className="finxt-scroll-reveal finxt-home-intro finxt-body"
+            style={{ '--reveal-delay': '120ms' }}
           >
-            {item}
+            <p>
+              Every organisation we work with faces its own version of the same
+              challenge: too many moving parts, too many vendors, and not enough
+              certainty. FinXT replaces that fragmented model with one integrated
+              delivery partner, accountable for the whole, not just the parts we
+              find convenient.
+            </p>
           </div>
-        ))}
-      </div>
+        </ScrollReveal>
 
-      {remainingCount > 0 && (
-        <p className="mt-5 text-sm text-white/60">
-          + {remainingCount} more services
-        </p>
-      )}
+        <div className="mt-12 md:mt-14">
+          <ScrollReveal className="max-w-3xl">
+            <h2
+              className="finxt-scroll-reveal finxt-section-heading"
+              style={{ '--reveal-delay': '0ms' }}
+            >
+              Our Service Verticals
+            </h2>
 
-        {/* BUTTON */}
-        <div className="mt-auto pt-10 text-center">
-          <Link
-            href={href}
-            className="inline-flex rounded-2xl bg-[#C9A84C] px-8 py-4 text-sm font-bold text-[#050912] shadow-[0_0_35px_rgba(201,168,76,0.25)] transition hover:-translate-y-1 hover:bg-[#E6C768]"
-          >
-            View All Services →
-          </Link>
+            <div
+              className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider"
+              style={{ '--reveal-delay': '100ms' }}
+            />
+
+            <p
+              className="finxt-scroll-reveal finxt-home-intro finxt-body mt-8"
+              style={{ '--reveal-delay': '200ms' }}
+            >
+              Highlights from our nine integrated service verticals, each available
+              standalone or as a fully managed end-to-end programme, from strategy
+              and human-centred design through to technical delivery and support.
+            </p>
+          </ScrollReveal>
+
+          <div className="finxt-service-mosaic mt-8 md:mx-auto md:mt-10 md:max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {homepageFeaturedServices.map((service, index) => (
+                <RevealItem key={service.id} variant="scale" delay={160 + index * 80}>
+                  <ServiceTile service={service} index={index} />
+                </RevealItem>
+              ))}
+            </div>
+          </div>
+
+          <ScrollReveal className="mt-8 flex justify-center md:mt-10">
+            <Link
+              href={SERVICES_PAGE}
+              className="finxt-scroll-reveal finxt-btn-primary"
+              style={{ '--reveal-delay': '120ms' }}
+            >
+              View all services →
+            </Link>
+          </ScrollReveal>
         </div>
-    </div>
+      </div>
+    </section>
   );
 }

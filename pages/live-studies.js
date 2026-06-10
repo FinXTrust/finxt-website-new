@@ -1,183 +1,166 @@
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
+import LiveStudiesReferralSection from '../components/LiveStudiesReferralSection';
+import { pageSeo } from '../data/seo';
+import LiveStudiesReveal from '../components/LiveStudiesReveal';
+import RevealItem from '../components/RevealItem';
+import LiveStudiesStepsStrip from '../components/LiveStudiesStepsStrip';
 import Link from 'next/link';
 
+const studies = [
+  { country: 'Leeds', image: '/images/gb.png', payment: '£100 per person', lang: 'en', accent: '#C8102E' },
+  { country: 'Poland', image: '/images/poland.png', payment: '285 Polish zloty per person', lang: 'pl', accent: '#DC143C' },
+  { country: 'Spain', image: '/images/es.png', payment: '€100 per person', lang: 'es', accent: '#F1BF00' },
+  { country: 'USA', image: '/images/us.png', payment: '$100 per person', lang: 'en', accent: '#3C3B6E' },
+  { country: 'Mexico', image: '/images/mx.png', payment: '1,200 pesos per person', lang: 'es', accent: '#006847' },
+  { country: 'India', image: '/images/in.png', payment: '₹5,000 per person', lang: 'en', accent: '#FF9933' },
+];
+
 export default function LiveStudies() {
-  const studies = [
-    {
-      country: 'Leeds',
-      image: '/images/gb.png',
-      payment: '£100 per person',
-      lang: 'en',
-    },
-    {
-      country: 'Poland',
-      image: '/images/poland.png',
-      payment: '285 Polish Zloty per person',
-      lang: 'pl',
-    },
-    {
-      country: 'Spain',
-      image: '/images/es.png',
-      payment: '€100 per person',
-      lang: 'es',
-    },
-    {
-      country: 'USA',
-      image: '/images/us.png',
-      payment: '$100 per person',
-      lang: 'en',
-    },
-    {
-      country: 'Mexico',
-      image: '/images/mx.png',
-      payment: '1200 Pesos per person',
-      lang: 'es',
-    },
-    {
-      country: 'India',
-      image: '/images/in.png',
-      payment: '₹5000 per person',
-      lang: 'en',
-    },
-  ];
 
   return (
 
     <Layout>
-    <section className="relative overflow-hidden bg-[#050912] px-4 py-20 text-white md:px-6 md:py-28">
-      {/* Background Image */}
-      <img
+      <PageHead {...pageSeo.liveStudies} />
+      <section className="finxt-page-hero finxt-live-studies-page-hero relative min-h-[32rem] overflow-hidden bg-[#050912] px-4 text-white md:min-h-[36rem] md:px-6 lg:min-h-0">
+        <div className="finxt-page-hero-media absolute inset-0 lg:left-[42%]">
+          <img
             src="/images/livestudies_banner.webp"
-            alt="livestudies_banner"
+            alt=""
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-[68%_center] md:object-center"
-      />
+            className="finxt-page-hero-bg finxt-live-studies-hero-bg h-full w-full object-cover"
+          />
+        </div>
 
-      {/* Softer Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
+        <div className="finxt-page-hero-scrim-mobile" aria-hidden="true" />
+        <div className="finxt-page-hero-scrim-desktop" aria-hidden="true" />
+        <div className="finxt-page-hero-glow-mobile" aria-hidden="true" />
 
-      {/* Dark overlay for text 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050912] via-[#050912]/80 to-[#050912]/20" />*/}
-      {/* Desktop Background */}
-      <div
-        className="absolute inset-0 hidden md:block bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/livestudies_banner.webp')",
-          backgroundSize: '72% auto',
-          backgroundPosition: 'right center',
-        }}
-      />
+        <div className="relative z-10 mx-auto max-w-7xl pb-14 pt-28 md:pb-20 md:pt-32 lg:py-32">
+          <div className="finxt-live-hero-copy max-w-2xl lg:max-w-3xl">
+            <div className="finxt-live-hero-item finxt-live-recruiting-badge mb-5" style={{ '--hero-delay': '0ms' }}>
+              <span className="finxt-live-recruiting-dot" aria-hidden="true" />
+              <span>Now recruiting participants</span>
+            </div>
 
-      {/* Mobile Background */}
-      <div
-        className="absolute inset-0 md:hidden bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/livestudies_banner.webp')",
-          backgroundSize: '185% auto',
-          backgroundPosition: '68% center',
-        }}
-      />
-              
-      {/* Content */}
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <p className="finxt-label mb-5 text-[#C9A84C]">
-            Research Opportunities
-          </p>
+            <p className="finxt-live-hero-item finxt-label mb-5" style={{ '--hero-delay': '90ms' }}>
+              Research Opportunities
+            </p>
 
-          <h2 className="finxt-heading max-w-4xl text-3xl leading-tight md:text-5xl">
-            Live Studies
-          </h2>
+            <h1 className="finxt-live-hero-item finxt-page-heading" style={{ '--hero-delay': '170ms' }}>
+              Live Studies
+            </h1>
 
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
-            Participate in global user studies and research programmes. Explore
-            opportunities currently available in your country.
-          </p>
+            <div className="finxt-live-hero-item finxt-live-hero-divider finxt-divider" style={{ '--hero-delay': '260ms' }} />
+
+            <div className="finxt-live-hero-item finxt-home-intro finxt-body" style={{ '--hero-delay': '340ms' }}>
+              <p>
+                Participate in global user studies and research programmes across our
+                active locations.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-y border-[#C9A84C]/20 bg-[#050912] px-6 py-24 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.08),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(56,111,255,0.13),transparent_30%),linear-gradient(180deg,#071126_0%,#050912_100%)]" />
-
+      <section className="finxt-section finxt-home-chapter relative overflow-hidden px-4 pt-0 pb-14 text-white md:px-6 md:pb-16">
         <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="mb-12 max-w-3xl">
-            <p className="finxt-label mb-5 text-[#C9A84C]">
+          <div className="finxt-section-rule mb-10 md:mb-12" />
+
+          <LiveStudiesReveal className="max-w-3xl">
+            <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
+              How It Works
+            </p>
+            <h2 className="finxt-scroll-reveal finxt-section-heading" style={{ '--reveal-delay': '100ms' }}>
+              Three steps to participate
+            </h2>
+            <div className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider" style={{ '--reveal-delay': '200ms' }} />
+
+            <p
+              className="finxt-scroll-reveal finxt-home-intro finxt-body"
+              style={{ '--reveal-delay': '240ms' }}
+            >
+              From choosing your location to receiving your reward, the process is
+              straightforward and only takes a few minutes to get started.
+            </p>
+          </LiveStudiesReveal>
+
+          <LiveStudiesStepsStrip />
+        </div>
+      </section>
+
+      <section
+        id="live-studies-locations"
+        className="finxt-section finxt-home-chapter relative scroll-mt-28 overflow-hidden px-4 pt-0 pb-14 text-white md:px-6 md:pb-16"
+      >
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="finxt-section-rule mb-10 md:mb-12" />
+
+          <LiveStudiesReveal className="max-w-3xl">
+            <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
               Available Locations
             </p>
 
-            <h2 className="text-2xl font-black leading-tight tracking-tight md:text-4xl">
-              Apply for live technology research studies.
+            <h2 className="finxt-scroll-reveal finxt-section-heading" style={{ '--reveal-delay': '100ms' }}>
+              Apply for live technology research studies
             </h2>
 
-            <div className="mt-5 h-1 w-14 rounded-full bg-[#C9A84C]" />
+            <div className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider" style={{ '--reveal-delay': '200ms' }} />
 
-            <p className="mt-8 text-sm leading-7 text-white/70 md:text-base">
-              Select your location and complete the application form.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {studies.map((study) => (
-          <article
-            key={study.country}
-            className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.40)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A84C]/60 hover:shadow-[0_28px_90px_rgba(201,168,76,0.16)]"
-          >
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent opacity-80" />
-            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#C9A84C]/10 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
-
-            <div className="absolute left-6 top-6 h-20 w-20 rounded-full bg-[#C9A84C]/10 blur-2xl transition duration-500 group-hover:scale-150" />
-            <div className="absolute bottom-20 right-8 h-16 w-16 rounded-full bg-blue-500/10 blur-2xl transition duration-500 group-hover:scale-150" />
-
-            <div className="relative mb-6 overflow-hidden rounded-2xl border border-white/10 bg-[#081126]">
-              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-              <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C9A84C]/25 blur-3xl" />
-
-              <img
-                src={study.image}
-                alt={`${study.country} flag`}
-                className="relative z-10 h-48 w-full object-cover opacity-90 transition duration-700 group-hover:scale-110"
-              />
-
-              <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#050912]/85 via-[#050912]/15 to-transparent" />
-
-
-
-              <span className="absolute bottom-4 left-4 z-30 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white backdrop-blur">
-                90 minutes
-              </span>
-            </div>
-
-            <h2 className="relative z-10 text-2xl font-black text-white">
-              {study.country}
-            </h2>
-
-            <p className="relative z-10 mt-4 text-sm leading-7 text-white/70">
-              Take part in a paid technology research study and be rewarded for your time.
-            </p>
-
-            <div className="relative z-10 mt-6 rounded-2xl border border-[#C9A84C]/25 bg-[#C9A84C]/10 p-4">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#C9A84C]">
-                Session Reward
-              </p>
-
-              <p className="mt-2 text-lg font-black text-white">
-                {study.payment}
-              </p>
-            </div>
-
-            <Link
-              href={`/live-studies-application?country=${study.country.toLowerCase()}&lang=${study.lang}`}
-              className="relative z-10 mt-7 inline-flex w-full justify-center rounded-2xl bg-[#C9A84C] px-6 py-4 text-sm font-bold text-[#050912] transition hover:-translate-y-1 hover:bg-[#E8C96A]"
+            <p
+              className="finxt-scroll-reveal finxt-home-intro finxt-body"
+              style={{ '--reveal-delay': '240ms' }}
             >
-              Apply Now →
-            </Link>
-          </article>
+              Studies available in the UK, Europe, the Americas, and India. Select your
+              nearest location and apply in minutes.
+            </p>
+          </LiveStudiesReveal>
+
+          <div className="finxt-live-locations-list mt-12 md:mt-14">
+            {studies.map((study, index) => (
+              <RevealItem
+                key={study.country}
+                as="article"
+                variant="scale"
+                delay={index * 70}
+                className="finxt-live-location-row group"
+                style={{ '--study-accent': study.accent }}
+              >
+                <div className="finxt-live-location-main">
+                  <div className="finxt-live-location-flag">
+                    <img
+                      src={study.image}
+                      alt={`${study.country} flag`}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+
+                  <div className="finxt-live-location-info">
+                    <h3 className="finxt-card-title">{study.country}</h3>
+                    <p className="finxt-card-body-sm mt-1">90-minute session · Paid research</p>
+                  </div>
+                </div>
+
+                <div className="finxt-live-location-reward">
+                  <span className="finxt-label">Session reward</span>
+                  <span className="finxt-live-location-reward-value mt-2">{study.payment}</span>
+                </div>
+
+                <Link
+                  href={`/live-studies-application?country=${study.country.toLowerCase()}&lang=${study.lang}`}
+                  className="finxt-live-location-apply finxt-btn-card"
+                >
+                  Apply →
+                </Link>
+              </RevealItem>
             ))}
           </div>
         </div>
       </section>
+
+      <LiveStudiesReferralSection />
     </Layout>
   );
 }

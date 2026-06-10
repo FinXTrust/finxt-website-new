@@ -2,82 +2,78 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-   <section className="relative overflow-hidden bg-[#050912] px-4 md:px-6 py-20 text-white md:py-28">
-
-  {/* Background Image */}
-    <img
-    src="/images/hero-banner.webp"
-    alt="hero-banner"
-    loading="eager"
-    fetchPriority="high"
-    decoding="async"
-    className="absolute inset-0 h-full w-full object-cover object-center"
-  />
-  {/* Softer Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#050912]/80 via-[#050912]/35 to-transparent" />
-
-  {/* Content */}
-  <div className="relative z-10 mx-auto max-w-7xl">
-    <div className="max-w-xl md:ml-2 lg:ml-0">
-
-      <p className="mb-5 text-sm font-bold uppercase tracking-[0.25em] text-[#C9A84C]">
-        Trusted by Global Enterprises
-      </p>
-
-      <h1 className="finxt-heading max-w-4xl text-3xl md:text-5xl leading-tight">
-        Powering Global Programs with{' '}
-        <span className="text-[#C9A84C]">Precision, Speed</span> and{' '}
-        <span className="text-[#C9A84C]">Scale</span>
-      </h1>
-
-      <p className="mt-6 text-sm leading-7 text-white/80 md:text-base">
-        FinXT empowers financial institutions and enterprises with AI,
-        automation, and expert consulting for measurable impact.
-      </p>
-
-      {/* BUTTONS */}
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-10">
-
-          <Link
-            href="/services"
-            className="w-fit rounded-lg bg-[#C9A84C] px-6 py-4 text-sm font-bold text-[#050912] transition hover:bg-[#E6C768] sm:px-8"
-          >
-            Explore Our Services →
-          </Link>
-
-          <Link
-            href="/contact"
-            className="w-fit rounded-lg border border-white/20 bg-white/5 px-6 py-4 text-sm font-bold text-white backdrop-blur-sm transition hover:border-[#C9A84C] hover:text-[#C9A84C] sm:px-8"
-          >
-            Schedule a Call
-          </Link>
-
-        </div>
-     {/* Stats 
-<div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-4">
-  {[
-    [FiBox, '8', 'Service Verticals'],
-    [FiGlobe, '20+', 'Countries Reached'],
-    [FiTrendingUp, '98%', 'Client Retention'],
-    [FiAward, '5+', 'Years of Expertise'],
-  ].map(([Icon, number, label]) => (
-    <div key={label} className="flex items-start gap-3">
-      <Icon className="mt-1 text-2xl text-[#C9A84C]" />
-
-      <div>
-        <p className="text-3xl font-black text-[#C9A84C]">
-          {number}
-        </p>
-
-        <p className="mt-2 text-xs uppercase tracking-wide text-white/70">
-          {label}
-        </p>
+    <section className="finxt-page-hero finxt-section-rule-bottom relative min-h-[32rem] overflow-hidden bg-[#050912] px-4 text-white md:min-h-[36rem] md:px-6 lg:min-h-0">
+      <div className="finxt-page-hero-media absolute inset-0 lg:left-[42%]">
+        <img
+          src="/images/hero-banner.webp"
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="finxt-page-hero-bg finxt-home-hero-bg h-full w-full object-cover"
+        />
       </div>
-    </div>
-  ))}
-</div>*/}
-    </div>
-  </div>
-</section>
+
+      <div className="finxt-page-hero-scrim-mobile" aria-hidden="true" />
+      <div className="finxt-page-hero-scrim-desktop" aria-hidden="true" />
+      <div className="finxt-page-hero-glow-mobile" aria-hidden="true" />
+
+      <div
+        className="pointer-events-none absolute inset-0 hidden opacity-70 lg:block"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 60% at 70% 20%, rgba(201, 168, 76, 0.09), transparent 55%), radial-gradient(ellipse 50% 40% at 10% 80%, rgba(30, 45, 80, 0.45), transparent 50%)',
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl py-16 md:py-24 lg:py-32">
+        <div className="max-w-2xl lg:max-w-3xl">
+          <p className="finxt-label mb-5">Who We Are</p>
+
+          <h1 className="finxt-page-heading">
+            Powering Global Programmes with Precision, Speed and Scale
+          </h1>
+
+          <p className="mt-6 text-lg font-medium leading-snug text-finxt-gold-light md:text-xl">
+            Global reach. One point of contact. End-to-end programme delivery with
+            zero compromise.
+          </p>
+
+          <div className="finxt-divider mt-8" />
+
+          <div className="finxt-home-intro finxt-body">
+            <p>
+              FinXT UK is a global programme delivery and operational excellence
+              partner, headquartered in London and operating across 7+ countries.
+              We exist to solve the problems that arise when ambition meets
+              complexity, giving organisations one accountable partner for every
+              dimension of their international programmes, from logistics and
+              staffing to user research, payments, and AI-enabled operations.
+            </p>
+            <p>
+              We are not a generalist consultancy. We are specialists in delivery:
+              the people who show up when the programme is live, the geography is
+              difficult, and the stakes are high.
+            </p>
+            <p>
+              FinXT empowers financial institutions and enterprises with AI,
+              automation, and expert consulting for measurable impact.
+            </p>
+          </div>
+
+          <p className="mt-8 border-l-2 border-finxt-gold/40 pl-4 finxt-body-muted md:max-w-xl">
+            London-headquartered. Globally delivered. One partner. Nine service
+            verticals. Seven-plus countries. Built for organisations that cannot
+            afford operational failure.
+          </p>
+
+          <div className="mt-10">
+            <Link href="/contact" className="finxt-btn-primary">
+              Schedule a Call
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

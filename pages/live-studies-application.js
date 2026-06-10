@@ -1,5 +1,8 @@
 
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
+import { LIVE_STUDIES_FORM_SECRET } from '../lib/liveStudiesFormSecurity';
+import { pageSeo } from '../data/seo';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -22,6 +25,7 @@ function TextInput({
   width = 'full',
   min,
   max,
+  maxLength,
   pattern,
   autoComplete,
 }) {
@@ -41,6 +45,7 @@ function TextInput({
         required={required}
         min={min}
         max={max}
+        maxLength={maxLength}
         pattern={pattern}
         autoComplete={autoComplete}
         className={fieldClass}
@@ -79,7 +84,7 @@ function RadioGroup({ label, help, name, options, required = false }) {
 
 function Checkbox({ name, value, children, required = false }) {
   return (
-    <label className="flex items-start gap-4 text-[16px] leading-7 text-[#0A0F1E] mb-4">
+    <label className="mb-4 flex items-start gap-3 text-[15px] leading-6 text-[#0A0F1E]">
       <input type="checkbox" name={name} value={value} required={required} className="mt-1 h-5 w-5 accent-black" />
       <span>{children}</span>
     </label>
@@ -92,6 +97,7 @@ export default function LiveStudiesApplicationPage() {
 
   const [ethnicity, setEthnicity] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const isSpanish = lang === 'es';
   const isPolish = lang === 'pl';
@@ -113,7 +119,7 @@ export default function LiveStudiesApplicationPage() {
 
 'Entiendo que los cubrimientos de cabeza por motivos religiosos o culturales, como un hiyab, pueden utilizarse durante el estudio.',
 
-'Confirmo que tengo al menos 15 años de edad.',
+'Confirmo que tengo al menos 16 años de edad.',
 
 'Entiendo que enviar esta solicitud no garantiza mi selección o participación en el estudio.',
 
@@ -142,7 +148,7 @@ export default function LiveStudiesApplicationPage() {
 
 'Rozumiem, że podczas badania można nosić nakrycia głowy wynikające z przekonań religijnych lub kulturowych, takie jak hidżab.',
 
-'Potwierdzam, że mam ukończone co najmniej 15 lat.',
+'Potwierdzam, że mam ukończone co najmniej 16 lat.',
 
 'Rozumiem, że przesłanie zgłoszenia nie gwarantuje mojego zakwalifikowania ani udziału w badaniu.',
 
@@ -169,7 +175,7 @@ export default function LiveStudiesApplicationPage() {
 
   'I understand that religious or cultural head coverings, such as a hijab, may be worn during the study.',
 
-  'I confirm that I am at least 15 years of age.',
+  'I confirm that I am at least 16 years of age.',
 
   'I understand that submitting this application does not guarantee selection or participation in the study.',
 
@@ -242,19 +248,19 @@ const gdprTerms = isSpanish
   leeds: {
     location: 'Leeds, United Kingdom',
     title: 'User study for technology applications',
-    duration: 'Duration 90 minutes',
+    duration: '90-minute session',
     payment: ['Sibling Participants: £100 per person',],
   },
   usa: {
     location: 'New York, USA',
     title: 'User study for technology applications',
-    duration: 'Duration 90 minutes',
+    duration: '90-minute session',
     payment:['Sibling Participants: $100 per person',],
   },
   india: {
     location: 'India',
     title: 'User study for technology applications',
-    duration: 'Duration 90 minutes',
+    duration: '90-minute session',
     payment: ['Individual Participants: ₹2500 per person','Sibling Participants: ₹5000 per person',],
   },
   spain: {
@@ -262,7 +268,7 @@ const gdprTerms = isSpanish
     title: isSpanish
       ? 'Estudio de usuarios para aplicaciones tecnológicas'
       : 'User study for technology applications',
-    duration: isSpanish ? 'Duración 90 minutos' : 'Duration 90 minutes',
+    duration: isSpanish ? 'Sesión de 90 minutos' : '90-minute session',
     payment: isSpanish
       ? [
         'Participantes individuales: €50 por persona',
@@ -278,7 +284,7 @@ const gdprTerms = isSpanish
     title: isSpanish
       ? 'Estudio de usuarios para aplicaciones tecnológicas'
       : 'User study for technology applications',
-    duration: isSpanish ? 'Duración 90 minutos' : 'Duration 90 minutes',
+    duration: isSpanish ? 'Sesión de 90 minutos' : '90-minute session',
     payment: isSpanish
       ? [
         'Participantes individuales: 900 MXN Pesos por persona',
@@ -294,7 +300,7 @@ const gdprTerms = isSpanish
     title: isPolish
       ? 'Badanie użytkowników aplikacji technologicznych'
       : 'User study for technology applications',
-    duration: isPolish ? 'Czas trwania 90 minut' : 'Duration 90 minutes',
+    duration: isPolish ? 'Sesja 90 minut' : '90-minute session',
     payment: isPolish
       ? [
         'Uczestnicy indywidualni: 200 PLN za osobę',
@@ -329,40 +335,79 @@ const siblingPayment =
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  setSubmitError('');
   setIsSubmitting(true);
 
   const form = e.currentTarget;
   const formData = new FormData(form);
-
   const data = Object.fromEntries(formData.entries());
 
+  if (data.website) {
+    router.push('/thank-you?source=live-studies');
+    return;
+  }
+
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
+      keepalive: true,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
 
-    router.push('/thank-you');
+    if (response.type === 'opaque') {
+      router.push('/thank-you?source=live-studies');
+      return;
+    }
+
+    if (!response.ok) {
+      throw new Error('Submission failed');
+    }
+
+    router.push('/thank-you?source=live-studies');
   } catch (error) {
-    alert('Something went wrong. Please try again.');
+    setSubmitError(
+      isSpanish
+        ? 'No se pudo enviar su solicitud. Compruebe su conexión e inténtelo de nuevo, o escríbanos a info@finxt.uk.'
+        : isPolish
+        ? 'Nie udało się wysłać zgłoszenia. Sprawdź połączenie i spróbuj ponownie lub napisz do nas na info@finxt.uk.'
+        : 'We could not submit your application. Please check your connection and try again, or email info@finxt.uk.'
+    );
     setIsSubmitting(false);
   }
 };
   return (
     <Layout>
+      <PageHead {...pageSeo.liveStudiesApplication} />
       <section className="relative overflow-hidden bg-[#050912] px-4 py-16">
         
       <div className="max-w-4xl mx-auto rounded-[32px] border border-[#C9A84C]/15 bg-white/95 backdrop-blur-sm p-7  md:p-12 shadow-sm">
-          <div className="border border-[#C9A84C]/20 bg-[#FAFBFF] p-6 md:p-10 mb-7">
-            <p className="mb-3 flex items-center gap-2 text-lg font-bold text-[#0A0F1E]">
-            
-             <span>{selectedStudy.location}</span>
+          <Link
+            href="/live-studies"
+            className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[#0A0F1E] transition hover:text-[#C9A84C]"
+          >
+            <span aria-hidden="true">←</span>
+            {isSpanish
+              ? 'Volver a Estudios en vivo'
+              : isPolish
+              ? 'Powrót do badań na żywo'
+              : 'Back to Live Studies'}
+          </Link>
+
+          <p className="finxt-label mb-5">
+            {isSpanish
+              ? 'Solicitud de estudios en vivo'
+              : isPolish
+              ? 'Zgłoszenie do badań na żywo'
+              : 'Live Studies Application'}
           </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-[#0A0F1E] mb-6">{selectedStudy.title}</h1>
+
+          <div className="border border-[#C9A84C]/20 bg-[#FAFBFF] p-6 md:p-10 mb-7">
+            <p className="finxt-card-title-dark mb-3">{selectedStudy.location}</p>
+          <h1 className="finxt-subsection-heading-dark mb-6">{selectedStudy.title}</h1>
 
             <div className="space-y-6 text-[16px] leading-7 text-[#0A0F1E]">
               <div>
@@ -380,21 +425,21 @@ const handleSubmit = async (e) => {
             {lang !== 'en' ? (
               <Link
                 href={`/live-studies-application?country=${country}&lang=en`}
-                className="font-bold text-[#C70039] underline"
+                className="font-semibold text-[#C9A84C] underline transition hover:text-[#E8C96A]"
               >
                 🇬🇧 English version
               </Link>
             ) : country === 'spain' || country === 'mexico' ? (
               <Link
                 href={`/live-studies-application?country=${country}&lang=es`}
-                className="font-bold text-[#C70039] underline"
+                className="font-semibold text-[#C9A84C] underline transition hover:text-[#E8C96A]"
               >
                 🇪🇸 Spanish version
               </Link>
             ) : country === 'poland' ? (
               <Link
                 href={`/live-studies-application?country=${country}&lang=pl`}
-                className="font-bold text-[#C70039] underline"
+                className="font-semibold text-[#C9A84C] underline transition hover:text-[#E8C96A]"
               >
                 🇵🇱 Polish version
               </Link>
@@ -406,9 +451,14 @@ const handleSubmit = async (e) => {
           >
             <input type="hidden" name="country" value={country} />
             <input type="hidden" name="language" value={language} />
-            
+            <input type="hidden" name="form_secret" value={LIVE_STUDIES_FORM_SECRET} />
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input id="website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+            </div>
 
-            <h2 className="mb-4 text-2xl font-black tracking-tight text-[#0A0F1E] md:text-4xl">{isSpanish
+
+            <h2 className="finxt-section-heading-dark mb-4">{isSpanish
               ? 'Cuéntanos acerca de ti.'
               : isPolish
               ? 'Opowiedz nam o sobie.'
@@ -418,7 +468,7 @@ const handleSubmit = async (e) => {
               ? 'Este es un estudio inclusivo. Se anima a participar a personas de todos los géneros y razas. Debe tener más de 16 años para participar.'
               : isPolish
               ? 'To jest badanie integracyjne. Zachęcamy do udziału osoby wszystkich płci i ras. Aby wziąć udział, musisz mieć ukończone 16 lat.'
-              : 'This is an inclusive study. All genders and races are encouraged to participate.You must be 16+ to participate.'}
+              : 'This is an inclusive study. All genders and races are encouraged to participate. You must be 16+ to participate.'}
           </p>
 
             <TextInput
@@ -437,6 +487,7 @@ const handleSubmit = async (e) => {
                 : 'Enter your first name as it appears on your ID'
             }
             name="first_name"
+            maxLength={100}
             placeholder={
               isSpanish
                 ? 'Ingresa tu nombre'
@@ -462,6 +513,7 @@ const handleSubmit = async (e) => {
                   : 'Enter your last name as it appears on your ID'
               }
               name="last_name"
+              maxLength={100}
               placeholder={
                 isSpanish
                   ? 'Ingresa tu apellido'
@@ -481,6 +533,7 @@ const handleSubmit = async (e) => {
               }
               name="email"
               type="email"
+              maxLength={254}
               placeholder={
                 isSpanish
                   ? 'Ingresa tu correo electrónico'
@@ -509,6 +562,7 @@ const handleSubmit = async (e) => {
                 }
                 name="phone"
                 type="tel"
+                maxLength={30}
                 placeholder={
                   isSpanish
                     ? 'ej. +34 612 345 678'
@@ -687,6 +741,7 @@ const handleSubmit = async (e) => {
                     : 'Please specify your ethnicity'
                 }
                 className={`${fieldClass} mt-4`}
+                maxLength={100}
                 required
               />
             )}
@@ -781,7 +836,7 @@ const handleSubmit = async (e) => {
                 : 'In which age range do you fit into?'
             }
             name="age_range"
-            options={['15 - 34', '35 - 49', '50 - 64', '65+']}
+            options={['16 - 34', '35 - 49', '50 - 64', '65+']}
             required
           />
 
@@ -899,6 +954,7 @@ const handleSubmit = async (e) => {
                 : 'Your Employer'
             }
             name="employer"
+            maxLength={150}
             placeholder={
               isSpanish
                 ? 'Por favor ingresa el nombre de tu empresa'
@@ -917,6 +973,7 @@ const handleSubmit = async (e) => {
                 : 'Your Occupation'
             }
             name="occupation"
+            maxLength={150}
             placeholder={
               isSpanish
                 ? 'Por favor ingresa tu ocupación'
@@ -936,6 +993,7 @@ const handleSubmit = async (e) => {
             }
             name="referral_code"
             width="small"
+            maxLength={50}
             placeholder=""
           />
 
@@ -1150,6 +1208,15 @@ const handleSubmit = async (e) => {
                 </>
                 )}
             </p>
+
+            {submitError && (
+              <p
+                role="alert"
+                className="mb-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-6 text-red-800"
+              >
+                {submitError}
+              </p>
+            )}
 
             <button
               type="submit" disabled={isSubmitting}
