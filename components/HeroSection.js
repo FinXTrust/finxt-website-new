@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { brandTagline } from '../data/organization';
 
 export default function HeroSection() {
   return (
@@ -28,11 +29,9 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl py-16 md:py-24 lg:py-32">
         <div className="max-w-2xl lg:max-w-3xl">
-          <p className="finxt-label mb-5">Who We Are</p>
+          <p className="finxt-label mb-5">Who we are</p>
 
-          <h1 className="finxt-page-heading">
-            Powering Global Programmes with Precision, Speed and Scale
-          </h1>
+          <h1 className="finxt-page-heading">{brandTagline}</h1>
 
           <p className="mt-6 text-lg font-medium leading-snug text-finxt-gold-light md:text-xl">
             Global reach. One point of contact. End-to-end programme delivery with
@@ -44,7 +43,7 @@ export default function HeroSection() {
           <div className="finxt-home-intro finxt-body">
             <p>
               FinXT UK is a global programme delivery and operational excellence
-              partner, headquartered in London and operating across 7+ countries.
+              partner, UK-headquartered in Leeds and operating across seven-plus countries.
               We exist to solve the problems that arise when ambition meets
               complexity, giving organisations one accountable partner for every
               dimension of their international programmes, from logistics and
@@ -55,14 +54,10 @@ export default function HeroSection() {
               the people who show up when the programme is live, the geography is
               difficult, and the stakes are high.
             </p>
-            <p>
-              FinXT empowers financial institutions and enterprises with AI,
-              automation, and expert consulting for measurable impact.
-            </p>
           </div>
 
           <p className="mt-8 border-l-2 border-finxt-gold/40 pl-4 finxt-body-muted md:max-w-xl">
-            London-headquartered. Globally delivered. One partner. Nine service
+            UK-headquartered in Leeds. Globally delivered. One partner. Nine service
             verticals. Seven-plus countries. Built for organisations that cannot
             afford operational failure.
           </p>

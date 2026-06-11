@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ScrollReveal from './ScrollReveal';
 
-const locations = ['Leeds', 'Poland', 'Spain', 'USA', 'Mexico', 'India'];
+const locations = ['United Kingdom', 'Poland', 'Spain', 'USA', 'Mexico', 'India'];
 
 export default function ParticipantBanner() {
   return (
@@ -25,7 +25,7 @@ export default function ParticipantBanner() {
             </div>
 
             <h2 id="participant-promo-heading" className="finxt-section-heading">
-              Interested in participating in a research study?
+              Interested in Participating in a Research Study?
             </h2>
 
             <div className="finxt-home-intro max-w-2xl">

@@ -12,14 +12,14 @@ export default function CaseStudiesTeaser() {
 
         <ScrollReveal className="max-w-3xl">
           <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-            Case Studies
+            Case studies
           </p>
 
           <h2
             className="finxt-scroll-reveal finxt-section-heading"
             style={{ '--reveal-delay': '100ms' }}
           >
-            How we deliver under pressure
+            How We Deliver Under Pressure
           </h2>
 
           <div
@@ -31,7 +31,7 @@ export default function CaseStudiesTeaser() {
             className="finxt-scroll-reveal finxt-home-intro finxt-body"
             style={{ '--reveal-delay': '300ms' }}
           >
-            Anonymised examples of how FinXT delivers complex programmes, from
+            Anonymised examples of how FinXT UK delivers complex programmes, from
             multi-market research and cross-border logistics to rapid staffing and
             high-volume participant recruitment.
           </p>

@@ -27,11 +27,11 @@ export default function LiveStudiesReferralSection() {
         <LiveStudiesReveal className="finxt-live-referral-layout">
           <div className="finxt-live-referral-intro">
             <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-              Earn More
+              Earn more
             </p>
 
             <h2 className="finxt-scroll-reveal finxt-section-heading" style={{ '--reveal-delay': '100ms' }}>
-              Refer a friend. Get rewarded.
+              Refer a Friend. Get Rewarded.
             </h2>
 
             <div

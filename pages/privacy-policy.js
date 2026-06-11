@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
             <Section id="data-protection-contact" title="2. Our Data Protection Contact">
               <p>
                 If you have any questions, concerns, or requests regarding your personal data,
-                please contact our designated data controller:
+                please contact our designated data protection contact:
               </p>
               <ul className="mt-3 space-y-1.5">
                 <li>

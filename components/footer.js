@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 import FinxtLogo from './FinxtLogo';
 import { openCookieSettings } from '../lib/cookieConsent';
-import { organization } from '../data/organization';
+import { brandTagline, organization } from '../data/organization';
 
 const officeLabels = ['Leeds HQ', 'Spain', 'Poland', 'Americas network'];
 
@@ -32,8 +32,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 text-sm leading-7 text-finxt-muted">
-              Powering global programmes with precision, speed and scale.
-              Trusted by world-class enterprises across the UK, Europe, and beyond.
+              {brandTagline}. Trusted by world-class enterprises across the UK, Europe, and beyond.
             </p>
 
             <div className="mt-6 flex gap-3">

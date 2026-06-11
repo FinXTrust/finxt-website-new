@@ -23,7 +23,7 @@ export default function StatsStrip() {
         </div>
 
         <p className="finxt-stat-copy mx-auto mt-8 hidden max-w-4xl text-center md:block">
-          Operating across the United Kingdom, Europe, the Americas, and Asia — FinXT
+          Operating across the United Kingdom, Europe, the Americas, and Asia — FinXT UK
           delivers consistent programme quality regardless of geography. Our global
           network means you never have to choose between scale and standard.
         </p>

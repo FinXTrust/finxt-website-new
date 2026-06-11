@@ -6,12 +6,12 @@ const valuePropositions = [
   {
     title: 'One Partner. Total Accountability.',
     description:
-      'Nine service verticals under one roof. No handoffs between agencies, no communication failures between suppliers, no ambiguity about who owns the problem. When you work with FinXT, you have one team, one contract, and one point of contact accountable for everything.',
+      'Nine service verticals under one roof. No handoffs between agencies, no communication failures between suppliers, no ambiguity about who owns the problem. When you work with FinXT UK, you have one team, one contract, and one point of contact accountable for everything.',
   },
   {
     title: 'UK & European Stronghold',
     description:
-      'Established on-ground presence and operational networks across the United Kingdom, Spain, Poland, and the Nordics. We know these markets, the regulatory environments, and the people on the ground because we operate in them every day.',
+      'Established on-ground presence and operational networks across the United Kingdom, Spain, and Poland. We know these markets, the regulatory environments, and the people on the ground because we operate in them every day.',
   },
   {
     title: 'Globally Scalable — Without Compromise',
@@ -21,12 +21,12 @@ const valuePropositions = [
   {
     title: 'Compliant by Design',
     description:
-      'Data protection, employment law, import/export regulations, payment compliance, our operations are built around the regulatory environments we work in. We hold NDA-first engagements, operate UK GDPR-compliant data processes, and bring specialist regulatory knowledge to every jurisdiction we work in.',
+      'Data protection, employment law, import/export regulations, payment compliance — our operations are built around the regulatory environments we work in. We hold NDA-first engagements, operate UK GDPR-compliant data processes, and bring specialist regulatory knowledge to every jurisdiction we work in.',
   },
   {
     title: 'Measurable Outcomes',
     description:
-      'Every engagement is structured around clear KPIs, agreed at the outset and reported against throughout. We do not rely on good intentions, we build measurement into the programme architecture, so you always know where things stand and what is being done about it.',
+      'Every engagement is structured around clear KPIs, agreed at the outset and reported against throughout. We do not rely on good intentions; we build measurement into the programme architecture, so you always know where things stand and what is being done about it.',
   },
   {
     title: 'Trusted & Discreet',
@@ -51,7 +51,7 @@ export default function AboutSection() {
               className="finxt-scroll-reveal finxt-section-heading"
               style={{ '--reveal-delay': '100ms' }}
             >
-              The partner built for operational complexity.
+              The Partner Built for Operational Complexity
             </h2>
 
             <div
@@ -70,7 +70,7 @@ export default function AboutSection() {
                 scope and no one is accountable for the gaps between them.
               </p>
               <p className="font-medium text-white/85">
-                FinXT is built differently. We exist precisely in those gaps.
+                FinXT UK is built differently. We exist precisely in those gaps.
               </p>
             </div>
           </ScrollReveal>

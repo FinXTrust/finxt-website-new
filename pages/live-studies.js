@@ -8,12 +8,54 @@ import LiveStudiesStepsStrip from '../components/LiveStudiesStepsStrip';
 import Link from 'next/link';
 
 const studies = [
-  { country: 'Leeds', image: '/images/gb.png', payment: '£100 per person', lang: 'en', accent: '#C8102E' },
-  { country: 'Poland', image: '/images/poland.png', payment: '285 Polish zloty per person', lang: 'pl', accent: '#DC143C' },
-  { country: 'Spain', image: '/images/es.png', payment: '€100 per person', lang: 'es', accent: '#F1BF00' },
-  { country: 'USA', image: '/images/us.png', payment: '$100 per person', lang: 'en', accent: '#3C3B6E' },
-  { country: 'Mexico', image: '/images/mx.png', payment: '1,200 pesos per person', lang: 'es', accent: '#006847' },
-  { country: 'India', image: '/images/in.png', payment: '₹5,000 per person', lang: 'en', accent: '#FF9933' },
+  {
+    slug: 'leeds',
+    country: 'United Kingdom',
+    image: '/images/gb.png',
+    payment: '£100 per person',
+    lang: 'en',
+    accent: '#C8102E',
+  },
+  {
+    slug: 'poland',
+    country: 'Poland',
+    image: '/images/poland.png',
+    payment: '285 Polish zloty per person',
+    lang: 'pl',
+    accent: '#DC143C',
+  },
+  {
+    slug: 'spain',
+    country: 'Spain',
+    image: '/images/es.png',
+    payment: '€100 per person',
+    lang: 'es',
+    accent: '#F1BF00',
+  },
+  {
+    slug: 'usa',
+    country: 'USA',
+    image: '/images/us.png',
+    payment: '$100 per person',
+    lang: 'en',
+    accent: '#3C3B6E',
+  },
+  {
+    slug: 'mexico',
+    country: 'Mexico',
+    image: '/images/mx.png',
+    payment: '1,200 MXN per person',
+    lang: 'es',
+    accent: '#006847',
+  },
+  {
+    slug: 'india',
+    country: 'India',
+    image: '/images/in.png',
+    payment: '₹5,000 per person',
+    lang: 'en',
+    accent: '#FF9933',
+  },
 ];
 
 export default function LiveStudies() {
@@ -46,7 +88,7 @@ export default function LiveStudies() {
             </div>
 
             <p className="finxt-live-hero-item finxt-label mb-5" style={{ '--hero-delay': '90ms' }}>
-              Research Opportunities
+              Research opportunities
             </p>
 
             <h1 className="finxt-live-hero-item finxt-page-heading" style={{ '--hero-delay': '170ms' }}>
@@ -71,10 +113,10 @@ export default function LiveStudies() {
 
           <LiveStudiesReveal className="max-w-3xl">
             <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-              How It Works
+              How it works
             </p>
             <h2 className="finxt-scroll-reveal finxt-section-heading" style={{ '--reveal-delay': '100ms' }}>
-              Three steps to participate
+              Three Steps to Participate
             </h2>
             <div className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider" style={{ '--reveal-delay': '200ms' }} />
 
@@ -100,11 +142,11 @@ export default function LiveStudies() {
 
           <LiveStudiesReveal className="max-w-3xl">
             <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-              Available Locations
+              Available locations
             </p>
 
             <h2 className="finxt-scroll-reveal finxt-section-heading" style={{ '--reveal-delay': '100ms' }}>
-              Apply for live technology research studies
+              Apply for Live Technology Research Studies
             </h2>
 
             <div className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider" style={{ '--reveal-delay': '200ms' }} />
@@ -121,7 +163,7 @@ export default function LiveStudies() {
           <div className="finxt-live-locations-list mt-12 md:mt-14">
             {studies.map((study, index) => (
               <RevealItem
-                key={study.country}
+                key={study.slug}
                 as="article"
                 variant="scale"
                 delay={index * 70}
@@ -149,7 +191,7 @@ export default function LiveStudies() {
                 </div>
 
                 <Link
-                  href={`/live-studies-application?country=${study.country.toLowerCase()}&lang=${study.lang}`}
+                  href={`/live-studies-application?country=${study.slug}&lang=${study.lang}`}
                   className="finxt-live-location-apply finxt-btn-card"
                 >
                   Apply →

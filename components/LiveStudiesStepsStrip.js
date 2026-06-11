@@ -50,7 +50,7 @@ const steps = [
   },
   {
     title: 'Complete the application',
-    text: 'Fill in a short eligibility form, it only takes a few minutes.',
+    text: 'Fill in a short eligibility form — it only takes a few minutes.',
     icon: 'application',
     chip: 'A few minutes',
   },

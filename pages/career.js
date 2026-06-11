@@ -16,7 +16,7 @@ export default function CareersPage() {
           <div className="max-w-2xl lg:max-w-3xl">
             <p className="finxt-label mb-5">Careers</p>
             <h1 className="finxt-page-heading">
-              Shape the future of operational delivery.
+              Shape the Future of Operational Delivery
             </h1>
             <div className="finxt-divider" />
             <div className="finxt-home-intro finxt-body">
@@ -31,7 +31,7 @@ export default function CareersPage() {
 
       <section className="finxt-section finxt-section-light px-4 md:px-6">
         <div className="mx-auto max-w-5xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm md:p-10">
-          <h2 className="finxt-section-heading-dark mb-5">Why work with us?</h2>
+          <h2 className="finxt-section-heading-dark mb-5">Why Work With Us?</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {[
               [

@@ -25,7 +25,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl pb-14 pt-28 md:pb-20 md:pt-32 lg:py-32">
           <div className="max-w-2xl lg:max-w-3xl">
-            <p className="finxt-label mb-5">Contact Us</p>
+            <p className="finxt-label mb-5">Contact us</p>
 
             <h1 className="finxt-page-heading">
               Let&apos;s Build the
@@ -70,7 +70,7 @@ export default function ContactPage() {
               </p>
 
               <div className="finxt-contact-panel-head pl-1">
-                <h2 className="finxt-card-title">Send us a message</h2>
+                <h2 className="finxt-card-title">Send Us a Message</h2>
                 <p className="finxt-card-body-sm mt-2">
                   Share your enquiry and our team will respond shortly.
                 </p>

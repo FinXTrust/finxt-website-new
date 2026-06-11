@@ -27,16 +27,16 @@ export default function CaseStudiesPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl pb-14 pt-28 md:pb-20 md:pt-32 lg:py-32">
           <div className="max-w-2xl lg:max-w-3xl">
-            <p className="finxt-label mb-5">Case Studies</p>
+            <p className="finxt-label mb-5">Case studies</p>
 
-            <h1 className="finxt-page-heading">How we deliver under pressure</h1>
+            <h1 className="finxt-page-heading">How We Deliver Under Pressure</h1>
 
             <div className="finxt-divider" />
 
             <div className="finxt-home-intro finxt-body">
               <p>
-                Anonymised examples of how FinXT delivers complex international
-                programmes, ready for client conversations, capability reviews,
+                Anonymised examples of how FinXT UK delivers complex international
+                programmes ready for client conversations, capability reviews,
                 and procurement discussions.
               </p>
               <p className="finxt-body-muted">
@@ -69,7 +69,7 @@ export default function CaseStudiesPage() {
                 className="finxt-scroll-reveal finxt-cta-heading"
                 style={{ '--reveal-delay': '0ms' }}
               >
-                Discuss your programme requirements
+                Discuss Your Programme Requirements
               </h2>
               <p
                 className="finxt-scroll-reveal finxt-home-intro finxt-body mx-auto max-w-lg"

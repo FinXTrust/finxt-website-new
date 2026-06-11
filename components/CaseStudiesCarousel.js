@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { caseStudies } from '../data/caseStudies';
+import { caseStudies, getCaseStudyCardLabel, getCaseStudyCardTitle } from '../data/caseStudies';
 
 const CASE_STUDIES_PAGE = '/case-studies';
 const AUTOPLAY_MS = 6000;
 
 function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
+  const { title: titleMain, sub: titleSub } = getCaseStudyCardTitle(study);
   const cta =
     mode === 'teaser' ? (
       <Link
@@ -34,8 +35,16 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
 
       <div className="finxt-cs-carousel-slide-inner">
         <div className="finxt-cs-carousel-slide-head">
-          <p className="finxt-label">Project Snapshot {study.number}</p>
-          <h3 className="finxt-card-title mt-3">{study.title}</h3>
+          <p className="finxt-label">{getCaseStudyCardLabel(study)}</p>
+          <h3 className="finxt-card-title mt-3">
+            {titleMain}
+            {titleSub ? (
+              <>
+                <br />
+                <span className="text-white/90">{titleSub}</span>
+              </>
+            ) : null}
+          </h3>
           <p className="finxt-body-muted mt-2 italic">{study.tags.join(' · ')}</p>
         </div>
 
@@ -123,7 +132,7 @@ export default function CaseStudiesCarousel({
         <button
           type="button"
           className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--prev"
-          aria-label="Previous snapshot"
+          aria-label="Previous programme"
           onClick={() => setActiveIndex(activeIndex - 1)}
         >
           <span aria-hidden="true">←</span>
@@ -150,14 +159,14 @@ export default function CaseStudiesCarousel({
         <button
           type="button"
           className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--next"
-          aria-label="Next snapshot"
+          aria-label="Next programme"
           onClick={() => setActiveIndex(activeIndex + 1)}
         >
           <span aria-hidden="true">→</span>
         </button>
       </div>
 
-      <div className="finxt-cs-carousel-dots" role="tablist" aria-label="Project snapshots">
+      <div className="finxt-cs-carousel-dots" role="tablist" aria-label="Programmes">
         {caseStudies.map((study, index) => {
           const isActive = index === activeIndex;
 
@@ -167,7 +176,7 @@ export default function CaseStudiesCarousel({
               type="button"
               role="tab"
               aria-selected={isActive}
-              aria-label={`Project snapshot ${study.number}`}
+              aria-label={getCaseStudyCardLabel(study)}
               className={[
                 'finxt-cs-carousel-dot',
                 isActive ? 'finxt-cs-carousel-dot--active' : '',

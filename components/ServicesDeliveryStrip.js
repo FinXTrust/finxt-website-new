@@ -7,7 +7,7 @@ export default function ServicesDeliveryStrip() {
         <div className="finxt-svc-delivery-intro">
           <p className="finxt-label">How we deliver</p>
           <h2 id="svc-delivery-heading" className="finxt-section-heading">
-            One partner. Full programme discipline.
+            One Partner. Full Programme Discipline.
           </h2>
           <div className="finxt-divider" />
         </div>

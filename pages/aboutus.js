@@ -8,18 +8,18 @@ import { pageSeo } from '../data/seo';
 
 const heroMetrics = [
   { value: '7+', label: 'Countries' },
-  { value: '9', label: 'Service Verticals' },
+  { value: '9', label: 'Service verticals' },
   { value: 'Multi', label: 'Programmes Delivered' },
 ];
 
 const values = [
   {
     title: 'Integrity First',
-    text: 'We do not take shortcuts. Every engagement from a single research session to a 12-month programme is delivered with the same transparency, honesty, and discretion. If something is not working, we say so. Then we fix it.',
+    text: 'We do not take shortcuts. Every engagement, from a single research session to a 12-month programme, is delivered with the same transparency, honesty, and discretion. If something is not working, we say so. Then we fix it.',
   },
   {
     title: 'Operational Excellence',
-    text: 'High standards are not aspirational at FinXT, they are the baseline. We invest in process, in people, and in the detail that other partners deprioritise. The quality of our delivery does not depend on the size of the contract.',
+    text: 'High standards are not aspirational at FinXT UK; they are the baseline. We invest in process, in people, and in the detail that other partners deprioritise. The quality of our delivery does not depend on the size of the contract.',
   },
   {
     title: 'Client Partnership',
@@ -27,7 +27,7 @@ const values = [
   },
   {
     title: 'Global Mindset',
-    text: 'Every process, every team structure, and every supplier relationship at FinXT is built with international delivery in mind. We do not add countries as an afterthought. Global capability is built into how we operate from day one.',
+    text: 'Every process, every team structure, and every supplier relationship at FinXT UK is built with international delivery in mind. We do not add countries as an afterthought. Global capability is built into how we operate from day one.',
   },
 ];
 
@@ -64,13 +64,13 @@ export default function About() {
             <div className="finxt-home-intro finxt-body">
               <p>
                 FinXT UK is a global programme delivery and operational excellence
-                company, headquartered in London. We work with financial institutions,
+                company, UK-headquartered in Leeds. We work with financial institutions,
                 technology enterprises, consumer brands, and public sector organisations
-                to plan, manage, and execute complex international programmes,
+                to plan, manage, and execute complex international programmes
                 reliably, compliantly, and at scale.
               </p>
               <p>
-                Our model is simple but rare: 9 integrated service verticals under
+                Our model is simple but rare: nine integrated service verticals under
                 one roof, one point of accountability, and a consistent standard of
                 delivery, whether your programme spans one city or twenty countries.
               </p>
@@ -97,7 +97,7 @@ export default function About() {
           <div className="finxt-story-grid">
             <ScrollReveal className="finxt-story-main max-w-3xl">
               <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-                Our Story
+                Our story
               </p>
 
               <div
@@ -105,22 +105,22 @@ export default function About() {
                 style={{ '--reveal-delay': '120ms' }}
               >
                 <p>
-                  FinXT was founded on a single, clear observation: organisations running
+                  FinXT UK was founded on a single, clear observation: organisations running
                   complex international programmes were being let down by fragmented supplier
                   networks. They were coordinating between logistics vendors, staffing agencies,
                   payment platforms, and research operations firms, each accountable for their
                   own piece, and none of them accountable for the whole.
                 </p>
                 <p>
-                  We were built to solve that. Starting from London, FinXT was established to
+                  We were built to solve that. Starting from Leeds, FinXT UK was established to
                   bring programme management discipline, operational rigour, and global reach
                   together in one trusted partner. From our first engagement, the principle has
                   been the same: we take accountability for outcomes, not just activities.
                 </p>
                 <p>
-                  Today, FinXT operates across 7+ countries, manages participant research
+                  Today, FinXT UK operates across seven-plus countries, manages participant research
                   programmes across Europe, the Americas, and Asia, and delivers services
-                  across 9 verticals, from ATA Carnet logistics to AI strategy consulting.
+                  across nine verticals, from ATA Carnet logistics to AI strategy consulting.
                 </p>
               </div>
             </ScrollReveal>

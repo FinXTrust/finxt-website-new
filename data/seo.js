@@ -16,7 +16,7 @@ export const pageSeo = {
   liveStudies: {
     title: 'Live Studies',
     description:
-      'Join paid consumer research studies with FinXT across Leeds, Poland, Spain, the USA, Mexico, and India. Apply online in minutes.',
+      'Join paid consumer research studies with FinXT UK across Leeds, Poland, Spain, the USA, Mexico, and India. Apply online in minutes.',
     path: '/live-studies',
     image: '/images/livestudies_banner.webp',
   },
@@ -70,7 +70,7 @@ export const pageSeo = {
   termsAndConditions: {
     title: 'Terms & Conditions',
     description:
-      'FinXT UK Live Studies terms and conditions covering eligibility, participation, payments, confidentiality, and participant responsibilities.',
+      'FinXT UK Live Studies terms and conditions covering eligibility, participation, payments, and participant responsibilities.',
     path: '/terms-and-conditions',
   },
   thankYou: {

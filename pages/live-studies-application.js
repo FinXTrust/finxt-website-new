@@ -117,7 +117,7 @@ export default function LiveStudiesApplicationPage() {
 
 'Me siento cómodo/a participando en actividades que puedan requerir que mi rostro sea completamente visible.',
 
-'Entiendo que los cubrimientos de cabeza por motivos religiosos o culturales, como un hiyab, pueden utilizarse durante el estudio.',
+'Entiendo que los cubrimientos de cabeza por motivos religiosos o culturales, como un hijab, pueden utilizarse durante el estudio.',
 
 'Confirmo que tengo al menos 16 años de edad.',
 
@@ -261,7 +261,7 @@ const gdprTerms = isSpanish
     location: 'India',
     title: 'User study for technology applications',
     duration: '90-minute session',
-    payment: ['Individual Participants: ₹2500 per person','Sibling Participants: ₹5000 per person',],
+    payment: ['Individual Participants: ₹2,500 per person','Sibling Participants: ₹5,000 per person',],
   },
   spain: {
     location: 'Spain',
@@ -287,12 +287,12 @@ const gdprTerms = isSpanish
     duration: isSpanish ? 'Sesión de 90 minutos' : '90-minute session',
     payment: isSpanish
       ? [
-        'Participantes individuales: 900 MXN Pesos por persona',
-        'Participantes hermanos/as: 1200 MXN Pesos por persona',
+        'Participantes individuales: 900 MXN pesos por persona',
+        'Participantes hermanos/as: 1,200 MXN pesos por persona',
       ]
     : [
-        'Individual Participants: 900 MXN Pesos per person',
-        'Sibling Participants: 1200 MXN Pesos per person',
+        'Individual Participants: 900 MXN pesos per person',
+        'Sibling Participants: 1,200 MXN pesos per person',
       ],
   },
   poland: {
@@ -307,8 +307,8 @@ const gdprTerms = isSpanish
         'Uczestnicy rodzeństwa: 285 PLN za osobę',
       ]
     : [
-        'Individual Participants: 200 Polish Zloty per person',
-        'Sibling Participants: 285 Polish Zloty per person',
+        'Individual Participants: 200 Polish zloty per person',
+        'Sibling Participants: 285 Polish zloty per person',
       ],
   },
 };
@@ -319,15 +319,15 @@ const siblingPayment =
   country === 'leeds'
     ? '£100'
     : country === 'poland'
-    ? '285 Polish Zloty'
+    ? '285 Polish zloty'
     : country === 'spain'
     ? '€100'
     : country === 'usa'
     ? '$100'
     : country === 'mexico'
-    ? '1200 Pesos'
+    ? '1,200 pesos'
     : country === 'india'
-    ? '₹5000'
+    ? '₹5,000'
     : '£100';
 
     const GOOGLE_SCRIPT_URL =
@@ -465,10 +465,10 @@ const handleSubmit = async (e) => {
               : 'Tell us about yourself'}</h2>
             <p className="text-[17px] mb-7 text-[#0A0F1E]">
             {isSpanish
-              ? 'Este es un estudio inclusivo. Se anima a participar a personas de todos los géneros y razas. Debe tener más de 16 años para participar.'
+              ? 'Este es un estudio inclusivo. Animamos a participar a personas de todos los géneros y orígenes. Debe tener más de 16 años para participar.'
               : isPolish
-              ? 'To jest badanie integracyjne. Zachęcamy do udziału osoby wszystkich płci i ras. Aby wziąć udział, musisz mieć ukończone 16 lat.'
-              : 'This is an inclusive study. All genders and races are encouraged to participate. You must be 16+ to participate.'}
+              ? 'To jest badanie integracyjne. Zachęcamy do udziału osoby wszystkich płci i pochodzeń. Aby wziąć udział, musisz mieć ukończone 16 lat.'
+              : 'This is an inclusive study. People of all genders and backgrounds are encouraged to participate. You must be 16+ to participate.'}
           </p>
 
             <TextInput
@@ -568,7 +568,7 @@ const handleSubmit = async (e) => {
                     ? 'ej. +34 612 345 678'
                     : isPolish
                     ? 'np. +48 123 456 789'
-                    : 'eg. +44 7123 456789'
+                    : 'e.g. +44 7123 456789'
                 }
                 autoComplete="tel"
                 required
@@ -581,7 +581,7 @@ const handleSubmit = async (e) => {
                   ? '¿Cuál es tu género?'
                   : isPolish
                   ? 'Jaka jest Twoja płeć?'
-                  : 'What is your gender'
+                  : 'What is your gender?'
               }
               help={
                 isSpanish
@@ -616,18 +616,18 @@ const handleSubmit = async (e) => {
           <div className="mb-7 max-w-xs">
             <label className={labelClass} htmlFor="ethnicity">
               {isSpanish
-                ? 'Etnia cultural'
+                ? 'Antecedentes étnicos'
                 : isPolish
                 ? 'Pochodzenie etniczne'
-                : 'Cultural Ethnicity'}
+                : 'Ethnic background'}
             </label>
 
             <p className={helpClass}>
               {isSpanish
-                ? '¿Con qué etnia cultural te identificas? Esta NO es tu nacionalidad. Por favor selecciona la herencia de tu familia.'
+                ? '¿Con qué antecedentes étnicos te identificas? Esta NO es tu nacionalidad. Por favor selecciona la herencia de tu familia.'
                 : isPolish
                 ? 'Z jakim pochodzeniem etnicznym się identyfikujesz? To NIE jest Twoja narodowość. Wybierz pochodzenie swojej rodziny.'
-                : "What cultural ethnicity do you identify as? This is NOT your nationality. Please select your family's heritage."}
+                : "What ethnic background do you identify as? This is NOT your nationality. Please select your family's heritage."}
             </p>
 
             <select
@@ -640,10 +640,10 @@ const handleSubmit = async (e) => {
             >
               <option value="" disabled>
                 {isSpanish
-                  ? 'Selecciona tu etnia...'
+                  ? 'Selecciona tu origen étnico...'
                   : isPolish
                   ? 'Wybierz swoje pochodzenie...'
-                  : 'Select your ethnicity...'}
+                  : 'Select your ethnic background...'}
               </option>
 
               <option>
@@ -738,7 +738,7 @@ const handleSubmit = async (e) => {
                     ? 'Por favor especifica tu etnia'
                     : isPolish
                     ? 'Proszę określić swoje pochodzenie'
-                    : 'Please specify your ethnicity'
+                    : 'Please specify your ethnic background'
                 }
                 className={`${fieldClass} mt-4`}
                 maxLength={100}
@@ -813,7 +813,7 @@ const handleSubmit = async (e) => {
                   ? 'ej. 1980'
                   : isPolish
                   ? 'np. 1980'
-                  : 'eg. 1980'
+                  : 'e.g. 1980'
               }
               width="small"
               min="1900"
@@ -833,7 +833,7 @@ const handleSubmit = async (e) => {
                 ? '¿En qué rango de edad te encuentras?'
                 : isPolish
                 ? 'Do którego przedziału wiekowego należysz?'
-                : 'In which age range do you fit into?'
+                : 'Which age range are you in?'
             }
             name="age_range"
             options={['16 - 34', '35 - 49', '50 - 64', '65+']}
@@ -1059,10 +1059,10 @@ const handleSubmit = async (e) => {
 
           <Checkbox name="future_studies_opt_in" value="Yes">
             {isSpanish
-              ? 'Sí - Me gustaría ser contactado sobre futuros estudios'
+              ? 'Sí — Me gustaría ser contactado sobre futuros estudios'
               : isPolish
-              ? 'Tak - Chciał(a)bym otrzymywać informacje o przyszłych badaniach'
-              : 'Yes - I would like to be contacted about participating in future studies'}
+              ? 'Tak — Chciał(a)bym otrzymywać informacje o przyszłych badaniach'
+              : 'Yes — I would like to be contacted about participating in future studies'}
           </Checkbox>
         </div>
 
@@ -1099,7 +1099,7 @@ const handleSubmit = async (e) => {
                   ? 'Acuerdo de Datos y GDPR'
                   : isPolish
                   ? 'Umowa dotycząca danych i RODO'
-                  : 'Data & GDPR agreement'}
+                  : 'Data & GDPR Agreement'}
               </p>
 
               <ul className="mb-6 list-disc pl-8 text-[16px] leading-7 text-[#0A0F1E]">

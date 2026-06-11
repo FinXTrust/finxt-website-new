@@ -26,7 +26,7 @@ export default function Services() {
 
         <div className="relative z-10 mx-auto max-w-7xl pb-14 pt-28 md:pb-20 md:pt-32 lg:py-32">
           <div className="max-w-2xl lg:max-w-3xl">
-            <p className="finxt-label mb-5">Our Services</p>
+            <p className="finxt-label mb-5">Our services</p>
 
             <h1 className="finxt-page-heading">
               Integrated Delivery Across Nine Core Capabilities
@@ -40,7 +40,7 @@ export default function Services() {
                 globally.
               </p>
               <p className="hidden lg:block">
-                From AI and digital transformation to programme, logistics, and research
+                From AI and digital transformation to programme management, logistics, and research
                 operations: one accountable partner, delivered globally.
               </p>
             </div>

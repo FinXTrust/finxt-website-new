@@ -12,9 +12,9 @@ export default function FounderNoteSection() {
         <div className="finxt-founder-note-glow" aria-hidden="true" />
 
         <header className="finxt-founder-note-header">
-          <p className="finxt-label mb-5">Founder Note</p>
+          <p className="finxt-label mb-5">Founder note</p>
           <h2 className="finxt-section-heading finxt-founder-note-title">
-            A note from our founder (Anusha Addu)
+            A Note From Our Founder (Anusha Addu)
           </h2>
           <div className="finxt-divider" />
         </header>
@@ -65,14 +65,14 @@ export default function FounderNoteSection() {
             </div>
 
             <p className="finxt-founder-note-closer">
-              Seven-plus countries in. 9 verticals deep. And still operating by the same
+              Seven-plus countries in. Nine verticals deep. And still operating by the same
               principle we started with: one partner, full accountability, no excuses.
             </p>
 
             <footer className="finxt-founder-note-signature">
               <p className="finxt-founder-note-name">Anusha Addu</p>
               <p className="finxt-founder-note-role">Founder &amp; Director, FinXT</p>
-              <p className="finxt-founder-note-location">London, United Kingdom</p>
+              <p className="finxt-founder-note-location">Leeds, United Kingdom</p>
             </footer>
           </div>
         </div>

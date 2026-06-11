@@ -1,5 +1,8 @@
 export const SITE_URL = 'https://finxt.uk';
 
+export const brandTagline =
+  'Powering Global Programmes with Precision, Speed, and Scale';
+
 export const locations = {
   uk: {
     label: 'United Kingdom',

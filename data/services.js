@@ -7,7 +7,7 @@ export const services = [
       'Personalised reward platforms and secure payment integrations that deepen engagement and streamline transactions.',
     featured: true,
     points: [
-      'Boost customer loyalty and retention through sophisticated, personalised reward systems and platforms developed by FinXT.',
+      'Boost customer loyalty and retention through sophisticated, personalised reward systems and platforms developed by FinXT UK.',
       'Our smart payment solutions seamlessly integrate advanced technologies, enhancing transaction security, efficiency, and user experience.',
       'Benefit from frictionless payment systems, secure transaction processing, and scalable integration tailored specifically to your needs.',
     ],
@@ -116,10 +116,10 @@ export const servicesCatalogHeading =
   'One operating partner across strategy, delivery, and logistics';
 
 export const servicesIntro =
-  'Nine capabilities across three service groups, delivered as one accountable operating model.';
+  'Nine capabilities across three service groups — delivered as one accountable operating model.';
 
 export const servicesCatalogHeadingMobile =
-  'One operating partner across strategy, delivery and logistics';
+  'One operating partner across strategy, delivery, and logistics';
 
 export const servicesIntroMobile =
   'Nine integrated capabilities organised across three service groups.';

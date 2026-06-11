@@ -49,7 +49,7 @@ export default function ServicesSection() {
 
         <ScrollReveal className="max-w-3xl">
           <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-            What We Deliver
+            What we deliver
           </p>
 
           <div
@@ -59,7 +59,7 @@ export default function ServicesSection() {
             <p>
               Every organisation we work with faces its own version of the same
               challenge: too many moving parts, too many vendors, and not enough
-              certainty. FinXT replaces that fragmented model with one integrated
+              certainty. FinXT UK replaces that fragmented model with one integrated
               delivery partner, accountable for the whole, not just the parts we
               find convenient.
             </p>

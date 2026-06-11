@@ -43,14 +43,14 @@ export default function SectorsSection() {
 
         <ScrollReveal className="max-w-3xl">
           <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-            Sectors We Serve
+            Sectors we serve
           </p>
 
           <h2
             className="finxt-scroll-reveal finxt-section-heading"
             style={{ '--reveal-delay': '100ms' }}
           >
-            We understand your sector because we operate in it.
+            We Understand Your Sector Because We Operate in It
           </h2>
 
           <div
@@ -63,7 +63,7 @@ export default function SectorsSection() {
             style={{ '--reveal-delay': '300ms' }}
           >
             <p>
-              FinXT does not offer generic programme delivery. Our teams bring
+              FinXT UK does not offer generic programme delivery. Our teams bring
               sector-specific knowledge, the regulatory context, the operational
               sensitivities, and the stakeholder expectations that make delivery in
               your market genuinely different from any other.

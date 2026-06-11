@@ -1,5 +1,5 @@
 import { useScrollReveal } from '../lib/useScrollReveal';
-import { getCaseStudyCardTitle } from '../data/caseStudies';
+import { getCaseStudyCardLabel, getCaseStudyCardTitle } from '../data/caseStudies';
 import CaseStudyEdPunct from './CaseStudyEdPunct';
 import CaseStudyVisual from './CaseStudyVisual';
 
@@ -49,7 +49,7 @@ export default function CaseStudySnapshot({ study, index = 0 }) {
           style={{ '--reveal-delay': '60ms' }}
         >
           <p className="finxt-label">
-            <span className="finxt-cs-ed-kicker-text">Project Snapshot {study.number}</span>
+            <span className="finxt-cs-ed-kicker-text">{getCaseStudyCardLabel(study)}</span>
             <CaseStudyEdPunct />
           </p>
           <h2 className="finxt-cs-ed-title">
