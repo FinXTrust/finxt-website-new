@@ -9525,6 +9525,19 @@ button.finxt-cs-carousel-cta:hover,
   min-width: 0;
 }
 
+.finxt-cs-carousel-slide-hairline {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--cs-accent, #c9a84c) 38%, rgba(201, 168, 76, 0.5)) 50%,
+    transparent 100%
+  );
+}
+
+.finxt-cs-carousel-slide-outcome {
+  border-left: 2px solid color-mix(in srgb, var(--cs-accent, #c9a84c) 42%, rgba(201, 168, 76, 0.35));
+}
+
 .finxt-cs-carousel-slide-inner {
   display: grid;
   gap: 1rem;
