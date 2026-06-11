@@ -1,57 +1,86 @@
-import ScrollReveal from './ScrollReveal';
+'use client';
+
+import { useEffect, useState } from 'react';
+import ServicesCatalogIntro from './ServicesCatalogIntro';
+import ServicesMobileBrowse from './ServicesMobileBrowse';
 import ServicesPillarBlock from './ServicesPillarBlock';
-import { servicesIntro, solutionPillars } from '../data/services';
+import { solutionPillars } from '../data/services';
+
+const DESKTOP_QUERY = '(min-width: 1024px)';
 
 export default function ServicesListSection() {
+  const [activePillarId, setActivePillarId] = useState(solutionPillars[0].id);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(DESKTOP_QUERY);
+    const update = () => setIsDesktop(media.matches);
+
+    update();
+    media.addEventListener('change', update);
+
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return undefined;
+
+    const sections = solutionPillars
+      .map((pillar) => document.getElementById(pillar.id))
+      .filter(Boolean);
+
+    if (!sections.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible[0]?.target?.id) {
+          setActivePillarId(visible[0].target.id);
+        }
+      },
+      {
+        rootMargin: '-20% 0px -52% 0px',
+        threshold: [0.12, 0.35, 0.55],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [isDesktop]);
+
   return (
-    <section className="finxt-section finxt-home-chapter relative overflow-hidden px-4 pt-0 pb-14 text-white md:px-6 md:pb-16">
+    <section className="finxt-section finxt-home-chapter finxt-svc-catalog relative overflow-hidden px-4 pt-0 pb-14 text-white md:px-6 md:pb-16">
+      <div className="finxt-svc-catalog-ambient" aria-hidden="true" />
+
       <div className="relative mx-auto max-w-7xl">
-        <div className="finxt-section-rule mb-10 md:mb-12" />
+        <div className="finxt-section-rule mb-8 md:mb-12 lg:mb-14" />
 
-        <ScrollReveal className="finxt-micro-intro max-w-3xl">
-          <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-            Solution pillars
-          </p>
-          <h2
-            className="finxt-scroll-reveal finxt-section-heading"
-            style={{ '--reveal-delay': '100ms' }}
-          >
-            How we deliver as one integrated partner
-          </h2>
+        <ServicesMobileBrowse />
+
+        <div className="hidden lg:block">
+          <ServicesCatalogIntro activePillarId={activePillarId} />
+
           <div
-            className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider"
-            style={{ '--reveal-delay': '200ms' }}
-          />
-          <p
-            className="finxt-scroll-reveal finxt-home-intro finxt-body"
-            style={{ '--reveal-delay': '300ms' }}
+            className="finxt-svc-catalog-bridge finxt-svc-catalog-bridge--index"
+            aria-hidden="true"
           >
-            {servicesIntro}
-          </p>
-        </ScrollReveal>
+            <span className="finxt-svc-catalog-bridge-line" />
+          </div>
 
-        <ScrollReveal className="finxt-svc-pillar-nav mt-10 md:mt-12">
-          <nav aria-label="Solution pillars">
-            <ul
-              className="finxt-scroll-reveal finxt-svc-pillar-nav-list"
-              style={{ '--reveal-delay': '380ms' }}
-            >
-              {solutionPillars.map((pillar) => (
-                <li key={pillar.id}>
-                  <a href={`#${pillar.id}`} className="finxt-svc-pillar-nav-link">
-                    <span className="finxt-svc-pillar-nav-num">{pillar.number}</span>
-                    <span>{pillar.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </ScrollReveal>
-
-        <div className="finxt-svc-pillars mt-12 md:mt-14">
-          {solutionPillars.map((pillar, pillarIndex) => (
-            <ServicesPillarBlock key={pillar.id} pillar={pillar} pillarIndex={pillarIndex} />
-          ))}
+          <div className="finxt-svc-pillars">
+            {solutionPillars.map((pillar, pillarIndex) => (
+              <ServicesPillarBlock
+                key={pillar.id}
+                pillar={pillar}
+                pillarIndex={pillarIndex}
+                isActive={pillar.id === activePillarId}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

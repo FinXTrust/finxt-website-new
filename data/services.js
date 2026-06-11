@@ -108,8 +108,21 @@ export const services = [
   },
 ];
 
+export const servicesCatalogLabel = 'Service portfolio';
+
+export const servicesGroupsLabel = 'Service groups';
+
+export const servicesCatalogHeading =
+  'One operating partner across strategy, delivery, and logistics';
+
 export const servicesIntro =
-  'Nine specialised capabilities organised across three integrated solution pillars — structured around how clients deliver programmes, not a flat list of disconnected services.';
+  'Nine capabilities across three service groups, delivered as one accountable operating model.';
+
+export const servicesCatalogHeadingMobile =
+  'One operating partner across strategy, delivery and logistics';
+
+export const servicesIntroMobile =
+  'Nine integrated capabilities organised across three service groups.';
 
 export const solutionPillars = [
   {
