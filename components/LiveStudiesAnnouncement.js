@@ -27,7 +27,7 @@ export default function LiveStudiesAnnouncement() {
 
         <Link
           href="/live-studies"
-          className="shrink-0 justify-self-end rounded-md border border-finxt-gold/40 bg-finxt-gold/10 px-3 py-1 text-xs font-bold text-finxt-gold transition hover:border-finxt-gold/60 hover:bg-finxt-gold/20 md:text-[0.8125rem]"
+          className="finxt-btn-primary finxt-live-announcement-apply shrink-0 justify-self-end"
         >
           Apply
         </Link>
