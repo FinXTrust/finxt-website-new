@@ -8,7 +8,7 @@ const SWIPE_THRESHOLD_PX = 48;
 
 function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
   const { title: titleMain, sub: titleSub } = getCaseStudyCardTitle(study);
-  const slideStyle = { '--cs-accent': study.accent };
+  const accentStyle = { '--cs-accent': study.accent };
   const ctaClassName = [
     'finxt-cs-carousel-cta',
     isSelected ? 'finxt-cs-carousel-cta--active' : '',
@@ -27,6 +27,7 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
       <button
         type="button"
         className={ctaClassName}
+        style={accentStyle}
         onClick={() => onSelect?.(study.id, { toggle: true, scroll: true })}
       >
         {isSelected ? 'Close programme' : 'View programme'}
@@ -36,10 +37,9 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
   return (
     <article
       className="finxt-cs-carousel-slide finxt-home-card relative overflow-hidden"
-      style={slideStyle}
       aria-hidden={!isActive}
     >
-      <div className="finxt-cs-carousel-slide-hairline absolute inset-x-0 top-0 h-px" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-finxt-gold/50 to-transparent" aria-hidden="true" />
       <div className="absolute left-0 top-0 h-full w-[3px] bg-finxt-gold/80" aria-hidden="true" />
 
       <div className="finxt-cs-carousel-slide-inner">
@@ -60,7 +60,7 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
         <p className="finxt-cs-carousel-slide-challenge finxt-card-body">{study.challenge}</p>
 
         <div className="finxt-cs-carousel-slide-aside">
-          <p className="finxt-cs-carousel-slide-outcome finxt-card-body pl-4 font-medium">
+          <p className="finxt-card-body border-l-2 border-finxt-gold/35 pl-4 font-medium">
             {study.outcomes[0]}
           </p>
           {cta}
