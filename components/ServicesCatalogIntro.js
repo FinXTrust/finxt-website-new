@@ -7,7 +7,7 @@ import {
   solutionPillars,
 } from '../data/services';
 
-export default function ServicesCatalogIntro({ activePillarId }) {
+export default function ServicesCatalogIntro({ activePillarId, onPillarSelect }) {
   return (
     <ScrollReveal className="finxt-svc-catalog-intro">
       <div className="finxt-svc-catalog-intro-stage">
@@ -30,15 +30,15 @@ export default function ServicesCatalogIntro({ activePillarId }) {
           aria-label={servicesGroupsLabel}
           style={{ '--reveal-delay': '160ms' }}
         >
-          <p className="finxt-svc-pillar-index-label">{servicesGroupsLabel}</p>
+          <p className="finxt-label finxt-svc-pillar-index-label">{servicesGroupsLabel}</p>
           <ol className="finxt-svc-pillar-index-list">
             {solutionPillars.map((pillar) => {
               const isActive = pillar.id === activePillarId;
 
               return (
                 <li key={pillar.id} className="finxt-svc-pillar-index-item-wrap">
-                  <a
-                    href={`#${pillar.id}`}
+                  <button
+                    type="button"
                     className={[
                       'finxt-svc-pillar-index-item',
                       isActive ? 'finxt-svc-pillar-index-item--active' : '',
@@ -46,11 +46,12 @@ export default function ServicesCatalogIntro({ activePillarId }) {
                       .filter(Boolean)
                       .join(' ')}
                     style={{ '--pillar-accent': pillar.accent }}
-                    aria-current={isActive ? 'location' : undefined}
+                    aria-current={isActive ? 'true' : undefined}
+                    onClick={() => onPillarSelect?.(pillar.id)}
                   >
                     <span className="finxt-svc-pillar-index-mark" aria-hidden="true" />
                     <span className="finxt-svc-pillar-index-title">{pillar.title}</span>
-                  </a>
+                  </button>
                 </li>
               );
             })}

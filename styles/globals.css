@@ -2016,11 +2016,6 @@ a {
 
 .finxt-svc-pillar-index-label {
   margin: 0 0 1.35rem;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
 }
 
 .finxt-svc-pillar-index-list {
@@ -2035,32 +2030,41 @@ a {
 
 .finxt-svc-pillar-index-item {
   display: grid;
-  grid-template-columns: 3px minmax(0, 1fr) auto;
-  gap: 1rem 1.25rem;
+  grid-template-columns: 4px minmax(0, 1fr);
+  gap: 1rem 1.15rem;
   align-items: center;
-  padding: 1.45rem 0 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  margin: 0;
+  padding: 1.2rem 0.85rem 1.25rem 0.65rem;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.65rem;
+  background: transparent;
   color: inherit;
-  text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition:
+    background 0.35s ease,
     border-color 0.35s ease,
-    opacity 0.35s ease;
+    box-shadow 0.35s ease;
 }
 
 @media (min-width: 1024px) {
   .finxt-svc-pillar-index-item {
-    padding: 1.65rem 0 1.7rem;
-    gap: 1.1rem 1.5rem;
+    padding: 1.35rem 1rem 1.4rem 0.75rem;
+    gap: 1.1rem 1.25rem;
   }
 }
 
 .finxt-svc-pillar-index-mark {
   display: block;
-  width: 3px;
-  min-height: 1.75rem;
+  width: 4px;
+  min-height: 2.25rem;
   align-self: center;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.14);
   transition:
     background 0.35s ease,
     box-shadow 0.35s ease,
@@ -2072,7 +2076,7 @@ a {
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.015em;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.66);
   transition:
     color 0.35s ease,
     font-weight 0.35s ease;
@@ -2085,11 +2089,14 @@ a {
 }
 
 .finxt-svc-pillar-index-item--active {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: color-mix(in srgb, var(--pillar-accent, #c9a84c) 24%, rgba(255, 255, 255, 0.1));
+  background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 9%, rgba(255, 255, 255, 0.02));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pillar-accent, #c9a84c) 14%, transparent),
+    0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
 .finxt-svc-pillar-index-item--active .finxt-svc-pillar-index-mark {
-  width: 4px;
   background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 88%, #fff);
   box-shadow: 0 0 18px color-mix(in srgb, var(--pillar-accent, #c9a84c) 42%, transparent);
 }
@@ -2099,7 +2106,17 @@ a {
   color: #fff;
 }
 
+.finxt-svc-pillar-index-item:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--pillar-accent, #c9a84c) 65%, #fff);
+  outline-offset: 2px;
+}
+
 @media (hover: hover) {
+  .finxt-svc-pillar-index-item:not(.finxt-svc-pillar-index-item--active):hover {
+    background: rgba(255, 255, 255, 0.035);
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
   .finxt-svc-pillar-index-item:not(.finxt-svc-pillar-index-item--active):hover
     .finxt-svc-pillar-index-mark {
     background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 55%, rgba(255, 255, 255, 0.12));
@@ -2107,7 +2124,7 @@ a {
 
   .finxt-svc-pillar-index-item:not(.finxt-svc-pillar-index-item--active):hover
     .finxt-svc-pillar-index-title {
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.88);
   }
 }
 
@@ -2148,12 +2165,7 @@ a {
 }
 
 .finxt-svc-mobile-groups-label {
-  margin: 0 0 0.85rem;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 1rem;
 }
 
 .finxt-svc-mobile-accordion {
@@ -2205,7 +2217,7 @@ a {
   width: 4px;
   height: 1.75rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   transition:
     background 0.35s ease,
     box-shadow 0.35s ease;
@@ -2221,7 +2233,7 @@ a {
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.015em;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.66);
   transition: color 0.35s ease;
 }
 
@@ -2252,9 +2264,11 @@ a {
   width: 0.55rem;
   height: 1.5px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 72%, #fff);
+  background: rgba(255, 255, 255, 0.55);
   transform: translate(-50%, -50%);
-  transition: transform 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
 }
 
 .finxt-svc-mobile-group-chevron::after {
@@ -2264,6 +2278,11 @@ a {
 .finxt-svc-mobile-group--open .finxt-svc-mobile-group-chevron {
   border-color: color-mix(in srgb, var(--pillar-accent, #c9a84c) 35%, rgba(255, 255, 255, 0.12));
   background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 10%, rgba(255, 255, 255, 0.04));
+}
+
+.finxt-svc-mobile-group--open .finxt-svc-mobile-group-chevron::before,
+.finxt-svc-mobile-group--open .finxt-svc-mobile-group-chevron::after {
+  background: color-mix(in srgb, var(--pillar-accent, #c9a84c) 72%, #fff);
 }
 
 .finxt-svc-mobile-group--open .finxt-svc-mobile-group-chevron::after {

@@ -51,7 +51,7 @@ export default function ServicesMobileBrowse() {
         <p className="finxt-svc-mobile-deck finxt-body">{servicesIntroMobile}</p>
       </div>
 
-      <p className="finxt-svc-mobile-groups-label">{servicesGroupsLabel}</p>
+      <p className="finxt-label finxt-svc-mobile-groups-label">{servicesGroupsLabel}</p>
 
       <div className="finxt-svc-mobile-accordion">
         {solutionPillars.map((pillar, pillarIndex) => {
@@ -62,7 +62,6 @@ export default function ServicesMobileBrowse() {
           return (
             <section
               key={pillar.id}
-              id={pillar.id}
               className={[
                 'finxt-svc-mobile-group scroll-mt-28',
                 isOpen ? 'finxt-svc-mobile-group--open' : '',
