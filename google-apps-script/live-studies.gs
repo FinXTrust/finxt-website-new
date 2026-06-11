@@ -6,7 +6,7 @@
  *
  * FORM_SECRET must match lib/liveStudiesFormSecurity.js (or NEXT_PUBLIC_LIVE_STUDIES_FORM_SECRET).
  */
-const FORM_SECRET = 'finxt-ls-2026';
+const FORM_SECRET = 'finxt-ls-xK9mP2vQ7nR4wL8';
 
 const ALLOWED_COUNTRIES = ['leeds', 'poland', 'spain', 'usa', 'mexico', 'india'];
 
