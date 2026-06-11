@@ -109,5 +109,10 @@ export function getCaseStudyCardTitle(study) {
     };
   }
 
+  const programmeMatch = study.title.match(/^(.+?) Programme$/);
+  if (programmeMatch) {
+    return { title: programmeMatch[1].trim(), sub: 'Programme' };
+  }
+
   return { title: study.title, sub: null };
 }
