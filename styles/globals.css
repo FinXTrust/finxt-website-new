@@ -6687,7 +6687,13 @@ textarea.contact-clean-input {
 }
 
 .finxt-cs-gallery-controls-wrap {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 767px) {
+  .finxt-cs-gallery-controls-wrap {
+    margin-top: 0.75rem;
+  }
 }
 
 .finxt-cs-gallery-controls {
@@ -6765,16 +6771,22 @@ textarea.contact-clean-input {
   }
 
   .finxt-cs-gallery-card {
-    min-height: 21.5rem;
+    min-height: 22.75rem;
     border-radius: 1.2rem;
   }
 
   .finxt-cs-gallery-card-visual {
-    min-height: 13.5rem;
+    flex: 0 0 auto;
+    min-height: 10.5rem;
+    max-height: 11.5rem;
   }
 
   .finxt-cs-gallery-card-foot {
-    padding: 1.1rem 1.15rem 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.15rem 1.15rem 1.25rem;
   }
 
   .finxt-cs-gallery-track-wrap {
@@ -7191,8 +7203,8 @@ textarea.contact-clean-input {
 
 @media (max-width: 767px) {
   .finxt-cs-snapshot-panel {
-    margin-top: 2rem;
-    padding-top: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
