@@ -7800,25 +7800,7 @@ textarea.contact-clean-input {
   letter-spacing: 0;
   text-transform: none;
   font-weight: inherit;
-}
-
-.finxt-cs-ed-punct--mobile {
-  color: color-mix(in srgb, var(--cs-accent, #c9a84c) 42%, rgba(255, 255, 255, 0.55));
-}
-
-.finxt-cs-ed-punct--desktop {
-  display: none;
   color: inherit;
-}
-
-@media (min-width: 768px) {
-  .finxt-cs-ed-punct--mobile {
-    display: none;
-  }
-
-  .finxt-cs-ed-punct--desktop {
-    display: inline;
-  }
 }
 
 .finxt-cs-ed-title-sub {
