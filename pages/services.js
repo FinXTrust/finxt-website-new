@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import PageHead from '../components/PageHead';
 import ScrollReveal from '../components/ScrollReveal';
@@ -72,8 +73,8 @@ export default function Services() {
               >
                 Our team will build a bespoke proposal tailored to your programme needs.
               </p>
-              <a
-                href="mailto:info@finxt.uk?subject=Proposal%20Request%20-%20FinXT%20UK"
+              <Link
+                href="/contact"
                 className="finxt-scroll-reveal finxt-svc-cta-btn"
                 style={{ '--reveal-delay': '240ms' }}
               >
@@ -81,7 +82,7 @@ export default function Services() {
                 <span className="finxt-micro-btn-arrow" aria-hidden="true">
                   →
                 </span>
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>

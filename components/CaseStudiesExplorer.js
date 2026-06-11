@@ -18,8 +18,24 @@ function getStudyFromHash() {
   return caseStudies.find((study) => study.id === hash)?.id ?? null;
 }
 
+const DEFAULT_STUDY_ID = caseStudies[0]?.id ?? null;
+
+function applyStudySelection(studyId, setSelectedId, setActiveIndex) {
+  if (!studyId) {
+    setSelectedId(DEFAULT_STUDY_ID);
+    setActiveIndex(0);
+    return;
+  }
+
+  setSelectedId(studyId);
+  const index = getStudyIndex(studyId);
+  if (index >= 0) {
+    setActiveIndex(index);
+  }
+}
+
 export default function CaseStudiesExplorer() {
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(DEFAULT_STUDY_ID);
   const [activeIndex, setActiveIndex] = useState(0);
   const panelRef = useRef(null);
   const shouldScrollRef = useRef(false);
@@ -48,20 +64,10 @@ export default function CaseStudiesExplorer() {
   }, []);
 
   useEffect(() => {
-    const fromHash = getStudyFromHash();
-    if (fromHash) {
-      setSelectedId(fromHash);
-      const index = getStudyIndex(fromHash);
-      if (index >= 0) setActiveIndex(index);
-    }
+    applyStudySelection(getStudyFromHash() ?? DEFAULT_STUDY_ID, setSelectedId, setActiveIndex);
 
     const onHashChange = () => {
-      const id = getStudyFromHash();
-      setSelectedId(id);
-      if (id) {
-        const index = getStudyIndex(id);
-        if (index >= 0) setActiveIndex(index);
-      }
+      applyStudySelection(getStudyFromHash(), setSelectedId, setActiveIndex);
     };
 
     window.addEventListener('hashchange', onHashChange);
