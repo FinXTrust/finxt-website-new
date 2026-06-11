@@ -2622,6 +2622,41 @@ a {
   }
 }
 
+@media (min-width: 1024px) {
+  .finxt-svc-pillar-grid {
+    align-items: stretch;
+  }
+
+  .finxt-svc-pillar-grid .finxt-svc-page-card {
+    height: 100%;
+  }
+
+  .finxt-svc-pillar-grid .finxt-svc-page-card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-height: calc(1.3em * 2);
+  }
+
+  .finxt-svc-pillar-grid .finxt-svc-page-card-summary {
+    min-height: calc(1.62em * 2);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .finxt-svc-pillar-grid .finxt-svc-page-card-panel {
+    height: 10.75rem;
+    max-height: 10.75rem;
+  }
+
+  .finxt-svc-pillar-grid .finxt-svc-page-card:hover .finxt-svc-page-card-panel,
+  .finxt-svc-pillar-grid .finxt-svc-page-card:focus-within .finxt-svc-page-card-panel {
+    height: auto;
+    max-height: 88%;
+  }
+}
+
 /* Services page — compact card grid */
 .finxt-svc-page-grid {
   display: grid;
@@ -2817,6 +2852,10 @@ a {
   line-height: 1.28;
   letter-spacing: -0.03em;
   color: #ffffff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -6879,6 +6918,26 @@ textarea.contact-clean-input {
   .finxt-cs-gallery-card-visual {
     min-height: 22rem;
   }
+
+  .finxt-cs-gallery-track {
+    align-items: stretch;
+  }
+
+  .finxt-cs-gallery-card-foot {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-height: 11.75rem;
+  }
+
+  .finxt-cs-gallery-card-cta {
+    margin-top: auto;
+    padding-top: 0.75rem;
+  }
+
+  .finxt-cs-gallery-card--active {
+    transform: none;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -7097,8 +7156,18 @@ textarea.contact-clean-input {
   color: #fff;
 }
 
+.finxt-cs-gallery-card-title > span:first-child {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 .finxt-cs-gallery-card-title-sub {
-  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
   margin-top: 0.15rem;
   font-size: 0.88em;
   font-weight: 600;
@@ -7111,6 +7180,7 @@ textarea.contact-clean-input {
   flex-direction: column;
   gap: 0.2rem;
   margin: 0.65rem 0 0;
+  min-height: calc(0.9rem * 1.2 + 0.2rem + 0.68rem * 1.4 * 2);
   padding-left: 0.7rem;
   border-left: 2px solid color-mix(in srgb, var(--cs-accent, #c9a84c) 55%, rgba(255, 255, 255, 0.15));
 }
@@ -7124,6 +7194,10 @@ textarea.contact-clean-input {
 }
 
 .finxt-cs-gallery-card-stat-label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   font-size: 0.68rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.48);
@@ -7131,6 +7205,11 @@ textarea.contact-clean-input {
 
 .finxt-cs-gallery-card-tags {
   margin: 0.5rem 0 0;
+  min-height: calc(0.72rem * 1.45);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
   font-size: 0.72rem;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.42);
@@ -7150,6 +7229,7 @@ textarea.contact-clean-input {
 }
 
 .finxt-cs-gallery-card-cta {
+  min-height: 1.05rem;
   opacity: 0;
   transform: translateY(4px);
   transition:
