@@ -29,16 +29,18 @@ export default function Services() {
             <p className="finxt-label mb-5">Our Services</p>
 
             <h1 className="finxt-page-heading">
-              Integrated Delivery Across Nine Core Capabilities
+              Nine Capabilities.
+              <br />
+              Three Integrated Pillars.
             </h1>
 
             <div className="finxt-divider" />
 
             <div className="finxt-home-intro finxt-body">
               <p>
-                From AI and digital transformation to programme management, logistics,
-                and research operations, one partner, one standard of accountability,
-                delivered globally.
+                FinXT groups its services around how clients actually deliver — digital
+                growth, programme and research operations, and logistics with compliance —
+                under one accountable partner, globally.
               </p>
             </div>
           </div>

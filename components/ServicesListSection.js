@@ -1,6 +1,6 @@
 import ScrollReveal from './ScrollReveal';
-import ServicesCompactCard from './ServicesCompactCard';
-import { services, servicesIntro } from '../data/services';
+import ServicesPillarBlock from './ServicesPillarBlock';
+import { servicesIntro, solutionPillars } from '../data/services';
 
 export default function ServicesListSection() {
   return (
@@ -10,13 +10,13 @@ export default function ServicesListSection() {
 
         <ScrollReveal className="finxt-micro-intro max-w-3xl">
           <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
-            Service portfolio
+            Solution pillars
           </p>
           <h2
             className="finxt-scroll-reveal finxt-section-heading"
             style={{ '--reveal-delay': '100ms' }}
           >
-            Our Services
+            How we deliver as one integrated partner
           </h2>
           <div
             className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider"
@@ -30,9 +30,27 @@ export default function ServicesListSection() {
           </p>
         </ScrollReveal>
 
-        <div className="finxt-svc-page-grid mt-12 md:mt-14">
-          {services.map((service, index) => (
-            <ServicesCompactCard key={service.id} service={service} index={index} />
+        <ScrollReveal className="finxt-svc-pillar-nav mt-10 md:mt-12">
+          <nav aria-label="Solution pillars">
+            <ul
+              className="finxt-scroll-reveal finxt-svc-pillar-nav-list"
+              style={{ '--reveal-delay': '380ms' }}
+            >
+              {solutionPillars.map((pillar) => (
+                <li key={pillar.id}>
+                  <a href={`#${pillar.id}`} className="finxt-svc-pillar-nav-link">
+                    <span className="finxt-svc-pillar-nav-num">{pillar.number}</span>
+                    <span>{pillar.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </ScrollReveal>
+
+        <div className="finxt-svc-pillars mt-12 md:mt-14">
+          {solutionPillars.map((pillar, pillarIndex) => (
+            <ServicesPillarBlock key={pillar.id} pillar={pillar} pillarIndex={pillarIndex} />
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 export const services = [
   {
     id: 'rewards-payments',
-    title: 'Rewards, Loyalty and Smart Payment Integration Solutions',
+    title: 'Rewards, Loyalty & Smart Payment Integration Solutions',
     image: '/images/services/rewards_loyalty.webp',
     summary:
       'Personalised reward platforms and secure payment integrations that deepen engagement and streamline transactions.',
@@ -109,7 +109,43 @@ export const services = [
 ];
 
 export const servicesIntro =
-  'Nine integrated capabilities, from digital transformation and payments to programme delivery, logistics, and research operations, under one accountable partner.';
+  'Nine specialised capabilities organised across three integrated solution pillars — structured around how clients deliver programmes, not a flat list of disconnected services.';
+
+export const solutionPillars = [
+  {
+    id: 'digital-transformation-growth',
+    number: '01',
+    title: 'Digital Transformation & Growth',
+    summary:
+      'Strategy, engagement, and scaled insight for organisations modernising products, channels, and customer experience.',
+    accent: '#5B8DEF',
+    serviceIds: ['ai-digital-transformation', 'rewards-payments', 'crowdsourcing'],
+  },
+  {
+    id: 'programme-research-operations',
+    number: '02',
+    title: 'Programme & Research Operations',
+    summary:
+      'End-to-end programme control, research facilitation, and compliant team deployment across UK and international markets.',
+    accent: '#9B8EC4',
+    serviceIds: ['programme-management', 'user-research', 'staffing-eor'],
+  },
+  {
+    id: 'logistics-deployment-compliance',
+    number: '03',
+    title: 'Logistics, Deployment & Compliance',
+    summary:
+      'Physical delivery, multi-site deployment, and customs compliance for programmes that cross borders and need chain-of-custody discipline.',
+    accent: '#C9A84C',
+    serviceIds: ['site-setup', 'logistics', 'ata-carnet'],
+  },
+];
+
+export function getPillarServices(pillar) {
+  return pillar.serviceIds
+    .map((id) => services.find((service) => service.id === id))
+    .filter(Boolean);
+}
 
 export const deliveryPillars = [
   {
