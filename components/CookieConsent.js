@@ -12,7 +12,7 @@ const CATEGORIES = [
     id: 'necessary',
     title: 'Strictly Necessary Cookies',
     status: 'Always on (cannot be disabled)',
-    statusClass: 'text-emerald-400',
+    statusClass: 'finxt-cookie-category-status--on',
     description:
       'These cookies are essential for our website to function. They enable core features such as page navigation and access to secure areas. The website cannot function properly without them.',
     locked: true,
@@ -21,7 +21,7 @@ const CATEGORIES = [
     id: 'analytics',
     title: 'Analytics & Performance Cookies',
     status: 'Off by default',
-    statusClass: 'text-[#C9A84C]',
+    statusClass: 'finxt-cookie-category-status--optional',
     description:
       'These cookies allow us to count visits and understand how visitors interact with our website. All information collected is aggregated and anonymous. We use this data to improve how our website works.',
     locked: false,
@@ -30,7 +30,7 @@ const CATEGORIES = [
     id: 'marketing',
     title: 'Marketing & Targeting Cookies',
     status: 'Off by default',
-    statusClass: 'text-[#C9A84C]',
+    statusClass: 'finxt-cookie-category-status--optional',
     description:
       'These cookies may be set by our advertising partners to build a profile of your interests and show you relevant adverts on other sites. They do not store directly personal information but work by uniquely identifying your browser.',
     locked: false,
@@ -46,15 +46,15 @@ function Toggle({ checked, disabled, onChange, label }) {
       aria-label={label}
       disabled={disabled}
       onClick={() => onChange(!checked)}
-      className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${
-        checked ? 'bg-[#C9A84C]' : 'bg-white/20'
-      } ${disabled ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'}`}
+      className={[
+        'finxt-cookie-toggle',
+        checked ? 'finxt-cookie-toggle--on' : '',
+        disabled ? 'finxt-cookie-toggle--disabled' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
-      <span
-        className={`absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
-          checked ? 'translate-x-5' : 'translate-x-0'
-        }`}
-      />
+      <span className="finxt-cookie-toggle-thumb" />
     </button>
   );
 }
@@ -96,6 +96,17 @@ export default function CookieConsent() {
     return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, handleOpen);
   }, []);
 
+  useEffect(() => {
+    if (!visible) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [visible]);
+
   const savePreferences = (nextPreferences) => {
     writeCookieConsent(nextPreferences);
     setPreferences(nextPreferences);
@@ -114,69 +125,84 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div
-      className="fixed inset-x-0 bottom-0 z-[100] p-4 md:p-6"
-      role="dialog"
-      aria-label="Cookie consent"
-      aria-modal="true"
-    >
-      <div className="mx-auto max-w-4xl rounded-xl border border-white/10 bg-[#0A0F1E] p-5 shadow-2xl md:p-6">
+    <div className="finxt-cookie-overlay" role="presentation">
+      <div
+        className={[
+          'finxt-cookie-modal',
+          showPreferences ? 'finxt-cookie-modal--preferences' : '',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        role="dialog"
+        aria-label={showPreferences ? 'Cookie preferences' : 'Cookie consent'}
+        aria-modal="true"
+      >
         {!showPreferences ? (
           <>
-            <p className="text-sm leading-relaxed text-white/80 md:text-[0.9375rem]">
-              We use cookies to improve your experience on our website, understand how it is
-              used, and support our communications. You can accept all cookies, manage your
-              preferences, or find out more in our{' '}
-              <Link href="/cookie-policy" className="text-[#C9A84C] hover:underline">
-                Cookie Policy
-              </Link>
-              .
-            </p>
+            <h2 className="finxt-cookie-modal-title">We use cookies</h2>
 
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <button
-                type="button"
-                onClick={handleAcceptAll}
-                className="rounded-lg border border-[#C9A84C] bg-[#050912] px-5 py-2.5 text-sm font-bold text-[#C9A84C] transition hover:bg-[#0A0F1E]"
-              >
-                Accept all
-              </button>
+            <div className="finxt-cookie-modal-copy">
+              <p>
+                We use cookies to improve your experience on our website, understand how it is
+                used, and support our communications.
+              </p>
+              <p>
+                You can accept all cookies, manage your preferences, or find out more in our{' '}
+                <Link href="/cookie-policy" className="finxt-cookie-modal-link-inline">
+                  Cookie Policy
+                </Link>{' '}
+                and{' '}
+                <Link href="/privacy-policy" className="finxt-cookie-modal-link-inline">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
+            </div>
+
+            <div className="finxt-cookie-modal-actions">
+              <div className="finxt-cookie-modal-actions-primary">
+                <button
+                  type="button"
+                  onClick={handleAcceptAll}
+                  className="finxt-btn-primary finxt-cookie-modal-action-btn"
+                >
+                  Accept all
+                </button>
+                <button
+                  type="button"
+                  onClick={handleRejectNonEssential}
+                  className="finxt-cookie-modal-reject finxt-cookie-modal-action-btn"
+                >
+                  Reject non-essential
+                </button>
+              </div>
+
               <button
                 type="button"
                 onClick={() => setShowPreferences(true)}
-                className="finxt-btn-secondary px-5 py-2.5 text-sm"
+                className="finxt-cookie-modal-link finxt-cookie-modal-manage"
               >
                 Manage preferences
-              </button>
-              <button
-                type="button"
-                onClick={handleRejectNonEssential}
-                className="text-sm text-white/60 underline-offset-2 transition hover:text-white hover:underline sm:ml-1"
-              >
-                Reject non-essential
               </button>
             </div>
           </>
         ) : (
           <>
-            <h2 className="text-lg font-bold text-white md:text-xl">Cookie preferences</h2>
-            <p className="mt-2 text-sm text-white/65">
+            <h2 className="finxt-cookie-modal-title">Cookie preferences</h2>
+            <p className="finxt-cookie-modal-lead">
               Choose which cookies you allow. Strictly necessary cookies cannot be disabled.
             </p>
 
-            <div className="mt-5 space-y-4">
+            <div className="finxt-cookie-category-list">
               {CATEGORIES.map((category) => {
                 const enabled = preferences[category.id];
 
                 return (
-                  <div
-                    key={category.id}
-                    className="rounded-lg border border-white/10 bg-white/[0.03] p-4"
-                  >
-                    <div className="flex items-start justify-between gap-4">
+                  <div key={category.id} className="finxt-cookie-category">
+                    <div className="finxt-cookie-category-head">
                       <div>
-                        <h3 className="font-semibold text-white">{category.title}</h3>
-                        <p className={`mt-1 text-xs font-medium ${category.statusClass}`}>
+                        <h3 className="finxt-cookie-category-title">{category.title}</h3>
+                        <p className={`finxt-cookie-category-status ${category.statusClass}`}>
                           {category.status}
                         </p>
                       </div>
@@ -192,28 +218,26 @@ export default function CookieConsent() {
                         }
                       />
                     </div>
-                    <p className="mt-3 text-sm leading-relaxed text-white/65">
-                      {category.description}
-                    </p>
+                    <p className="finxt-cookie-category-copy">{category.description}</p>
                   </div>
                 );
               })}
             </div>
 
-            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="finxt-cookie-modal-footer">
               <button
                 type="button"
                 onClick={() => savePreferences(preferences)}
-                className="rounded-lg border border-[#C9A84C] bg-[#050912] px-5 py-2.5 text-sm font-bold text-[#C9A84C] transition hover:bg-[#0A0F1E]"
+                className="finxt-btn-primary finxt-cookie-modal-action-btn"
               >
                 Save preferences
               </button>
 
-              <div className="flex flex-wrap gap-4 text-sm">
-                <Link href="/cookie-policy" className="text-[#C9A84C] hover:underline">
+              <div className="finxt-cookie-modal-policy-links">
+                <Link href="/cookie-policy" className="finxt-cookie-modal-link-inline">
                   Cookie Policy
                 </Link>
-                <Link href="/privacy-policy" className="text-[#C9A84C] hover:underline">
+                <Link href="/privacy-policy" className="finxt-cookie-modal-link-inline">
                   Privacy Policy
                 </Link>
               </div>

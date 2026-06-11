@@ -28,6 +28,11 @@
   --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --reveal-distance: 2rem;
   --reveal-stagger: 100ms;
+  --cookie-surface: #f4f6fb;
+  --cookie-surface-muted: #e8edf6;
+  --cookie-surface-card: rgba(255, 255, 255, 0.58);
+  --cookie-border: rgba(201, 168, 76, 0.22);
+  --cookie-border-subtle: #dce3f0;
 }
 
 /* IQVIA-style scroll reveal — unified across pages */
@@ -4337,6 +4342,281 @@ a {
   color: var(--gold-light);
 }
 
+/* Cookie consent — light centred modal (FinXT navy-tinted palette) */
+
+.finxt-cookie-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(5, 9, 18, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.finxt-cookie-modal {
+  position: relative;
+  width: min(100%, 34rem);
+  max-height: min(88vh, 44rem);
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  border: 1px solid var(--cookie-border);
+  background: linear-gradient(
+    168deg,
+    var(--cookie-surface) 0%,
+    var(--cookie-surface-muted) 55%,
+    #e2eaf5 100%
+  );
+  padding: 1.75rem 1.75rem 1.5rem;
+  box-shadow:
+    0 28px 80px rgba(5, 9, 18, 0.42),
+    0 0 0 1px rgba(201, 168, 76, 0.1) inset;
+}
+
+.finxt-cookie-modal::before {
+  content: '';
+  position: absolute;
+  inset-inline: 1.25rem;
+  top: 0;
+  height: 1px;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 168, 76, 0.5),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.finxt-cookie-modal--preferences {
+  width: min(100%, 40rem);
+}
+
+.finxt-cookie-modal-title {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+
+.finxt-cookie-modal-copy {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--body);
+}
+
+.finxt-cookie-modal-lead {
+  margin: 0.85rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.finxt-cookie-modal-link-inline {
+  color: var(--navy-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.finxt-cookie-modal-link-inline:hover {
+  color: var(--gold);
+}
+
+.finxt-cookie-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cookie-border-subtle);
+}
+
+.finxt-cookie-modal-actions-primary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .finxt-cookie-modal-actions-primary {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}
+
+.finxt-cookie-modal-action-btn {
+  width: 100%;
+  flex: 1 1 0;
+}
+
+.finxt-cookie-modal-reject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--cookie-border-subtle);
+  background: rgba(255, 255, 255, 0.45);
+  padding: 0.875rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.finxt-cookie-modal-reject:hover {
+  border-color: rgba(201, 168, 76, 0.45);
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--navy-2);
+}
+
+.finxt-cookie-modal-manage {
+  align-self: flex-start;
+}
+
+.finxt-cookie-modal-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--navy-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.finxt-cookie-modal-link:hover {
+  color: var(--gold);
+}
+
+.finxt-cookie-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.finxt-cookie-category {
+  border: 1px solid var(--cookie-border-subtle);
+  border-radius: 0.85rem;
+  background: var(--cookie-surface-card);
+  padding: 1rem 1.05rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.finxt-cookie-category-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.finxt-cookie-category-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.finxt-cookie-category-status {
+  margin: 0.3rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.finxt-cookie-category-status--on {
+  color: #059669;
+}
+
+.finxt-cookie-category-status--optional {
+  color: #8a6f28;
+}
+
+.finxt-cookie-category-copy {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.finxt-cookie-toggle {
+  position: relative;
+  height: 1.75rem;
+  width: 3rem;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 9999px;
+  background: #c5cde0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.finxt-cookie-toggle--on {
+  background: var(--gold);
+}
+
+.finxt-cookie-toggle--disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.finxt-cookie-toggle-thumb {
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 9999px;
+  background: var(--cookie-surface);
+  box-shadow: 0 1px 4px rgba(10, 15, 30, 0.16);
+  transition: transform 0.2s ease;
+}
+
+.finxt-cookie-toggle--on .finxt-cookie-toggle-thumb {
+  transform: translateX(1.25rem);
+}
+
+.finxt-cookie-modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--cookie-border-subtle);
+}
+
+@media (min-width: 640px) {
+  .finxt-cookie-modal-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.finxt-cookie-modal-policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
 .finxt-btn-card {
   display: inline-flex;
   align-items: center;
@@ -6885,6 +7165,18 @@ textarea.contact-clean-input {
 .finxt-cs-gallery-card--active .finxt-cs-gallery-card-cta {
   opacity: 1;
   transform: translateY(0);
+}
+
+.finxt-cs-gallery-card--focus .finxt-cs-gallery-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .finxt-cs-gallery-card-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .finxt-cs-gallery-card:focus-visible {
