@@ -16,12 +16,6 @@ function SectorPanelContent({ sector }) {
           className="finxt-sector-panel-image"
         />
         <div className="finxt-sector-panel-media-scrim" />
-        <div className="finxt-sector-panel-media-label">
-          <span className="finxt-sector-panel-icon" aria-hidden="true">
-            <SectorIcon type={sector.icon} className="h-5 w-5" />
-          </span>
-          <h3 className="finxt-card-title">{sector.title}</h3>
-        </div>
       </div>
 
       <div className="finxt-sector-panel-body">

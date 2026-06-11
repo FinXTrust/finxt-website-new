@@ -1,29 +1,17 @@
-import ScrollReveal from './ScrollReveal';
-
 export default function CaseStudiesPageIntro() {
   return (
-    <ScrollReveal className="finxt-micro-intro max-w-3xl">
-      <p className="finxt-scroll-reveal finxt-label mb-5" style={{ '--reveal-delay': '0ms' }}>
+    <div className="finxt-cs-stage-copy-inner">
+      <p className="finxt-scroll-reveal finxt-cs-stage-label" style={{ '--reveal-delay': '0ms' }}>
         Proof in Practice
       </p>
       <h2
-        className="finxt-scroll-reveal finxt-section-heading"
-        style={{ '--reveal-delay': '100ms' }}
+        className="finxt-scroll-reveal finxt-cs-stage-heading"
+        style={{ '--reveal-delay': '80ms' }}
       >
-        Programme stories, told with evidence
+        Stories with
+        <br />
+        <span className="finxt-cs-stage-heading-accent">evidence.</span>
       </h2>
-      <div
-        className="finxt-scroll-reveal finxt-scroll-reveal--divider finxt-divider"
-        style={{ '--reveal-delay': '200ms' }}
-      />
-      <p
-        className="finxt-scroll-reveal finxt-home-intro finxt-body"
-        style={{ '--reveal-delay': '300ms' }}
-      >
-        Each snapshot follows a real delivery pattern — the operational pressure, what FinXT
-        mobilised, and the measurable outcomes clients needed. Scannable, anonymised, and built
-        for capability conversations.
-      </p>
-    </ScrollReveal>
+    </div>
   );
 }

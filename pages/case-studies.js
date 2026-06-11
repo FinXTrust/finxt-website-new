@@ -3,9 +3,7 @@ import Layout from '../components/Layout';
 import PageHead from '../components/PageHead';
 import ScrollReveal from '../components/ScrollReveal';
 import { pageSeo } from '../data/seo';
-import CaseStudiesPageIntro from '../components/CaseStudiesPageIntro';
-import CaseStudySnapshot from '../components/CaseStudySnapshot';
-import { caseStudies } from '../data/caseStudies';
+import CaseStudiesExplorer from '../components/CaseStudiesExplorer';
 
 export default function CaseStudiesPage() {
   return (
@@ -53,13 +51,7 @@ export default function CaseStudiesPage() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="finxt-section-rule mb-10 md:mb-12" />
 
-          <CaseStudiesPageIntro />
-
-          <div className="finxt-cs-ed-list mt-12 md:mt-14">
-            {caseStudies.map((study, index) => (
-              <CaseStudySnapshot key={study.id} study={study} index={index} />
-            ))}
-          </div>
+          <CaseStudiesExplorer />
         </div>
       </section>
 

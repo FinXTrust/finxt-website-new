@@ -1,8 +1,11 @@
 import { useScrollReveal } from '../lib/useScrollReveal';
+import { getCaseStudyCardTitle } from '../data/caseStudies';
+import CaseStudyEdPunct from './CaseStudyEdPunct';
 import CaseStudyVisual from './CaseStudyVisual';
 
 export default function CaseStudySnapshot({ study, index = 0 }) {
   const isFlip = index % 2 === 1;
+  const { title: titleMain, sub: titleSub } = getCaseStudyCardTitle(study);
 
   const { ref: headRef, isVisible: isHeadVisible } = useScrollReveal({
     rootMargin: '0px 0px -8% 0px',
@@ -45,8 +48,14 @@ export default function CaseStudySnapshot({ study, index = 0 }) {
           className="finxt-cs-ed-head-copy finxt-scroll-reveal"
           style={{ '--reveal-delay': '60ms' }}
         >
-          <p className="finxt-label">Project Snapshot {study.number}</p>
-          <h2 className="finxt-cs-ed-title">{study.title}</h2>
+          <p className="finxt-label">
+            <span className="finxt-cs-ed-kicker-text">Project Snapshot {study.number}</span>
+            <CaseStudyEdPunct />
+          </p>
+          <h2 className="finxt-cs-ed-title">
+            <span>{titleMain}</span>
+            {titleSub ? <span className="finxt-cs-ed-title-sub">{titleSub}</span> : null}
+          </h2>
           <p className="finxt-cs-ed-tags">{study.tags.join(' · ')}</p>
         </div>
       </header>
@@ -74,7 +83,10 @@ export default function CaseStudySnapshot({ study, index = 0 }) {
             className="finxt-cs-ed-block finxt-cs-ed-block--challenge finxt-scroll-reveal"
             style={{ '--reveal-delay': '240ms' }}
           >
-            <span className="finxt-cs-ed-kicker">The challenge</span>
+            <span className="finxt-cs-ed-kicker">
+              <span className="finxt-cs-ed-kicker-text">The challenge</span>
+              <CaseStudyEdPunct />
+            </span>
             <p className="finxt-cs-ed-lead">{study.challenge}</p>
           </section>
 
@@ -82,7 +94,10 @@ export default function CaseStudySnapshot({ study, index = 0 }) {
             className="finxt-cs-ed-block finxt-cs-ed-block--solution finxt-scroll-reveal"
             style={{ '--reveal-delay': '320ms' }}
           >
-            <span className="finxt-cs-ed-kicker">What we did</span>
+            <span className="finxt-cs-ed-kicker">
+              <span className="finxt-cs-ed-kicker-text">What we did</span>
+              <CaseStudyEdPunct />
+            </span>
             <p className="finxt-cs-ed-prose">{study.solution}</p>
           </section>
 
@@ -90,7 +105,10 @@ export default function CaseStudySnapshot({ study, index = 0 }) {
             className="finxt-cs-ed-outcomes finxt-scroll-reveal"
             style={{ '--reveal-delay': '400ms' }}
           >
-            <span className="finxt-cs-ed-kicker">Outcomes</span>
+            <span className="finxt-cs-ed-kicker">
+              <span className="finxt-cs-ed-kicker-text">Outcomes</span>
+              <CaseStudyEdPunct />
+            </span>
             <ul className="finxt-cs-ed-outcomes-list">
               {study.outcomes.map((outcome, outcomeIndex) => (
                 <li

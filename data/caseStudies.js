@@ -7,6 +7,8 @@ export const caseStudies = [
     featured: true,
     image: '/images/AI Strategy.jpg',
     accent: '#5B8DEF',
+    galleryImage: '/images/case-studies/multi-market-research.webp',
+    galleryImagePosition: 'center center',
     highlight: { value: '1000+', label: 'Participants across 4 countries' },
     challenge:
       'Our global technology enterprise client needed to run a large-scale, in-person user research programme across four European markets simultaneously, recruiting specialist participant profiles, managing complex session logistics, and processing reward payments in multiple currencies within tight project timelines.',
@@ -26,6 +28,8 @@ export const caseStudies = [
     tags: ['Logistics', 'ATA Carnet', 'Site Setup'],
     image: '/images/Mainpicture.jpg',
     accent: '#C9A84C',
+    galleryImage: '/images/case-studies/cross-border-logistics.webp',
+    galleryImagePosition: 'center 42%',
     highlight: { value: 'Minimal', label: 'Customs delays across crossings' },
     challenge:
       'One of our technology clients required secure, time-critical shipment of proprietary research devices across multiple European borders for a series of in-market testing sessions. Standard logistics providers could not meet the regulatory documentation requirements for temporary import, creating significant risk to the programme schedule.',
@@ -45,6 +49,7 @@ export const caseStudies = [
     tags: ['Staffing', 'Employer of Record', 'Compliance'],
     image: '/images/AI Advisory.jpg',
     accent: '#9B8EC4',
+    galleryImage: '/images/services/staffing_payroll.webp',
     highlight: { value: '< 4 wks', label: 'Team deployed across 3 markets' },
     challenge:
       'Our client needed to deploy a research operations team across India, UK and European markets within four weeks, in jurisdictions where they had no existing legal entities. Standard employment setup timelines made direct hiring impossible within the required window.',
@@ -65,6 +70,7 @@ export const caseStudies = [
     featured: true,
     image: '/images/Marketing.jpg',
     accent: '#E07A5F',
+    galleryImage: '/images/services/crowdsolutions.webp',
     highlight: { value: '95%+', label: 'Session fill rate maintained' },
     challenge:
       'A consumer brand required fast recruitment of a high volume of participants across UK and Europe for a national insight study. Standard recruitment timelines and costs were incompatible with the project budget and schedule.',
@@ -80,3 +86,28 @@ export const caseStudies = [
 ];
 
 export const featuredCaseStudies = caseStudies.filter((study) => study.featured);
+
+export function getCaseStudyCardLabel(study) {
+  return `Programme ${study.number}`;
+}
+
+export function getCaseStudyCardTitle(study) {
+  if (study.titleSub) {
+    return { title: study.title, sub: study.titleSub };
+  }
+
+  const emDashParts = study.title.split(' — ');
+  if (emDashParts.length > 1) {
+    return { title: emDashParts[0].trim(), sub: emDashParts[1].trim() };
+  }
+
+  const ampersandParts = study.title.split(' & ');
+  if (ampersandParts.length > 1) {
+    return {
+      title: ampersandParts[0].trim(),
+      sub: ampersandParts.slice(1).join(' & ').trim(),
+    };
+  }
+
+  return { title: study.title, sub: null };
+}

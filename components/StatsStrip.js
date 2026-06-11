@@ -1,12 +1,11 @@
 const stats = [
   { value: '7+', label: 'Countries' },
   { value: '9+', label: 'Service Verticals' },
-  { value: '1,000+', label: 'Participants Managed' },
   { value: 'Multi', label: 'Projects Delivered' },
 ];
 
 const compactCopy =
-  '7+ countries · 9+ service verticals · 1,000+ participants managed · Multiple concurrent programmes delivered';
+  '7+ countries · 9+ service verticals · Multiple concurrent programmes delivered';
 
 export default function StatsStrip() {
   return (
@@ -14,7 +13,7 @@ export default function StatsStrip() {
       <div className="mx-auto max-w-7xl">
         <p className="finxt-label mb-8 text-center md:mb-10">Metrics / Scale</p>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-white/[0.08]">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-0 md:divide-x md:divide-white/[0.08]">
           {stats.map((stat) => (
             <div key={stat.label} className="px-0 text-center md:px-6 lg:px-8">
               <p className="finxt-stat-value">{stat.value}</p>

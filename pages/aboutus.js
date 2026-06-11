@@ -9,7 +9,6 @@ import { pageSeo } from '../data/seo';
 const heroMetrics = [
   { value: '7+', label: 'Countries' },
   { value: '9', label: 'Service Verticals' },
-  { value: '1,000+', label: 'Participants Managed' },
   { value: 'Multi', label: 'Programmes Delivered' },
 ];
 
