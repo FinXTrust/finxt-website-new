@@ -36,7 +36,7 @@ export default function ServicesCardGrid({ services, panelId }) {
               onClick={() => setOpenId(isOpen ? null : service.id)}
               className="finxt-svc-grid-card-btn"
             >
-              {isOpen ? 'Show less' : 'More info'} →
+              {isOpen ? 'Show less' : 'More info'}
             </button>
           </article>
         );

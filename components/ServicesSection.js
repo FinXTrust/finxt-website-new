@@ -106,7 +106,7 @@ export default function ServicesSection() {
               className="finxt-scroll-reveal finxt-btn-primary"
               style={{ '--reveal-delay': '120ms' }}
             >
-              View all services →
+              View all services
             </Link>
           </ScrollReveal>
         </div>

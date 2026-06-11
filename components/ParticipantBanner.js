@@ -62,7 +62,7 @@ export default function ParticipantBanner() {
 
               <div className="finxt-live-studies-cta mt-6">
                 <Link href="/live-studies" className="finxt-btn-primary w-full text-center">
-                  View live studies &amp; apply →
+                  View live studies &amp; apply
                 </Link>
               </div>
             </div>

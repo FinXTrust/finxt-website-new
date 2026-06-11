@@ -33,7 +33,7 @@ export default function ThankYou() {
               href="/live-studies"
               className="finxt-btn-primary mt-10 inline-block"
             >
-              Back to Live Studies →
+              Back to Live Studies
             </Link>
           )}
         </div>

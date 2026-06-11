@@ -99,9 +99,6 @@ export default function ServicesCompactCard({ service, index = 0 }) {
           className="finxt-svc-page-card-btn"
         >
           {isOpen ? 'Show less' : 'More info'}
-          <span className="finxt-micro-btn-arrow" aria-hidden="true">
-            →
-          </span>
         </span>
       </div>
     </RevealItem>

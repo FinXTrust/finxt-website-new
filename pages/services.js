@@ -79,9 +79,6 @@ export default function Services() {
                 style={{ '--reveal-delay': '240ms' }}
               >
                 Request a Proposal
-                <span className="finxt-micro-btn-arrow" aria-hidden="true">
-                  →
-                </span>
               </Link>
             </div>
           </ScrollReveal>

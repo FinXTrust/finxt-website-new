@@ -49,7 +49,7 @@ export default function CaseStudiesTeaser() {
             className="finxt-scroll-reveal finxt-btn-primary"
             style={{ '--reveal-delay': '120ms' }}
           >
-            View all case studies →
+            View all case studies
           </Link>
         </ScrollReveal>
       </div>

@@ -2075,17 +2075,6 @@ a {
   }
 }
 
-.finxt-svc-pillar-index-arrow {
-  align-self: center;
-  font-size: 0.875rem;
-  color: color-mix(in srgb, var(--pillar-accent, #c9a84c) 38%, rgba(255, 255, 255, 0.22));
-  transition:
-    transform 0.35s ease,
-    color 0.35s ease,
-    opacity 0.35s ease;
-  opacity: 0.72;
-}
-
 .finxt-svc-pillar-index-item--active {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
@@ -2101,11 +2090,6 @@ a {
   color: #fff;
 }
 
-.finxt-svc-pillar-index-item--active .finxt-svc-pillar-index-arrow {
-  color: color-mix(in srgb, var(--pillar-accent, #c9a84c) 82%, #fff);
-  opacity: 1;
-}
-
 @media (hover: hover) {
   .finxt-svc-pillar-index-item:not(.finxt-svc-pillar-index-item--active):hover
     .finxt-svc-pillar-index-mark {
@@ -2115,12 +2099,6 @@ a {
   .finxt-svc-pillar-index-item:not(.finxt-svc-pillar-index-item--active):hover
     .finxt-svc-pillar-index-title {
     color: rgba(255, 255, 255, 0.78);
-  }
-
-  .finxt-svc-pillar-index-item:hover .finxt-svc-pillar-index-arrow {
-    transform: translateX(3px);
-    color: color-mix(in srgb, var(--pillar-accent, #c9a84c) 72%, #fff);
-    opacity: 1;
   }
 }
 
@@ -6158,20 +6136,6 @@ textarea.contact-clean-input {
   }
 }
 
-.finxt-micro-btn-arrow {
-  display: inline-block;
-  margin-left: 0.15rem;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (hover: hover) {
-  .finxt-svc-featured-more:hover .finxt-micro-btn-arrow,
-  .finxt-svc-cta-btn:hover .finxt-micro-btn-arrow,
-  .finxt-svc-page-card-btn:hover .finxt-micro-btn-arrow {
-    transform: translateX(4px);
-  }
-}
-
 .finxt-svc-tab--active::before {
   transform-origin: left center;
   animation: finxt-micro-tab-indicator 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -6242,8 +6206,7 @@ textarea.contact-clean-input {
   .finxt-micro-card-topline,
   .finxt-micro-card-accent,
   .finxt-micro-metric,
-  .finxt-micro-panel,
-  .finxt-micro-btn-arrow {
+  .finxt-micro-panel {
     transition: none;
   }
 
@@ -9494,74 +9457,15 @@ textarea.contact-clean-input {
 
 .finxt-cs-carousel {
   position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 0.5rem;
   width: 100%;
   max-width: 100%;
   margin-inline: auto;
 }
 
-@media (max-width: 639px) {
-  .finxt-cs-carousel {
-    grid-template-areas:
-      'viewport'
-      'controls';
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  .finxt-cs-carousel-viewport {
-    grid-area: viewport;
-    width: 100%;
-  }
-
-  .finxt-cs-carousel-arrow--prev {
-    grid-area: controls;
-    justify-self: start;
-  }
-
-  .finxt-cs-carousel-arrow--next {
-    grid-area: controls;
-    justify-self: end;
-  }
-
-  .finxt-cs-carousel-arrow--prev,
-  .finxt-cs-carousel-arrow--next {
-    width: 2.35rem;
-    height: 2.35rem;
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 640px) and (max-width: 767px) {
-  .finxt-cs-carousel {
-    gap: 0.65rem;
-  }
-
-  .finxt-cs-carousel-arrow {
-    width: 2.15rem;
-    height: 2.15rem;
-    font-size: 0.95rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .finxt-cs-carousel {
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .finxt-cs-carousel {
-    gap: 1.25rem;
-  }
-}
-
 .finxt-cs-carousel-viewport {
   overflow: hidden;
   border-radius: 1rem;
+  touch-action: pan-y;
 }
 
 .finxt-cs-carousel-track {
@@ -9661,6 +9565,10 @@ textarea.contact-clean-input {
   justify-content: center;
   gap: 0.55rem;
   margin-top: 1.25rem;
+}
+
+.finxt-cs-gallery-dots {
+  margin-top: 0;
 }
 
 .finxt-cs-carousel-dot {

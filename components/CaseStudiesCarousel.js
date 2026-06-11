@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { caseStudies, getCaseStudyCardLabel, getCaseStudyCardTitle } from '../data/caseStudies';
 
 const CASE_STUDIES_PAGE = '/case-studies';
 const AUTOPLAY_MS = 6000;
+const SWIPE_THRESHOLD_PX = 48;
 
 function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
   const { title: titleMain, sub: titleSub } = getCaseStudyCardTitle(study);
@@ -13,7 +14,7 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
         href={`${CASE_STUDIES_PAGE}#${study.id}`}
         className="finxt-cs-teaser-link mt-5 inline-flex text-sm font-semibold text-finxt-gold-light transition hover:text-finxt-gold"
       >
-        Read full snapshot →
+        Read programme
       </Link>
     ) : (
       <button
@@ -21,7 +22,7 @@ function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
         className="finxt-cs-teaser-link mt-5 inline-flex text-sm font-semibold text-finxt-gold-light transition hover:text-finxt-gold"
         onClick={() => onSelect?.(study.id, { toggle: true, scroll: true })}
       >
-        {isSelected ? 'Close snapshot' : 'View full snapshot →'}
+        {isSelected ? 'Close programme' : 'View programme'}
       </button>
     );
 
@@ -73,6 +74,7 @@ export default function CaseStudiesCarousel({
   const [isHovered, setIsHovered] = useState(false);
   const [isPageHidden, setIsPageHidden] = useState(false);
   const [autoplayEnabled, setAutoplayEnabled] = useState(true);
+  const touchStartX = useRef(null);
 
   const activeIndex = controlledIndex ?? internalIndex;
   const total = caseStudies.length;
@@ -86,6 +88,13 @@ export default function CaseStudiesCarousel({
       }
     },
     [controlledIndex, onActiveIndexChange, total]
+  );
+
+  const goToIndex = useCallback(
+    (index) => {
+      setActiveIndex(index);
+    },
+    [setActiveIndex]
   );
 
   useEffect(() => {
@@ -116,29 +125,45 @@ export default function CaseStudiesCarousel({
     return () => window.clearInterval(timer);
   }, [activeIndex, autoplayEnabled, isHovered, isPageHidden, setActiveIndex]);
 
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (event) => {
+    const startX = touchStartX.current;
+    const endX = event.changedTouches[0]?.clientX;
+    touchStartX.current = null;
+
+    if (startX == null || endX == null) return;
+
+    const delta = startX - endX;
+    if (Math.abs(delta) < SWIPE_THRESHOLD_PX) return;
+
+    goToIndex(activeIndex + (delta > 0 ? 1 : -1));
+  };
+
+  const pauseHandlers = {
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+    onFocusCapture: () => setIsHovered(true),
+    onBlurCapture: (event) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) {
+        setIsHovered(false);
+      }
+    },
+  };
+
   return (
     <>
       <div
         className={['finxt-cs-carousel', carouselClassName].filter(Boolean).join(' ')}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onFocusCapture={() => setIsHovered(true)}
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) {
-            setIsHovered(false);
-          }
-        }}
+        {...pauseHandlers}
       >
-        <button
-          type="button"
-          className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--prev"
-          aria-label="Previous programme"
-          onClick={() => setActiveIndex(activeIndex - 1)}
+        <div
+          className="finxt-cs-carousel-viewport"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          <span aria-hidden="true">←</span>
-        </button>
-
-        <div className="finxt-cs-carousel-viewport">
           <div
             className="finxt-cs-carousel-track"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -155,15 +180,6 @@ export default function CaseStudiesCarousel({
             ))}
           </div>
         </div>
-
-        <button
-          type="button"
-          className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--next"
-          aria-label="Next programme"
-          onClick={() => setActiveIndex(activeIndex + 1)}
-        >
-          <span aria-hidden="true">→</span>
-        </button>
       </div>
 
       <div className="finxt-cs-carousel-dots" role="tablist" aria-label="Programmes">
@@ -183,7 +199,7 @@ export default function CaseStudiesCarousel({
               ]
                 .filter(Boolean)
                 .join(' ')}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => goToIndex(index)}
             />
           );
         })}

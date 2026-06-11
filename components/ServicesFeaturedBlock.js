@@ -59,9 +59,6 @@ export default function ServicesFeaturedBlock({ service, index }) {
           className="finxt-svc-featured-more"
         >
           {isOpen ? 'Show less' : 'More info'}
-          <span className="finxt-micro-btn-arrow" aria-hidden="true">
-            →
-          </span>
         </button>
       </div>
     </article>

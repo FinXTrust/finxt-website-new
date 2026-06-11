@@ -96,7 +96,7 @@ export default function LiveStudiesReferralSection() {
               className="finxt-scroll-reveal finxt-btn-primary finxt-live-referral-link"
               style={{ '--reveal-delay': '360ms' }}
             >
-              Contact us →
+              Contact us
             </Link>
 
             <Link
@@ -104,7 +104,7 @@ export default function LiveStudiesReferralSection() {
               className="finxt-scroll-reveal finxt-live-referral-link-secondary"
               style={{ '--reveal-delay': '420ms' }}
             >
-              View studies &amp; apply →
+              View studies &amp; apply
             </Link>
           </aside>
         </LiveStudiesReveal>

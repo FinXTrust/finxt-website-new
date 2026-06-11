@@ -50,9 +50,6 @@ export default function ServicesCatalogIntro({ activePillarId }) {
                   >
                     <span className="finxt-svc-pillar-index-mark" aria-hidden="true" />
                     <span className="finxt-svc-pillar-index-title">{pillar.title}</span>
-                    <span className="finxt-svc-pillar-index-arrow" aria-hidden="true">
-                      →
-                    </span>
                   </a>
                 </li>
               );

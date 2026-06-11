@@ -42,7 +42,7 @@ export default function CaseStudyVisual({ study, isActive, variant = 'panel' }) 
           <div className="finxt-cs-story-visual-inner">
             {!isEditorial && (
               <div className="finxt-cs-story-visual-top">
-                <span className="finxt-cs-story-visual-index">Snapshot {study.number}</span>
+                <span className="finxt-cs-story-visual-index">Programme {study.number}</span>
               </div>
             )}
 

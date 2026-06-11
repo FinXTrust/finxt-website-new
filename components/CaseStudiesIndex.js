@@ -227,8 +227,7 @@ export default function CaseStudiesIndex({
                     </p>
                     <p className="finxt-cs-gallery-card-tags">{study.tags.slice(0, 2).join(' · ')}</p>
                     <span className="finxt-cs-gallery-card-cta">
-                      {isSelected ? 'Viewing snapshot' : 'View snapshot'}
-                      <span aria-hidden="true">→</span>
+                      {isSelected ? 'Viewing programme' : 'View programme'}
                     </span>
                   </div>
                 </button>
@@ -250,17 +249,11 @@ export default function CaseStudiesIndex({
           <span className="finxt-cs-gallery-progress-total">{String(total).padStart(2, '0')}</span>
         </p>
 
-        <div className="finxt-cs-gallery-controls">
-        <button
-          type="button"
-          className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--prev"
-          aria-label="Previous programme"
-          onClick={() => goToIndex(activeIndex - 1)}
+        <div
+          className="finxt-cs-carousel-dots finxt-cs-gallery-dots"
+          role="tablist"
+          aria-label="Programmes"
         >
-          <span aria-hidden="true">←</span>
-        </button>
-
-        <div className="finxt-cs-carousel-dots" role="tablist" aria-label="Programmes">
           {caseStudies.map((study, index) => {
             const isActive = index === activeIndex;
 
@@ -281,16 +274,6 @@ export default function CaseStudiesIndex({
               />
             );
           })}
-        </div>
-
-        <button
-          type="button"
-          className="finxt-cs-carousel-arrow finxt-cs-carousel-arrow--next"
-          aria-label="Next programme"
-          onClick={() => goToIndex(activeIndex + 1)}
-        >
-          <span aria-hidden="true">→</span>
-        </button>
         </div>
       </div>
     </div>

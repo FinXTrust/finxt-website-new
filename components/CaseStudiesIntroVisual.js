@@ -61,7 +61,7 @@ export default function CaseStudiesIntroVisual() {
             </div>
             <div className="finxt-cs-intro-orbit-core-badge">
               <span className="finxt-cs-intro-orbit-core-num">{activeStudy.number}</span>
-              <span className="finxt-cs-intro-orbit-core-label">Snapshot</span>
+              <span className="finxt-cs-intro-orbit-core-label">Programme</span>
             </div>
             <div className="finxt-cs-intro-orbit-core-glow" />
           </div>

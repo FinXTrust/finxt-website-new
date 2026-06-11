@@ -143,7 +143,7 @@ export default function ContactPage() {
 
               <div className="finxt-contact-panel-foot pl-1">
                 <button type="submit" className="finxt-btn-primary w-full text-center">
-                  Submit →
+                  Submit
                 </button>
               </div>
             </form>

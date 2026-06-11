@@ -38,7 +38,7 @@ export default function ServiceCard({ service, cardId, isOpen, onToggle }) {
             onClick={() => onToggle(cardId)}
             className="mt-5 inline-flex self-start text-sm font-semibold text-finxt-gold transition hover:text-finxt-gold-light"
           >
-            {isOpen ? 'Show less' : 'Read more'} →
+            {isOpen ? 'Show less' : 'Read more'}
           </button>
         )}
       </div>

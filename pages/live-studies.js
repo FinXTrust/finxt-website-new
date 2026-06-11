@@ -194,7 +194,7 @@ export default function LiveStudies() {
                   href={`/live-studies-application?country=${study.slug}&lang=${study.lang}`}
                   className="finxt-live-location-apply finxt-btn-card"
                 >
-                  Apply →
+                  Apply
                 </Link>
               </RevealItem>
             ))}
