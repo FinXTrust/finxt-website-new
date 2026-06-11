@@ -7117,7 +7117,8 @@ textarea.contact-clean-input {
   color: rgba(255, 255, 255, 0.42);
 }
 
-.finxt-cs-gallery-card-cta {
+.finxt-cs-gallery-card-cta,
+.finxt-cs-carousel-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -7127,11 +7128,35 @@ textarea.contact-clean-input {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--cs-accent, #c9a84c) 72%, #fff);
+}
+
+.finxt-cs-gallery-card-cta {
   opacity: 0;
   transform: translateY(4px);
   transition:
     opacity 0.4s ease,
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.finxt-cs-carousel-cta {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a.finxt-cs-carousel-cta:hover,
+button.finxt-cs-carousel-cta:hover,
+.finxt-cs-carousel-cta--active {
+  color: color-mix(in srgb, var(--cs-accent, #c9a84c) 88%, #fff);
+}
+
+.finxt-cs-carousel-cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cs-accent, #c9a84c) 65%, #fff);
+  outline-offset: 3px;
 }
 
 @media (hover: hover) {
@@ -7161,6 +7186,7 @@ textarea.contact-clean-input {
 .finxt-cs-gallery-card--active .finxt-cs-gallery-card-cta {
   opacity: 1;
   transform: translateY(0);
+  color: color-mix(in srgb, var(--cs-accent, #c9a84c) 88%, #fff);
 }
 
 .finxt-cs-gallery-card--focus .finxt-cs-gallery-card-cta {

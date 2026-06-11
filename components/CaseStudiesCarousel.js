@@ -8,18 +8,27 @@ const SWIPE_THRESHOLD_PX = 48;
 
 function CarouselSlide({ study, isActive, mode, isSelected, onSelect }) {
   const { title: titleMain, sub: titleSub } = getCaseStudyCardTitle(study);
+  const ctaStyle = { '--cs-accent': study.accent };
+  const ctaClassName = [
+    'finxt-cs-carousel-cta',
+    isSelected ? 'finxt-cs-carousel-cta--active' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
   const cta =
     mode === 'teaser' ? (
       <Link
         href={`${CASE_STUDIES_PAGE}#${study.id}`}
-        className="finxt-cs-teaser-link mt-5 inline-flex text-sm font-semibold text-finxt-gold-light transition hover:text-finxt-gold"
+        className={ctaClassName}
+        style={ctaStyle}
       >
         Read programme
       </Link>
     ) : (
       <button
         type="button"
-        className="finxt-cs-teaser-link mt-5 inline-flex text-sm font-semibold text-finxt-gold-light transition hover:text-finxt-gold"
+        className={ctaClassName}
+        style={ctaStyle}
         onClick={() => onSelect?.(study.id, { toggle: true, scroll: true })}
       >
         {isSelected ? 'Close programme' : 'View programme'}
